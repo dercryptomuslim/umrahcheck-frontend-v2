@@ -15,7 +15,8 @@ import {
   Wifi,
   Car,
   Coffee,
-  Wind
+  Wind,
+  Hotel
 } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -24,7 +25,7 @@ interface HotelFeature {
   label: string
 }
 
-interface Hotel {
+interface HotelData {
   id: string
   name: string
   arabicName: string
@@ -47,10 +48,10 @@ interface Hotel {
 }
 
 interface HotelCardProps {
-  hotel: Hotel
+  hotel: HotelData
   index?: number
-  onBook?: (hotel: Hotel) => void
-  onWhatsApp?: (hotel: Hotel) => void
+  onBook?: (hotel: HotelData) => void
+  onWhatsApp?: (hotel: HotelData) => void
 }
 
 const featureIcons: Record<string, React.ReactNode> = {
