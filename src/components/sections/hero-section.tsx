@@ -74,11 +74,11 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.1 }}
             className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
           >
+            <span className="text-gray-900">✨ „</span>
             <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
-              Die erste KI-Beratung
+              Die erste KI-Beratung für deine Umrah – ehrlich, transparent & auf dich zugeschnitten.
             </span>
-            <br />
-            <span className="text-gray-900">für deine Umrah</span>
+            <span className="text-gray-900">" 🏛️</span>
           </motion.h1>
 
           {/* Subheading */}
@@ -86,12 +86,29 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed"
+            className="text-lg md:text-xl text-gray-600 mb-8 max-w-3xl mx-auto leading-relaxed"
           >
-            Unsere KI prüft dein Angebot, vergleicht Alternativen und zeigt dir in{' '}
-            <span className="font-semibold text-emerald-600">unter 2 Minuten</span>, 
-            wie du Geld sparst und besser reist.
+            Nie wieder Umrah im Blindflug buchen. Unsere KI prüft dein Angebot, vergleicht Alternativen und zeigt dir, wie du Geld sparst und besser reisen kannst – in nur 2 Minuten.
           </motion.p>
+
+          {/* Video Section */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.25 }}
+            className="relative max-w-2xl mx-auto mb-8"
+          >
+            <div className="relative aspect-video rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-gray-900 to-black">
+              {/* Video placeholder with play button */}
+              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1591604129939-f1efa4d9f7fa?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80')] bg-cover bg-center" />
+              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <button className="w-20 h-20 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 group">
+                  <div className="w-0 h-0 border-l-[16px] border-l-emerald-600 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1" />
+                </button>
+              </div>
+            </div>
+          </motion.div>
 
           {/* CTA Buttons */}
           <motion.div
@@ -102,11 +119,11 @@ export function HeroSection() {
           >
             <Button
               size="xl"
-              className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 hover:from-emerald-700 hover:via-teal-700 hover:to-cyan-700 text-white shadow-xl hover:shadow-2xl transition-all duration-300 group"
+              className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-600 hover:via-yellow-600 hover:to-amber-700 text-white shadow-xl hover:shadow-2xl transition-all duration-300 group text-lg px-8 py-4"
               asChild
             >
-              <Link href="/hotels">
-                Jetzt Hotels entdecken
+              <Link href="#features">
+                JETZT TESTEN
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
             </Button>
