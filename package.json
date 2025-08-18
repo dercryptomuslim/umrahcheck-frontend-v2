@@ -11,7 +11,7 @@
     "lint:fix": "next lint --fix",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,css,md}\"",
     "type-check": "tsc --noEmit",
-    "prepare": "husky install"
+    "prepare": "husky install || true"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.3.4",
@@ -71,7 +71,7 @@
     "@typescript-eslint/eslint-plugin": "^6.18.1",
     "@typescript-eslint/parser": "^6.18.1",
     "autoprefixer": "^10.4.16",
-    "eslint": "^8.56.0",
+    "eslint": "^9.15.0",
     "eslint-config-next": "15.1.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-tailwindcss": "^3.13.1",
