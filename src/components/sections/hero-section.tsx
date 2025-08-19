@@ -18,7 +18,7 @@ import Link from 'next/link'
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
+    <section className="relative overflow-hidden bg-gradient-to-br from-cream via-sand to-white">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
       
@@ -34,7 +34,7 @@ export function HeroSection() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute top-20 left-10 w-72 h-72 bg-emerald-300/30 rounded-full blur-3xl"
+          className="absolute top-20 left-10 w-72 h-72 bg-primary-gold/20 rounded-full blur-3xl"
         />
         <motion.div
           animate={{ 
@@ -46,7 +46,7 @@ export function HeroSection() {
             repeat: Infinity,
             ease: "easeInOut"
           }}
-          className="absolute bottom-20 right-10 w-96 h-96 bg-teal-300/30 rounded-full blur-3xl"
+          className="absolute bottom-20 right-10 w-96 h-96 bg-primary-gold/20 rounded-full blur-3xl"
         />
       </div>
 
@@ -60,7 +60,7 @@ export function HeroSection() {
           >
             <Badge 
               variant="secondary" 
-              className="mb-6 px-4 py-2 text-sm bg-white/80 backdrop-blur-sm border-emerald-200 text-emerald-700"
+              className="mb-6 px-4 py-2 text-sm bg-white/80 backdrop-blur-sm border-primary-gold/30 text-dark-blue"
             >
               <Sparkles className="w-4 h-4 mr-2" />
               Ehrlich • Transparent • Auf dich zugeschnitten
@@ -75,7 +75,7 @@ export function HeroSection() {
             className="heading-1 mb-6"
           >
             <span className="text-gray-900">✨ „</span>
-            <span className="bg-gradient-to-r from-emerald-700 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary-gold via-gold-hover to-primary-gold bg-clip-text text-transparent"
               Die erste KI-Beratung für deine Umrah – ehrlich, transparent & auf dich zugeschnitten.
             </span>
             <span className="text-gray-900">" 🏛️</span>
@@ -131,7 +131,7 @@ export function HeroSection() {
             <Button
               size="xl"
               variant="outline"
-              className="border-2 border-emerald-600 hover:bg-emerald-50 hover:border-emerald-700 text-emerald-700 hover-lift"
+              className="border-2 border-dark-blue hover:bg-cream hover:border-dark-blue text-dark-blue hover-lift"
               asChild
             >
               <Link href="#how-it-works">
@@ -148,8 +148,8 @@ export function HeroSection() {
             className="grid grid-cols-2 md:grid-cols-4 gap-6 max-w-4xl mx-auto"
           >
             <div className="flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mb-2">
-                <Shield className="w-6 h-6 text-emerald-600" />
+              <div className="w-12 h-12 rounded-full bg-primary-gold/20 flex items-center justify-center mb-2">
+                <Shield className="w-6 h-6 text-primary-gold" />
               </div>
               <span className="text-sm font-medium text-gray-700">100% Halal</span>
               <span className="text-xs text-gray-500">Zertifiziert</span>
@@ -172,8 +172,8 @@ export function HeroSection() {
             </div>
             
             <div className="flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-emerald-100 flex items-center justify-center mb-2">
-                <Users className="w-6 h-6 text-emerald-600" />
+              <div className="w-12 h-12 rounded-full bg-primary-gold/20 flex items-center justify-center mb-2">
+                <Users className="w-6 h-6 text-primary-gold" />
               </div>
               <span className="text-sm font-medium text-gray-700">10.000+</span>
               <span className="text-xs text-gray-500">Zufriedene Pilger</span>
@@ -188,8 +188,8 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
         >
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift hover-glow group cursor-pointer border border-emerald-100">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-700 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift hover-glow group cursor-pointer border border-primary-gold/20">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-gold to-gold-hover flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <Globe className="w-7 h-7 text-white" />
             </div>
             <h3 className="heading-3 mb-2">Flugsuche</h3>
@@ -198,8 +198,8 @@ export function HeroSection() {
             </p>
           </div>
 
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift hover-glow group cursor-pointer border border-emerald-100">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-700 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift hover-glow group cursor-pointer border border-primary-gold/20">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-gold to-gold-hover flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <Hotel className="w-7 h-7 text-white" />
             </div>
             <h3 className="heading-3 mb-2">Hotelvergleich</h3>
@@ -208,8 +208,8 @@ export function HeroSection() {
             </p>
           </div>
 
-          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift hover-glow group cursor-pointer border border-emerald-100">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift hover-glow group cursor-pointer border border-primary-gold/20">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-primary-gold to-gold-hover flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <Sparkles className="w-7 h-7 text-white" />
             </div>
             <h3 className="heading-3 mb-2">Umrah-Tipps</h3>

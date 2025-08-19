@@ -27,7 +27,7 @@ const features = [
       "Flexible Daten verfügbar", 
       "Direktflüge bevorzugt"
     ],
-    gradient: "from-emerald-600 to-emerald-700"
+    gradient: "from-primary-gold to-gold-hover"
   },
   {
     icon: Hotel,
@@ -39,7 +39,7 @@ const features = [
       "Halal-zertifizierte Hotels",
       "Echte Bewertungen"
     ],
-    gradient: "from-emerald-600 to-emerald-700"
+    gradient: "from-primary-gold to-gold-hover"
   },
   {
     icon: Lightbulb,
@@ -51,7 +51,7 @@ const features = [
       "Geld-spar-Tricks",
       "Beste Reisezeiten"
     ],
-    gradient: "from-amber-500 to-amber-600"
+    gradient: "from-primary-gold to-gold-hover"
   }
 ]
 
@@ -69,7 +69,7 @@ export function FeaturesSection() {
             className="heading-2 mb-6"
           >
             Alles, was du brauchst, in einem smarten{' '}
-            <span className="bg-gradient-to-r from-emerald-700 to-emerald-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-primary-gold to-gold-hover bg-clip-text text-transparent">
               Umrah-KI-Assistenten
             </span>
           </motion.h2>
@@ -87,7 +87,7 @@ export function FeaturesSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="p-6 hover-lift hover-glow group border-emerald-100">
+                <Card className="p-6 hover-lift hover-glow group border-primary-gold/20">
                   <CardContent className="p-0">
                     <div className="flex items-start gap-4">
                       <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0`}>
@@ -95,12 +95,12 @@ export function FeaturesSection() {
                       </div>
                       <div className="flex-1">
                         <h3 className="text-xl font-bold text-gray-900 mb-1">{feature.title}</h3>
-                        <p className="text-sm text-emerald-600 font-medium mb-3">{feature.subtitle}</p>
+                        <p className="text-sm text-primary-gold font-medium mb-3">{feature.subtitle}</p>
                         <p className="text-gray-600 mb-4 leading-relaxed">{feature.description}</p>
                         <ul className="space-y-2">
                           {feature.benefits.map((benefit, i) => (
                             <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
-                              <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+                              <div className="w-1.5 h-1.5 bg-primary-gold rounded-full" />
                               {benefit}
                             </li>
                           ))}
@@ -143,9 +143,9 @@ export function FeaturesSection() {
 
                     {/* Quick Stats */}
                     <div className="grid grid-cols-3 gap-2">
-                      <div className="bg-emerald-50 rounded-lg p-3 text-center">
-                        <Clock className="w-5 h-5 text-emerald-600 mx-auto mb-1" />
-                        <p className="text-xs font-semibold text-emerald-700">2 Min</p>
+                      <div className="bg-primary-gold/10 rounded-lg p-3 text-center">
+                        <Clock className="w-5 h-5 text-primary-gold mx-auto mb-1" />
+                        <p className="text-xs font-semibold text-primary-gold">2 Min</p>
                         <p className="text-xs text-gray-600">Analyse</p>
                       </div>
                       <div className="bg-blue-50 rounded-lg p-3 text-center">
@@ -153,17 +153,17 @@ export function FeaturesSection() {
                         <p className="text-xs font-semibold text-blue-700">30%</p>
                         <p className="text-xs text-gray-600">Ersparnis</p>
                       </div>
-                      <div className="bg-amber-50 rounded-lg p-3 text-center">
-                        <Shield className="w-5 h-5 text-amber-600 mx-auto mb-1" />
-                        <p className="text-xs font-semibold text-amber-700">100%</p>
+                      <div className="bg-primary-gold/10 rounded-lg p-3 text-center">
+                        <Shield className="w-5 h-5 text-primary-gold mx-auto mb-1" />
+                        <p className="text-xs font-semibold text-primary-gold">100%</p>
                         <p className="text-xs text-gray-600">Halal</p>
                       </div>
                     </div>
 
                     {/* Hotel Card Example */}
-                    <div className="bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl p-4">
+                    <div className="bg-gradient-to-r from-cream/50 to-sand/50 rounded-xl p-4">
                       <div className="flex items-center gap-3 mb-2">
-                        <Hotel className="w-6 h-6 text-emerald-600" />
+                        <Hotel className="w-6 h-6 text-primary-gold" />
                         <div>
                           <h5 className="font-semibold text-gray-900 text-sm">Makkah Royal Clock Tower</h5>
                           <div className="flex items-center gap-1 text-xs text-gray-600">
@@ -173,8 +173,8 @@ export function FeaturesSection() {
                         </div>
                       </div>
                       <div className="flex justify-between items-center">
-                        <span className="text-lg font-bold text-emerald-700">€299</span>
-                        <span className="text-xs bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full">Bestseller</span>
+                        <span className="text-lg font-bold text-primary-gold">€299</span>
+                        <span className="text-xs bg-primary-gold/20 text-primary-gold px-2 py-1 rounded-full">Bestseller</span>
                       </div>
                     </div>
 
@@ -197,7 +197,7 @@ export function FeaturesSection() {
                   {/* Bottom Navigation */}
                   <div className="absolute bottom-0 left-0 right-0 bg-white border-t border-gray-200 p-4">
                     <div className="flex justify-center">
-                      <div className="bg-emerald-600 text-white px-6 py-2 rounded-full text-sm font-semibold">
+                      <div className="bg-primary-gold text-white px-6 py-2 rounded-full text-sm font-semibold">
                         Jetzt kostenlos testen
                       </div>
                     </div>
@@ -207,10 +207,10 @@ export function FeaturesSection() {
 
               {/* Floating elements around phone */}
               <div className="absolute -top-4 -right-4 bg-white rounded-full p-3 shadow-lg">
-                <Smartphone className="w-6 h-6 text-emerald-600" />
+                <Smartphone className="w-6 h-6 text-primary-gold" />
               </div>
               <div className="absolute -bottom-4 -left-4 bg-white rounded-full p-3 shadow-lg">
-                <Shield className="w-6 h-6 text-amber-600" />
+                <Shield className="w-6 h-6 text-primary-gold" />
               </div>
             </div>
           </motion.div>

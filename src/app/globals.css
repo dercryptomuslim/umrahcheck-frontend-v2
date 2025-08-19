@@ -4,34 +4,39 @@
  
 @layer base {
   :root {
-    /* Neue optimierte Farbpalette */
-    --primary-green: 5 150 105; /* #059669 - Dunkleres, professionelleres Grün */
-    --primary-green-light: 167 243 208; /* #a7f3d0 - Heller Grünton */
-    --gold-accent: 251 191 36; /* #fbbf24 - Gold für CTAs */
-    --gold-hover: 245 158 11; /* #f59e0b - Dunkleres Gold für Hover */
-    --dark-blue: 30 58 138; /* #1e3a8a - Tiefes Blau für Überschriften */
-    --cream-bg: 254 243 199; /* #fef3c7 - Sanftes Creme für Hintergründe */
+    /* 🎨 UmrahCheck Farbpalette – Goldener Edler Look */
+    --primary-gold: 212 175 55; /* #d4af37 - Hauptfarbe: Gold, Buttons, CTAs, Icons */
+    --gold-hover: 185 151 47; /* #b9972f - dunkleres Gold für Hover-Effekt */
     
-    /* Bestehende Variablen angepasst */
+    --dark-blue: 30 58 138; /* #1e3a8a - Überschriften, Akzente (edle Tiefe) */
+    --midnight: 17 24 39; /* #111827 - sehr dunkler Hintergrund / Footer */
+
+    --cream: 254 243 199; /* #fef3c7 - sanfte Hintergründe */
+    --sand: 245 245 220; /* #f5f5dc - neutrale Fläche, warme Basis */
+    
+    --text-primary: 31 41 55; /* #1f2937 - Standard-Schriftfarbe (fast Schwarz) */
+    --text-secondary: 55 65 81; /* #374151 - für Fließtext, dezent */
+    
+    /* Bestehende Variablen angepasst für Gold-Theme */
     --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --foreground: 31 41 55;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 31 41 55;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 158 64% 41%; /* Dunkleres Emerald */
+    --popover-foreground: 31 41 55;
+    --primary: 212 175 55; /* Primary Gold */
     --primary-foreground: 0 0% 100%;
-    --secondary: 43 96% 56%; /* Gold */
-    --secondary-foreground: 30 58 138; /* Dark Blue */
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 43 96% 56%; /* Gold Accent */
+    --secondary: 30 58 138; /* Dark Blue */
+    --secondary-foreground: 0 0% 100%;
+    --muted: 245 245 220; /* Sand */
+    --muted-foreground: 55 65 81;
+    --accent: 212 175 55; /* Gold Accent */
     --accent-foreground: 30 58 138;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 158 64% 41%;
+    --ring: 212 175 55;
     --radius: 0.5rem;
   }
  
@@ -86,16 +91,12 @@
 }
 
 /* Neue Utility-Klassen für konsistente Farben */
-.bg-primary-green {
-  @apply bg-emerald-700;
-}
-
-.bg-gold-accent {
-  background-color: rgb(251 191 36);
+.bg-primary-gold {
+  background-color: rgb(212 175 55);
 }
 
 .bg-gold-hover {
-  background-color: rgb(245 158 11);
+  background-color: rgb(185 151 47);
 }
 
 .text-dark-blue {
@@ -104,6 +105,22 @@
 
 .bg-cream {
   background-color: rgb(254 243 199);
+}
+
+.bg-sand {
+  background-color: rgb(245 245 220);
+}
+
+.bg-midnight {
+  background-color: rgb(17 24 39);
+}
+
+.text-primary {
+  color: rgb(31 41 55);
+}
+
+.text-secondary {
+  color: rgb(55 65 81);
 }
 
 /* Animationen für Micro-Interaktionen */
@@ -120,12 +137,27 @@
 }
 
 .hover-glow:hover {
-  @apply shadow-lg shadow-emerald-500/25;
+  box-shadow: 0 10px 15px -3px rgba(212, 175, 55, 0.25), 0 4px 6px -2px rgba(212, 175, 55, 0.15);
 }
 
-/* Gold CTA Button Stil */
+/* Gold CTA Button Stil mit Schimmer-Effekt */
 .cta-gold {
-  @apply bg-gradient-to-r from-amber-400 to-yellow-500 hover:from-amber-500 hover:to-yellow-600 text-white font-semibold shadow-lg hover:shadow-xl transform transition-all duration-200 hover:-translate-y-0.5;
+  background: linear-gradient(135deg, #d4af37 0%, #f4e19c 50%, #d4af37 100%);
+  background-size: 200% auto;
+  color: white;
+  @apply font-semibold shadow-lg hover:shadow-xl transform transition-all duration-300 hover:-translate-y-0.5;
+  animation: shimmer 3s linear infinite;
+}
+
+.cta-gold:hover {
+  background: linear-gradient(135deg, #b9972f 0%, #d4af37 50%, #b9972f 100%);
+  background-size: 200% auto;
+}
+
+@keyframes shimmer {
+  0% { background-position: 0% center; }
+  50% { background-position: 100% center; }
+  100% { background-position: 0% center; }
 }
 
 /* Neue Typografie-Klassen */
