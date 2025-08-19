@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { Navbar } from '@/components/layout/navbar'
 import { Footer } from '@/components/layout/footer'
+import { FloatingWhatsApp } from '@/components/ui/floating-whatsapp'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -55,6 +56,11 @@ export default function RootLayout({
           {children}
         </main>
         <Footer />
+        <FloatingWhatsApp 
+          phoneNumber="966560630947"
+          message="Assalamu alaikum! Ich interessiere mich für eine Umrah-Beratung mit Mustafa aus Medina."
+          showAfter={3000}
+        />
       </body>
     </html>
   )
