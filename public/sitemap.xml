@@ -8,6 +8,14 @@
     <priority>1.0</priority>
   </url>
   
+  <!-- Landing Page - High Priority -->
+  <url>
+    <loc>https://umrahcheck-frontend-v2.vercel.app/lp</loc>
+    <lastmod>2024-08-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  
   <!-- Main Features - High Priority -->
   <url>
     <loc>https://umrahcheck-frontend-v2.vercel.app/preisvergleich</loc>
