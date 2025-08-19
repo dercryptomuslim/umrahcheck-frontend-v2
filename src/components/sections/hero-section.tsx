@@ -18,7 +18,7 @@ import Link from 'next/link'
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden" style={{background: "linear-gradient(to bottom right, #fef3c7, #f5f5dc, #ffffff)"}}>
+    <section className="relative overflow-hidden hero-gradient">
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
       
