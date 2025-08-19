@@ -172,8 +172,9 @@ function calculateEstimate(data: EstimateRequest): EstimateResponse['estimate'] 
   // Get hotel recommendations
   const hotelCategory = baseCategory as keyof typeof HOTEL_RECOMMENDATIONS
   const distanceCategory = distance === 'walking' ? 'walking' : 'short-bus'
-  const hotels = HOTEL_RECOMMENDATIONS[hotelCategory]?.[distanceCategory as 'walking' | 'short-bus'] || 
-                 HOTEL_RECOMMENDATIONS.standard['short-bus']
+  const categoryHotels = HOTEL_RECOMMENDATIONS[hotelCategory]
+  const hotels = categoryHotels?.[distanceCategory as 'walking' | 'short-bus'] || 
+                 HOTEL_RECOMMENDATIONS.standard['short-bus'] || []
 
   // Calculate confidence score (higher for more specific inputs)
   let confidence = 0.6 // base confidence
@@ -204,7 +205,7 @@ function calculateEstimate(data: EstimateRequest): EstimateResponse['estimate'] 
       min: minPrice,
       max: maxPrice
     },
-    recommended_hotels: hotels.slice(0, 2), // Top 2 recommendations
+    recommended_hotels: (hotels || []).slice(0, 2), // Top 2 recommendations
     total_estimate: {
       min: totalMin,
       max: totalMax
