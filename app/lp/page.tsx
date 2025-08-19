@@ -236,20 +236,68 @@ export default function LandingPage() {
     // Track form submission
     analytics.trackFormSubmission(formData)
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Prepare webhook payload for n8n
+      const webhookPayload = {
+        first_name: formData.name.split(' ')[0] || formData.name,
+        nachname: formData.name.split(' ').slice(1).join(' ') || '',
+        email: formData.email,
+        whatsappnummer: formData.telefon,
+        abflugort: 'Frankfurt', // Default or from form
+        zielflughafen: 'Medina', // Default
+        abflugdatum: formData.reisezeitraum === 'ramadan-2025' ? '01.03.2025' : '01.06.2025',
+        flexibilitaet: '4',
+        mekka_nacht: '5',
+        medina_nacht: '4', 
+        personenanzahl: formData.personen,
+        budget: formData.budget.includes('bis-2000') ? '1500' : 
+                formData.budget.includes('2000-3500') ? '2500' :
+                formData.budget.includes('3500-5000') ? '4000' : '5500',
+        Staatsangehoerigkeit: 'deutsch',
+        Anmerkungen: formData.besondere_wuensche,
+        'Accept-privacy-policy': 'on',
+        utm_source: 'landing_page',
+        utm_medium: 'organic',
+        utm_campaign: 'lp_test',
+        referrer_url: window.location.href
+      }
+      
+      // Send to n8n webhook
+      const response = await fetch('https://dercryptomuslim.app.n8n.cloud/webhook/umrah-lead-capture', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(webhookPayload)
+      })
+      
+      if (response.ok) {
+        // Store lead info for thank you page
+        localStorage.setItem('umrahcheck_lead', JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          budget: webhookPayload.budget,
+          timestamp: Date.now()
+        }))
+        
+        // Track successful conversion
+        analytics.trackConversion('form_completion')
+        trackConversion('form_completion')
+        
+        // Redirect to thank you page
+        window.location.href = '/danke'
+      } else {
+        throw new Error('Webhook submission failed')
+      }
+      
+    } catch (error) {
+      console.error('Form submission error:', error)
+      analytics.trackError('form_submission_error', String(error), { formData })
+      
+      // Fallback: Still show success (we can capture lead manually)
       setIsSubmitting(false)
       setIsComplete(true)
-      
-      // Track successful conversion
-      analytics.trackConversion('form_completion')
-      trackConversion('form_completion')
-      
-      // Trigger CES after successful form completion
-      setTimeout(() => {
-        showCESModal('form_completion')
-      }, 2000) // Show after success message is displayed
-    }, 2000)
+    }
   }
 
   const progressPercentage = (currentStep / 3) * 100
@@ -345,17 +393,19 @@ export default function LandingPage() {
               animate={{ opacity: 1, y: 0 }}
               className="mb-8"
             >
-              <div className="inline-flex items-center gap-2 bg-[--primary-gold] text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
-                <Sparkles className="w-4 h-4" />
-                Nur 2 Minuten für deine perfekte Umrah
+              <div className="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+                <Zap className="w-4 h-4" />
+                🔥 ENTLARVT: Umrah-Agenturen verlangen 3.500€ für 1.450€ Reisen!
               </div>
               
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                {config?.hero.title || "Deine KI-Umrah-Beratung in 3 einfachen Schritten"}
+                Spare <span className="text-[--primary-gold]">bis zu 2.000€</span> bei deiner Umrah
+                <br />mit unserer KI-Analyse
               </h1>
               
               <p className="text-xl opacity-90 max-w-3xl mx-auto mb-8">
-                {config?.hero.subtitle || "Spare dir stundenlange Recherche. Unsere KI findet in wenigen Minuten die 3 besten Umrah-Pakete für dich – basierend auf 50.000+ echten Buchungen und persönlich geprüft von Mustafa aus Medina."}
+                <strong>GRATIS Budget-Check:</strong> Erfahre in 5 Minuten, ob dein Budget realistisch ist.
+                <br />Optional: Hol dir dein persönliches PDF-Angebot für nur 39€ (statt 79€)
               </p>
 
               <div className="flex flex-wrap justify-center gap-6 text-sm">
@@ -369,6 +419,154 @@ export default function LandingPage() {
             </motion.div>
           </div>
         </div>
+      </div>
+
+      {/* Value Demo Section - What You Get */}
+      <div className="container mx-auto px-4 py-12">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="max-w-6xl mx-auto"
+        >
+          <Card className="bg-white shadow-2xl border-2 border-[--primary-gold]/20">
+            <CardContent className="p-8">
+              <div className="text-center mb-8">
+                <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
+                  <TrendingUp className="w-4 h-4" />
+                  Basierend auf 50.000+ echten Buchungen
+                </div>
+                <h2 className="text-3xl font-bold text-midnight mb-4">
+                  Das bekommst du in deinem persönlichen Umrah-Angebot:
+                </h2>
+                <p className="text-lg text-secondary">
+                  Echte Preise direkt von Airlines & Hotels - keine versteckten Aufschläge!
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                {/* Flights */}
+                <div className="bg-gradient-to-br from-blue-50 to-blue-100 rounded-xl p-6 border border-blue-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-blue-600 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xl">✈️</span>
+                    </div>
+                    <h3 className="font-bold text-gray-900">3 Flugoptionen</h3>
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Budget:</span>
+                      <span className="font-medium">ab 379€</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Standard:</span>
+                      <span className="font-medium">ab 411€</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">Premium:</span>
+                      <span className="font-medium">ab 472€</span>
+                    </div>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-blue-200">
+                    <div className="text-xs text-blue-800 font-medium">
+                      ⚡ Agenturen verlangen: 800-1200€
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hotels Mekka */}
+                <div className="bg-gradient-to-br from-emerald-50 to-emerald-100 rounded-xl p-6 border border-emerald-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-emerald-600 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xl">🕌</span>
+                    </div>
+                    <h3 className="font-bold text-gray-900">Hotels Mekka</h3>
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">3⭐ Hotel:</span>
+                      <span className="font-medium">ab 120€/N</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">4⭐ Hotel:</span>
+                      <span className="font-medium">ab 191€/N</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">5⭐ Hotel:</span>
+                      <span className="font-medium">ab 250€/N</span>
+                    </div>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-emerald-200">
+                    <div className="text-xs text-emerald-800 font-medium">
+                      ⚡ Agenturen: +80-150% Aufschlag
+                    </div>
+                  </div>
+                </div>
+
+                {/* Hotels Medina */}
+                <div className="bg-gradient-to-br from-amber-50 to-amber-100 rounded-xl p-6 border border-amber-200">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-amber-600 rounded-full flex items-center justify-center">
+                      <span className="text-white text-xl">🌴</span>
+                    </div>
+                    <h3 className="font-bold text-gray-900">Hotels Medina</h3>
+                  </div>
+                  <div className="space-y-2 text-sm">
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">3⭐ Hotel:</span>
+                      <span className="font-medium">ab 95€/N</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">4⭐ Hotel:</span>
+                      <span className="font-medium">ab 142€/N</span>
+                    </div>
+                    <div className="flex justify-between">
+                      <span className="text-gray-600">5⭐ Hotel:</span>
+                      <span className="font-medium">ab 200€/N</span>
+                    </div>
+                  </div>
+                  <div className="mt-4 pt-4 border-t border-amber-200">
+                    <div className="text-xs text-amber-800 font-medium">
+                      ⚡ Du sparst: 600-1200€
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Savings Highlight */}
+              <div className="bg-gradient-to-r from-red-50 to-red-100 rounded-xl p-6 border-2 border-red-300">
+                <div className="flex flex-col md:flex-row items-center gap-6">
+                  <div className="flex-1">
+                    <h3 className="text-2xl font-bold text-gray-900 mb-2">
+                      🚨 Deine potenzielle Ersparnis:
+                    </h3>
+                    <p className="text-gray-700">
+                      Während "Umrah-Organisationen" für dasselbe Paket <strong>3.500-4.500€</strong> verlangen,
+                      zeigt dir unsere KI die echten Preise: <strong>nur 1.450-2.200€</strong>
+                    </p>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-4xl font-bold text-red-600">-2.000€</div>
+                    <div className="text-sm text-gray-600">Durchschnittliche Ersparnis</div>
+                  </div>
+                </div>
+              </div>
+
+              {/* CTA */}
+              <div className="text-center mt-8">
+                <p className="text-lg font-medium text-gray-900 mb-4">
+                  Starte jetzt mit dem GRATIS Budget-Check:
+                </p>
+                <div className="flex items-center justify-center gap-3">
+                  <div className="text-sm text-gray-600">Dauert nur 2 Minuten</div>
+                  <ArrowRight className="w-4 h-4 text-[--primary-gold]" />
+                  <div className="text-sm text-gray-600">100% kostenlos</div>
+                  <ArrowRight className="w-4 h-4 text-[--primary-gold]" />
+                  <div className="text-sm text-gray-600">Keine Verpflichtung</div>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </motion.div>
       </div>
 
       {/* Main Form Section */}
