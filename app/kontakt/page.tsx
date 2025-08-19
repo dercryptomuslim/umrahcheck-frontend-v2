@@ -8,10 +8,8 @@ import { motion } from 'framer-motion'
 import { 
   ArrowLeft, 
   Mail, 
-  Phone, 
   MapPin,
   MessageCircle,
-  Clock,
   Send,
   CheckCircle
 } from 'lucide-react'
@@ -20,7 +18,6 @@ export default function KontaktPage() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    telefon: '',
     betreff: '',
     nachricht: ''
   })
@@ -44,7 +41,7 @@ export default function KontaktPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50 py-20">
+      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50 py-20">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -86,10 +83,10 @@ export default function KontaktPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-teal-50 to-cyan-50">
+    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
       
       {/* Header */}
-      <div className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white py-16">
+      <div className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white py-16">
         <div className="container mx-auto px-4">
           <Button variant="outline" asChild className="mb-6 border-white text-white hover:bg-white hover:text-emerald-600">
             <Link href="/">
@@ -113,52 +110,28 @@ export default function KontaktPage() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
-          className="max-w-6xl mx-auto mb-16"
+          className="max-w-4xl mx-auto mb-16"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             
-            {/* Telefon */}
-            <Card className="text-center shadow-lg border-emerald-100 hover:shadow-xl transition-shadow">
+            {/* WhatsApp */}
+            <Card className="text-center shadow-lg border-emerald-200 hover:shadow-xl transition-shadow">
               <CardContent className="p-8">
                 <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Phone className="w-8 h-8 text-emerald-600" />
+                  <MessageCircle className="w-8 h-8 text-emerald-600" />
                 </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">Telefon</h3>
-                <p className="text-gray-600 mb-4">Sprich direkt mit unseren Umrah-Experten</p>
+                <h3 className="text-xl font-semibold text-gray-900 mb-4">WhatsApp</h3>
+                <p className="text-gray-600 mb-4">Direkte Beratung mit Mustafa aus Medina</p>
                 <div className="space-y-2">
-                  <p className="text-lg font-medium text-emerald-600">+49 (0) 123 456 789 01</p>
-                  <p className="text-sm text-gray-500">Mo-Fr: 9:00-18:00 Uhr</p>
-                  <p className="text-sm text-gray-500">Sa: 10:00-14:00 Uhr</p>
+                  <p className="text-lg font-medium text-emerald-600">+966 56 063 0947</p>
+                  <p className="text-sm text-gray-500">Täglich erreichbar</p>
+                  <p className="text-sm text-gray-500">Persönliche Umrah-Beratung</p>
                 </div>
                 <Button 
                   className="mt-4 bg-emerald-600 hover:bg-emerald-700 text-white"
                   asChild
                 >
-                  <Link href="tel:+4912345678901">
-                    Jetzt anrufen
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* WhatsApp */}
-            <Card className="text-center shadow-lg border-emerald-100 hover:shadow-xl transition-shadow">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <MessageCircle className="w-8 h-8 text-green-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">WhatsApp</h3>
-                <p className="text-gray-600 mb-4">Schnelle Beratung über WhatsApp</p>
-                <div className="space-y-2">
-                  <p className="text-lg font-medium text-green-600">+49 151 123 456 78</p>
-                  <p className="text-sm text-gray-500">Täglich: 8:00-22:00 Uhr</p>
-                  <p className="text-sm text-gray-500">Schnelle Antworten</p>
-                </div>
-                <Button 
-                  className="mt-4 bg-green-600 hover:bg-green-700 text-white"
-                  asChild
-                >
-                  <Link href="https://wa.me/4915112345678">
+                  <Link href="https://wa.me/966560630947?text=Assalamu%20alaikum!%20Ich%20interessiere%20mich%20für%20eine%20Umrah-Beratung%20mit%20Mustafa%20aus%20Medina.">
                     WhatsApp öffnen
                   </Link>
                 </Button>
@@ -166,23 +139,23 @@ export default function KontaktPage() {
             </Card>
 
             {/* E-Mail */}
-            <Card className="text-center shadow-lg border-emerald-100 hover:shadow-xl transition-shadow">
+            <Card className="text-center shadow-lg border-emerald-200 hover:shadow-xl transition-shadow">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Mail className="w-8 h-8 text-blue-600" />
+                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Mail className="w-8 h-8 text-emerald-600" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">E-Mail</h3>
                 <p className="text-gray-600 mb-4">Detaillierte Anfragen per E-Mail</p>
                 <div className="space-y-2">
-                  <p className="text-lg font-medium text-blue-600">info@umrahcheck.com</p>
+                  <p className="text-lg font-medium text-emerald-600">info@umrahcheck.com</p>
                   <p className="text-sm text-gray-500">Antwort binnen 24h</p>
-                  <p className="text-sm text-gray-500">Alle Sprachen</p>
+                  <p className="text-sm text-gray-500">Ausführliche Beratung</p>
                 </div>
                 <Button 
-                  className="mt-4 bg-blue-600 hover:bg-blue-700 text-white"
+                  className="mt-4 bg-emerald-600 hover:bg-emerald-700 text-white"
                   asChild
                 >
-                  <Link href="mailto:info@umrahcheck.com">
+                  <Link href="mailto:info@umrahcheck.com?subject=Umrah-Beratung%20Anfrage&body=Assalamu%20alaikum,%0A%0Aich%20interessiere%20mich%20für%20eine%20Umrah-Beratung.%0A%0AMeine%20Daten:%0AName:%0ATelefon/WhatsApp:%0AReisezeitraum:%0APersonen:%0ABudget:%0A%0AVielen%20Dank!">
                     E-Mail senden
                   </Link>
                 </Button>
@@ -198,7 +171,7 @@ export default function KontaktPage() {
           transition={{ delay: 0.2 }}
           className="max-w-4xl mx-auto mb-16"
         >
-          <Card className="shadow-xl border-emerald-100">
+          <Card className="shadow-xl border-emerald-200">
             <CardContent className="p-8">
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Schreibe uns eine Nachricht</h2>
@@ -233,34 +206,22 @@ export default function KontaktPage() {
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Telefon</label>
-                    <input
-                      type="tel"
-                      value={formData.telefon}
-                      onChange={(e) => handleInputChange('telefon', e.target.value)}
-                      placeholder="+49 123 456 789"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2">Betreff *</label>
-                    <select
-                      required
-                      value={formData.betreff}
-                      onChange={(e) => handleInputChange('betreff', e.target.value)}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
-                    >
-                      <option value="">Betreff auswählen</option>
-                      <option value="umrah-beratung">Umrah-Beratung</option>
-                      <option value="preisanfrage">Preisanfrage</option>
-                      <option value="buchung">Buchungsunterstützung</option>
-                      <option value="beschwerde">Beschwerde</option>
-                      <option value="partnership">Partnerschaft</option>
-                      <option value="sonstiges">Sonstiges</option>
-                    </select>
-                  </div>
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">Betreff *</label>
+                  <select
+                    required
+                    value={formData.betreff}
+                    onChange={(e) => handleInputChange('betreff', e.target.value)}
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                  >
+                    <option value="">Betreff auswählen</option>
+                    <option value="umrah-beratung">Umrah-Beratung</option>
+                    <option value="preisanfrage">Preisanfrage</option>
+                    <option value="buchung">Buchungsunterstützung</option>
+                    <option value="beschwerde">Beschwerde</option>
+                    <option value="partnership">Partnerschaft</option>
+                    <option value="sonstiges">Sonstiges</option>
+                  </select>
                 </div>
 
                 <div>
@@ -279,7 +240,7 @@ export default function KontaktPage() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white px-8 py-3 text-lg"
+                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-lg"
                   >
                     {isSubmitting ? (
                       <>
@@ -299,81 +260,52 @@ export default function KontaktPage() {
           </Card>
         </motion.div>
 
-        {/* Bürozeiten & Adresse */}
+        {/* Unternehmensinformationen */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.4 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            
-            {/* Bürozeiten */}
-            <Card className="shadow-lg border-emerald-100">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-6">
-                  <Clock className="w-6 h-6 text-emerald-600" />
-                  <h3 className="text-2xl font-semibold text-gray-900">Bürozeiten</h3>
-                </div>
-                
-                <div className="space-y-3">
-                  {[
-                    { day: "Montag - Freitag", time: "9:00 - 18:00 Uhr" },
-                    { day: "Samstag", time: "10:00 - 14:00 Uhr" },
-                    { day: "Sonntag", time: "Geschlossen" },
-                  ].map((schedule, index) => (
-                    <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 last:border-b-0">
-                      <span className="text-gray-700 font-medium">{schedule.day}</span>
-                      <span className="text-gray-600">{schedule.time}</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="mt-6 p-4 bg-emerald-50 rounded-lg">
-                  <p className="text-sm text-emerald-800">
-                    <strong>WhatsApp Support:</strong> Täglich 8:00-22:00 Uhr verfügbar für schnelle Anfragen!
-                  </p>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Adresse */}
-            <Card className="shadow-lg border-emerald-100">
-              <CardContent className="p-8">
-                <div className="flex items-center gap-3 mb-6">
+          <Card className="shadow-lg border-emerald-200">
+            <CardContent className="p-8">
+              <div className="text-center mb-8">
+                <div className="flex items-center justify-center gap-3 mb-6">
                   <MapPin className="w-6 h-6 text-emerald-600" />
-                  <h3 className="text-2xl font-semibold text-gray-900">Unser Standort</h3>
+                  <h3 className="text-2xl font-semibold text-gray-900">Unternehmensinformationen</h3>
                 </div>
                 
-                <div className="space-y-3 text-gray-700">
-                  <p className="font-medium text-gray-900">UmrahCheck GmbH</p>
-                  <p>Musterstraße 123</p>
-                  <p>12345 Berlin</p>
-                  <p>Deutschland</p>
-                </div>
+                <div className="max-w-2xl mx-auto">
+                  <div className="bg-emerald-50 rounded-lg p-6 mb-6">
+                    <h4 className="text-lg font-semibold text-gray-900 mb-4">Nomad Agency for Marketing & Consulting LLC</h4>
+                    <div className="space-y-2 text-gray-700">
+                      <p>2880W OAKLAND PARK BLVD</p>
+                      <p>STE 225C</p>
+                      <p>OAKLAND PARK, FL 33311</p>
+                      <p className="font-medium">USA</p>
+                    </div>
+                  </div>
 
-                <div className="mt-6">
-                  <Button 
-                    variant="outline"
-                    className="w-full border-emerald-200 hover:bg-emerald-50"
-                    asChild
-                  >
-                    <Link href="https://maps.google.com" target="_blank">
-                      <MapPin className="w-4 h-4 mr-2" />
-                      In Google Maps öffnen
-                    </Link>
-                  </Button>
-                </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <h5 className="font-medium text-gray-900 mb-2">💬 Schnellste Antwort</h5>
+                      <p className="text-sm text-gray-600">WhatsApp für sofortige Beratung</p>
+                    </div>
+                    <div className="bg-gray-50 rounded-lg p-4">
+                      <h5 className="font-medium text-gray-900 mb-2">📧 Detaillierte Anfragen</h5>
+                      <p className="text-sm text-gray-600">E-Mail für ausführliche Beratung</p>
+                    </div>
+                  </div>
 
-                <div className="mt-4 p-4 bg-gray-50 rounded-lg">
-                  <p className="text-sm text-gray-600">
-                    <strong>Hinweis:</strong> Termine sind nach Vereinbarung möglich. 
-                    Bitte kontaktiere uns vorab.
-                  </p>
+                  <div className="mt-6 p-4 bg-emerald-50 rounded-lg">
+                    <p className="text-sm text-emerald-800 font-medium">
+                      🕌 Von Muslim für Muslime - Persönliche Beratung direkt aus Medina
+                    </p>
+                  </div>
                 </div>
-              </CardContent>
-            </Card>
-          </div>
+              </div>
+            </CardContent>
+          </Card>
         </motion.div>
       </div>
     </div>
