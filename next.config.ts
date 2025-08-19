@@ -15,7 +15,7 @@ const nextConfig: NextConfig = {
   
   // Bundle Analysis & Optimization
   experimental: {
-    optimizeCss: true, // CSS optimization
+    // optimizeCss: true, // Disabled - causes critters module error
     optimizePackageImports: [
       '@radix-ui/react-accordion',
       '@radix-ui/react-alert-dialog',
