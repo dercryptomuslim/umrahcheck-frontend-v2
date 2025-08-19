@@ -1,5 +1,5 @@
 // 🚀 Vercel Pro Performance Monitoring & Optimization
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 // Web Vitals reporting for Vercel Analytics
 export function reportWebVitals(metric: any) {
@@ -22,20 +22,6 @@ export function reportWebVitals(metric: any) {
     console.warn(`Performance warning: ${metric.name} = ${metric.value}ms (threshold: ${thresholds[metric.name as keyof typeof thresholds]}ms)`);
   }
 }
-
-// Lazy load heavy components
-export const lazyLoadComponent = (importFn: () => Promise<any>) => {
-  if (typeof window === 'undefined') return null;
-  
-  return import('react').then(({ lazy, Suspense }) => {
-    const Component = lazy(importFn);
-    return (props: any) => (
-      <Suspense fallback={<div className="animate-pulse h-32 bg-gray-100 rounded-lg" />}>
-        <Component {...props} />
-      </Suspense>
-    );
-  });
-};
 
 // Optimize images with blur placeholder
 export const getOptimizedImageProps = (src: string, alt: string) => {
@@ -126,5 +112,4 @@ export const registerServiceWorker = () => {
   }
 };
 
-// Import React hooks
-import { useState } from 'react';
+// React hooks already imported at top
