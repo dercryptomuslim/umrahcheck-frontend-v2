@@ -1,203 +1,173 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
- 
+
+/* UmrahCheck Global Styles & Design Tokens */
+
 @layer base {
   :root {
-    /* 🎨 UmrahCheck Farbpalette – Goldener Edler Look */
-    --primary-gold: 212 175 55; /* #d4af37 - Hauptfarbe: Gold, Buttons, CTAs, Icons */
-    --gold-hover: 185 151 47; /* #b9972f - dunkleres Gold für Hover-Effekt */
+    /* Golden Look Design Tokens */
+    --primary-gold: #D4AF37;
+    --primary-gold-hover: #B9972F;
+    --primary-gold-light: #F7E98E;
     
-    --dark-blue: 30 58 138; /* #1e3a8a - Überschriften, Akzente (edle Tiefe) */
-    --midnight: 17 24 39; /* #111827 - sehr dunkler Hintergrund / Footer */
-
-    --cream: 254 243 199; /* #fef3c7 - sanfte Hintergründe */
-    --sand: 245 245 220; /* #f5f5dc - neutrale Fläche, warme Basis */
+    /* Dark Blue for Headlines */
+    --midnight: #0F172A;
+    --dark-blue: #1E293B;
     
-    --text-primary: 31 41 55; /* #1f2937 - Standard-Schriftfarbe (fast Schwarz) */
-    --text-secondary: 55 65 81; /* #374151 - für Fließtext, dezent */
+    /* Cream & Sand Backgrounds */
+    --cream: #FEF3C7;
+    --sand: #F5F5DC;
+    --cream-light: #FFFBEB;
     
-    /* Bestehende Variablen angepasst für Gold-Theme */
-    --background: 0 0% 100%;
-    --foreground: 31 41 55;
-    --card: 0 0% 100%;
-    --card-foreground: 31 41 55;
-    --popover: 0 0% 100%;
-    --popover-foreground: 31 41 55;
-    --primary: 212 175 55; /* Primary Gold */
-    --primary-foreground: 0 0% 100%;
-    --secondary: 30 58 138; /* Dark Blue */
-    --secondary-foreground: 0 0% 100%;
-    --muted: 245 245 220; /* Sand */
-    --muted-foreground: 55 65 81;
-    --accent: 212 175 55; /* Gold Accent */
-    --accent-foreground: 30 58 138;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 212 175 55;
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 158 64% 52%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 173 80% 40%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 158 64% 52%;
+    /* Text Colors */
+    --text-primary: #111827;
+    --text-secondary: #374151;
+    --text-muted: #6B7280;
+    
+    /* Emerald (existing brand) */
+    --emerald-primary: #10B981;
+    --emerald-hover: #059669;
+    
+    /* Focus Ring */
+    --ring-color: #D4AF37;
+    --ring-offset: 2px;
+    
+    /* Semantic Colors */
+    --success: #10B981;
+    --warning: #F59E0B;
+    --error: #EF4444;
+    --info: #3B82F6;
+    
+    /* Shadows */
+    --shadow-soft: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-medium: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-large: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
   }
 }
- 
+
 @layer base {
   * {
     @apply border-border;
   }
+  
   body {
     @apply bg-background text-foreground;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
-}
-
-/* Premium glass morphism effects */
-.glass {
-  background: rgba(255, 255, 255, 0.25);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-}
-
-/* Arabic font support */
-.arabic {
-  font-family: 'Noto Kufi Arabic', 'Times New Roman', serif;
-  direction: rtl;
-  text-align: right;
-}
-
-/* Neue Utility-Klassen für konsistente Farben */
-.bg-primary-gold {
-  background-color: rgb(212 175 55);
-}
-
-.bg-gold-hover {
-  background-color: rgb(185 151 47);
-}
-
-.text-dark-blue {
-  color: rgb(30 58 138);
-}
-
-.bg-cream {
-  background-color: rgb(254 243 199);
-}
-
-.bg-sand {
-  background-color: rgb(245 245 220);
-}
-
-.bg-midnight {
-  background-color: rgb(17 24 39);
-}
-
-.text-primary {
-  color: rgb(31 41 55);
-}
-
-.text-secondary {
-  color: rgb(55 65 81);
-}
-
-/* Animationen für Micro-Interaktionen */
-.hover-lift {
-  @apply transition-all duration-300 ease-out;
-}
-
-.hover-lift:hover {
-  @apply -translate-y-1 shadow-xl;
-}
-
-.hover-glow {
-  @apply transition-all duration-300;
-}
-
-.hover-glow:hover {
-  box-shadow: 0 10px 15px -3px rgba(212, 175, 55, 0.25), 0 4px 6px -2px rgba(212, 175, 55, 0.15);
-}
-
-/* Gold CTA Button Stil mit Schimmer-Effekt */
-.cta-gold {
-  background: linear-gradient(135deg, #d4af37 0%, #f4e19c 50%, #d4af37 100%);
-  background-size: 200% auto;
-  color: white;
-  @apply font-semibold shadow-lg hover:shadow-xl transform transition-all duration-300 hover:-translate-y-0.5;
-  animation: shimmer 3s linear infinite;
-}
-
-.cta-gold:hover {
-  background: linear-gradient(135deg, #b9972f 0%, #d4af37 50%, #b9972f 100%);
-  background-size: 200% auto;
-}
-
-@keyframes shimmer {
-  0% { background-position: 0% center; }
-  50% { background-position: 100% center; }
-  100% { background-position: 0% center; }
-}
-
-/* Neue Typografie-Klassen */
-.heading-1 {
-  @apply text-4xl md:text-5xl lg:text-6xl font-bold leading-tight;
-  color: rgb(30 58 138); /* Dark Blue für Hauptüberschriften */
-}
-
-.heading-2 {
-  @apply text-2xl md:text-3xl lg:text-4xl font-bold;
-  color: rgb(30 58 138); /* Dark Blue */
-}
-
-.heading-3 {
-  @apply text-xl md:text-2xl font-semibold text-gray-800;
-}
-
-.body-large {
-  @apply text-lg text-gray-700 leading-relaxed;
-}
-
-.body-regular {
-  @apply text-base text-gray-600 leading-normal;
-}
-
-/* Loading Animation */
-@keyframes pulse-glow {
-  0%, 100% {
-    opacity: 1;
+  
+  /* Focus Styles - Golden Ring */
+  *:focus-visible {
+    @apply outline-none ring-2 ring-[--ring-color] ring-offset-2;
   }
-  50% {
-    opacity: 0.5;
+  
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-100;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    @apply bg-[--primary-gold] rounded-full;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-[--primary-gold-hover];
   }
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-}
-
-/* Hero Background Gradient */
-.hero-gradient {
-  background: linear-gradient(to bottom right, #fef3c7, #f5f5dc, #ffffff);
+@layer components {
+  /* Golden Button Styles */
+  .btn-gold {
+    @apply bg-[--primary-gold] hover:bg-[--primary-gold-hover] text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all duration-200 hover:shadow-lg active:scale-95;
+  }
+  
+  .btn-gold-outline {
+    @apply border-2 border-[--primary-gold] text-[--primary-gold] hover:bg-[--primary-gold] hover:text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200;
+  }
+  
+  /* Form Styles */
+  .form-input {
+    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--ring-color] focus:border-[--primary-gold] transition-colors;
+  }
+  
+  .form-label {
+    @apply block text-sm font-medium text-[--text-primary] mb-2;
+  }
+  
+  .form-error {
+    @apply text-sm text-red-600 mt-1;
+  }
+  
+  .form-help {
+    @apply text-sm text-[--text-muted] mt-1;
+  }
+  
+  /* Card Styles */
+  .card-gold {
+    @apply bg-white border border-[--cream] rounded-xl shadow-[--shadow-medium] p-6 hover:shadow-[--shadow-large] transition-shadow;
+  }
+  
+  .card-cream {
+    @apply bg-[--cream] border border-[--primary-gold]/20 rounded-xl shadow-[--shadow-soft] p-6;
+  }
+  
+  /* Progress Bar */
+  .progress-bar {
+    @apply w-full bg-gray-200 rounded-full h-2;
+  }
+  
+  .progress-fill {
+    @apply bg-[--primary-gold] h-2 rounded-full transition-all duration-300;
+  }
+  
+  /* Trust Badge */
+  .trust-badge {
+    @apply inline-flex items-center gap-2 px-3 py-1.5 bg-[--cream] text-[--text-primary] rounded-full text-sm font-medium;
+  }
+  
+  /* Skeleton Loader */
+  .skeleton {
+    @apply animate-pulse bg-gray-200 rounded;
+  }
+  
+  /* Highlight Text */
+  .highlight-gold {
+    @apply text-[--primary-gold] font-semibold;
+  }
+  
+  /* Section Backgrounds */
+  .bg-cream-light {
+    @apply bg-[--cream-light];
+  }
+  
+  .bg-sand {
+    @apply bg-[--sand];
+  }
+  
+  /* Typography */
+  .text-midnight {
+    @apply text-[--midnight];
+  }
+  
+  .text-primary {
+    @apply text-[--text-primary];
+  }
+  
+  .text-secondary {
+    @apply text-[--text-secondary];
+  }
+  
+  .text-muted {
+    @apply text-[--text-muted];
+  }
 }
