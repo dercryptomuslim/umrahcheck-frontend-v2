@@ -151,6 +151,9 @@ function calculateEstimate(data: EstimateRequest): EstimateResponse['estimate'] 
   const distance = data.entfernung_haram || 'no-preference'
   const personCount = parseInt(data.personen) || 1
 
+  // Debug logging for development
+  console.log('Estimate request:', { category, budget, season, distance, personCount })
+
   // Get base price range
   const baseCategory = category === 'egal' ? 'standard' : (category || 'standard')
   const validCategory = PRICE_MATRIX[baseCategory as keyof typeof PRICE_MATRIX] ? baseCategory : 'standard'
@@ -172,9 +175,14 @@ function calculateEstimate(data: EstimateRequest): EstimateResponse['estimate'] 
   // Get hotel recommendations
   const hotelCategory = baseCategory as keyof typeof HOTEL_RECOMMENDATIONS
   const distanceCategory = distance === 'walking' ? 'walking' : 'short-bus'
+  console.log('Hotel lookup:', { hotelCategory, distanceCategory })
+  
   const categoryHotels = HOTEL_RECOMMENDATIONS[hotelCategory]
+  console.log('Category hotels found:', !!categoryHotels)
+  
   const hotels = categoryHotels?.[distanceCategory as 'walking' | 'short-bus'] || 
                  HOTEL_RECOMMENDATIONS.standard['short-bus'] || []
+  console.log('Final hotels:', hotels?.length || 0)
 
   // Calculate confidence score (higher for more specific inputs)
   let confidence = 0.6 // base confidence
