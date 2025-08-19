@@ -72,10 +72,10 @@ export function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight mb-6"
+            className="heading-1 mb-6"
           >
             <span className="text-gray-900">✨ „</span>
-            <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-cyan-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-700 via-emerald-600 to-teal-600 bg-clip-text text-transparent">
               Die erste KI-Beratung für deine Umrah – ehrlich, transparent & auf dich zugeschnitten.
             </span>
             <span className="text-gray-900">" 🏛️</span>
@@ -119,10 +119,10 @@ export function HeroSection() {
           >
             <Button
               size="xl"
-              className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-600 hover:via-yellow-600 hover:to-amber-700 text-white shadow-xl hover:shadow-2xl transition-all duration-300 group text-lg px-8 py-4"
+              className="cta-gold text-lg px-8 py-4 hover-lift"
               asChild
             >
-              <Link href="#features">
+              <Link href="/umrah-anfrage">
                 JETZT TESTEN
                 <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
               </Link>
@@ -131,7 +131,7 @@ export function HeroSection() {
             <Button
               size="xl"
               variant="outline"
-              className="border-2 border-emerald-200 hover:bg-emerald-50 hover:border-emerald-300"
+              className="border-2 border-emerald-600 hover:bg-emerald-50 hover:border-emerald-700 text-emerald-700 hover-lift"
               asChild
             >
               <Link href="#how-it-works">
@@ -188,32 +188,32 @@ export function HeroSection() {
           transition={{ duration: 0.6, delay: 0.5 }}
           className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto"
         >
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow group cursor-pointer">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift hover-glow group cursor-pointer border border-emerald-100">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-700 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <Globe className="w-7 h-7 text-white" />
             </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">Flugsuche</h3>
-            <p className="text-gray-600">
+            <h3 className="heading-3 mb-2">Flugsuche</h3>
+            <p className="body-regular">
               Wir finden die besten Flüge – passend zu deinem Budget und Zeitplan.
             </p>
           </div>
 
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow group cursor-pointer">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift hover-glow group cursor-pointer border border-emerald-100">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-emerald-600 to-emerald-700 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <Hotel className="w-7 h-7 text-white" />
             </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">Hotelvergleich</h3>
-            <p className="text-gray-600">
+            <h3 className="heading-3 mb-2">Hotelvergleich</h3>
+            <p className="body-regular">
               Top-Hotels in Makkah & Medina – Entfernung zur Kaaba inklusive.
             </p>
           </div>
 
-          <div className="bg-white/80 backdrop-blur-sm rounded-2xl p-6 shadow-xl hover:shadow-2xl transition-shadow group cursor-pointer">
-            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-400 to-amber-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+          <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 shadow-lg hover-lift hover-glow group cursor-pointer border border-emerald-100">
+            <div className="w-14 h-14 rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
               <Sparkles className="w-7 h-7 text-white" />
             </div>
-            <h3 className="text-xl font-semibold mb-2 text-gray-900">Umrah-Tipps</h3>
-            <p className="text-gray-600">
+            <h3 className="heading-3 mb-2">Umrah-Tipps</h3>
+            <p className="body-regular">
               Insider-Tricks & Spartipps – alles KI-optimiert für deine Reise.
             </p>
           </div>

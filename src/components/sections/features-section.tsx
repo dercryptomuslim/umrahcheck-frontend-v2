@@ -4,6 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import Link from 'next/link'
 import { 
   Plane, 
   Hotel, 
@@ -26,7 +27,7 @@ const features = [
       "Flexible Daten verfügbar", 
       "Direktflüge bevorzugt"
     ],
-    gradient: "from-blue-400 to-blue-600"
+    gradient: "from-emerald-600 to-emerald-700"
   },
   {
     icon: Hotel,
@@ -38,7 +39,7 @@ const features = [
       "Halal-zertifizierte Hotels",
       "Echte Bewertungen"
     ],
-    gradient: "from-emerald-400 to-emerald-600"
+    gradient: "from-emerald-600 to-emerald-700"
   },
   {
     icon: Lightbulb,
@@ -50,7 +51,7 @@ const features = [
       "Geld-spar-Tricks",
       "Beste Reisezeiten"
     ],
-    gradient: "from-amber-400 to-amber-600"
+    gradient: "from-amber-500 to-amber-600"
   }
 ]
 
@@ -65,10 +66,10 @@ export function FeaturesSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="heading-2 mb-6"
           >
             Alles, was du brauchst, in einem smarten{' '}
-            <span className="bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-emerald-700 to-emerald-600 bg-clip-text text-transparent">
               Umrah-KI-Assistenten
             </span>
           </motion.h2>
@@ -86,7 +87,7 @@ export function FeaturesSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="p-6 hover:shadow-xl transition-all duration-300 group border-gray-100">
+                <Card className="p-6 hover-lift hover-glow group border-emerald-100">
                   <CardContent className="p-0">
                     <div className="flex items-start gap-4">
                       <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0`}>
@@ -225,9 +226,12 @@ export function FeaturesSection() {
         >
           <Button
             size="xl"
-            className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-600 hover:via-yellow-600 hover:to-amber-700 text-white shadow-xl hover:shadow-2xl transition-all duration-300 text-lg px-12 py-4"
+            className="cta-gold text-lg px-12 py-4 hover-lift"
+            asChild
           >
-            Jetzt kostenlos prüfen
+            <Link href="/umrah-anfrage">
+              Jetzt kostenlos prüfen
+            </Link>
           </Button>
         </motion.div>
       </div>

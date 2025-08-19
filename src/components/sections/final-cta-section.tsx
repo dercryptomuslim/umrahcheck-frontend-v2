@@ -49,9 +49,9 @@ export function FinalCTASection() {
                 </p>
               </div>
 
-              <h2 className="text-3xl md:text-5xl font-bold mb-6 leading-tight">
+              <h2 className="heading-2 mb-6 leading-tight !text-white">
                 Bereit für eine sorgenfreie{' '}
-                <span className="bg-gradient-to-r from-amber-300 to-yellow-300 bg-clip-text text-transparent">
+                <span className="bg-gradient-to-r from-amber-400 to-yellow-400 bg-clip-text text-transparent">
                   Umrah-Reise?
                 </span>
               </h2>
@@ -101,10 +101,10 @@ export function FinalCTASection() {
               >
                 <Button
                   size="xl"
-                  className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-400 hover:via-yellow-400 hover:to-amber-500 text-black font-bold shadow-2xl hover:shadow-3xl transition-all duration-300 group text-xl px-12 py-6"
+                  className="cta-gold text-black font-bold text-xl px-12 py-6 hover-lift"
                   asChild
                 >
-                  <Link href="#features">
+                  <Link href="/umrah-anfrage">
                     Jetzt Umrah-Angebot sichern
                     <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
                   </Link>

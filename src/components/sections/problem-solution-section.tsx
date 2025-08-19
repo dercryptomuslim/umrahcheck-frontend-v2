@@ -4,6 +4,7 @@ import React from 'react'
 import { motion } from 'framer-motion'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
+import Link from 'next/link'
 import { 
   AlertTriangle,
   Clock,
@@ -105,10 +106,10 @@ export function ProblemSolutionSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="heading-2 mb-6"
           >
             Warum brauchst du einen{' '}
-            <span className="bg-gradient-to-r from-amber-600 to-yellow-600 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-amber-500 to-amber-600 bg-clip-text text-transparent">
               Umrah-Check?
             </span>
           </motion.h2>
@@ -139,7 +140,7 @@ export function ProblemSolutionSection() {
                     transition={{ duration: 0.5, delay: index * 0.1 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="p-6 bg-white/80 backdrop-blur-sm border-amber-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <Card className="p-6 bg-white/80 backdrop-blur-sm border-amber-200 hover-lift hover-glow">
                       <CardContent className="p-0">
                         <div className="flex items-start gap-4">
                           <div className="flex-shrink-0">
@@ -186,7 +187,7 @@ export function ProblemSolutionSection() {
                     transition={{ duration: 0.5, delay: index * 0.1 + 0.2 }}
                     viewport={{ once: true }}
                   >
-                    <Card className="p-6 bg-white/90 backdrop-blur-sm border-emerald-200 shadow-lg hover:shadow-xl transition-all duration-300">
+                    <Card className="p-6 bg-white/90 backdrop-blur-sm border-emerald-200 hover-lift hover-glow">
                       <CardContent className="p-0">
                         <div className="flex items-start gap-4">
                           <div className="flex-shrink-0">
@@ -228,9 +229,12 @@ export function ProblemSolutionSection() {
               </p>
               <Button
                 size="xl"
-                className="bg-gradient-to-r from-amber-500 via-yellow-500 to-amber-600 hover:from-amber-600 hover:via-yellow-600 hover:to-amber-700 text-white shadow-xl hover:shadow-2xl transition-all duration-300 text-lg px-12 py-4"
+                className="cta-gold text-lg px-12 py-4 hover-lift"
+                asChild
               >
-                Jetzt kostenlos prüfen
+                <Link href="/umrah-anfrage">
+                  Jetzt kostenlos prüfen
+                </Link>
               </Button>
             </div>
           </motion.div>

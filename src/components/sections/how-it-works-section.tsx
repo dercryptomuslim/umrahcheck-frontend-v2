@@ -22,7 +22,7 @@ const steps = [
     title: "Teile uns deine Umrah-Wünsche mit",
     description: "Teile uns deine gewünschten Reisedaten, dein Budget, die Gruppengröße, Unterkunftswünsche und besondere Anliegen mit. Wir möchten deine individuelle optimale Reise wirklich verstehen.",
     color: "bg-blue-500",
-    gradient: "from-blue-400 to-blue-600"
+    gradient: "from-emerald-600 to-emerald-700"
   },
   {
     number: "02", 
@@ -30,7 +30,7 @@ const steps = [
     title: "Intelligente Umrah-Auswahl",
     description: "Unsere KI durchsucht in Sekunden zentrale Anbieter und findet die besten Umrah-Optionen passend zu deinen Bedürfnissen. So sparst du die stundenlange Recherche.",
     color: "bg-purple-500",
-    gradient: "from-purple-400 to-purple-600"
+    gradient: "from-emerald-600 to-emerald-700"
   },
   {
     number: "03",
@@ -38,7 +38,7 @@ const steps = [
     title: "Transparente Preisübersicht",
     description: "Du erhältst eine klare Übersicht der besten Angebote – keine versteckten Kosten, keine bösen Überraschungen. Wir stehen für volle Transparenz und faire Preise.",
     color: "bg-emerald-500",
-    gradient: "from-emerald-400 to-emerald-600"
+    gradient: "from-emerald-600 to-emerald-700"
   },
   {
     number: "04",
@@ -46,7 +46,7 @@ const steps = [
     title: "Alle Infos an einem Ort",
     description: "Mit unserem digitalen Umrah-Angebot hast du alle relevanten Infos, Empfehlungen und die transparenten Preise für dein passendes Paket (d. h. Einzelzimmer, Familie, Gruppe) übersichtlich und jederzeit abrufbar – perfekt vorbereitet, ohne Papierkram und Unsicherheiten.",
     color: "bg-cyan-500",
-    gradient: "from-cyan-400 to-cyan-600"
+    gradient: "from-emerald-600 to-emerald-700"
   },
   {
     number: "05",
@@ -54,7 +54,7 @@ const steps = [
     title: "Sicher und einfach buchen",
     description: "Buche dein persönliches Umrah-Angebot direkt und bequem über unsere Plattform. 100 % transparent, keine versteckten Kosten – sichere Zahlung buch über einen verifizierten Anbieter (Google pay). Nach dem Kauf bekommst du alle Infos, Kontakte und Unterlagen digital. So bist du perfekt vorbereitet und kannst dich voll auf deine Reise konzentrieren.",
     color: "bg-amber-500",
-    gradient: "from-amber-400 to-amber-600"
+    gradient: "from-amber-500 to-amber-600"
   }
 ]
 
@@ -69,7 +69,7 @@ export function HowItWorksSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="text-3xl md:text-5xl font-bold text-gray-900 mb-6"
+            className="heading-2 mb-6"
           >
             So funktioniert's
           </motion.h2>
@@ -94,7 +94,7 @@ export function HowItWorksSection() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="mb-8 overflow-hidden hover:shadow-xl transition-all duration-300 group border-gray-100">
+                <Card className="mb-8 overflow-hidden hover-lift hover-glow group border-emerald-100">
                   <CardContent className="p-0">
                     <div className="flex flex-col lg:flex-row">
                       {/* Left side - Icon & Number */}
