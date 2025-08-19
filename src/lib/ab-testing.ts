@@ -104,10 +104,10 @@ export const useABTest = <T extends TestName>(testName: T) => {
     if (!savedVariant) {
       // Neue Variante auswählen und speichern
       savedVariant = selectRandomVariant(testName)
-      setCookie(cookieName, savedVariant, COOKIE_DAYS)
+      setCookie(cookieName, savedVariant as string, COOKIE_DAYS)
       
       // Track Event für Analytics
-      trackABTestAssignment(testName, savedVariant)
+      trackABTestAssignment(testName, savedVariant as string)
     }
     
     setVariant(savedVariant)
@@ -115,7 +115,7 @@ export const useABTest = <T extends TestName>(testName: T) => {
   }, [testName])
 
   // Hole den Text für die aktuelle Variante
-  const variantText = AB_TESTS[testName].variants[variant]
+  const variantText = (AB_TESTS[testName].variants as any)[variant]
 
   return {
     variant,
@@ -179,8 +179,8 @@ export const ABTestManager = () => {
       const cookieName = `${COOKIE_PREFIX}${testName}`
       if (!getCookie(cookieName)) {
         const variant = selectRandomVariant(testName as TestName)
-        setCookie(cookieName, variant, COOKIE_DAYS)
-        trackABTestAssignment(testName as TestName, variant)
+        setCookie(cookieName, variant as string, COOKIE_DAYS)
+        trackABTestAssignment(testName as TestName, variant as string)
       }
     })
   }, [])
@@ -209,7 +209,7 @@ export const forceVariant = <T extends TestName>(
   variant: VariantName<T>
 ) => {
   const cookieName = `${COOKIE_PREFIX}${testName}`
-  setCookie(cookieName, variant, COOKIE_DAYS)
+  setCookie(cookieName, variant as string, COOKIE_DAYS)
   console.log(`[A/B Test] Forced variant: ${testName} - ${variant}`)
   
   // Reload um Änderung anzuwenden

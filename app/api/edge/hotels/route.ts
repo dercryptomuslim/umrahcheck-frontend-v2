@@ -3,6 +3,8 @@ import { NextRequest, NextResponse } from 'next/server'
 
 export const runtime = 'edge' // Vercel Edge Runtime
 
+// eslint-disable-next-line @typescript-eslint/no-unsafe-declaration-merging
+
 // Cache für 1 Stunde
 const CACHE_DURATION = 60 * 60
 

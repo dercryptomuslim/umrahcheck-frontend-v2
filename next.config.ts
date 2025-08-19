@@ -2,7 +2,7 @@ import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
   // 🚀 Vercel Pro Performance Optimizations
-  swcMinify: true, // Faster minification with SWC
+  // Note: swcMinify is enabled by default in Next.js 15
   
   // Image Optimization
   images: {
