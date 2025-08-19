@@ -224,7 +224,8 @@ export async function POST(request: NextRequest) {
     if (!data.personen || !data.reisezeitraum || !data.budget) {
       return NextResponse.json({
         success: false,
-        error: 'Fehlende Pflichtfelder: personen, reisezeitraum, budget'
+        error: 'Fehlende Pflichtfelder: personen, reisezeitraum, budget',
+        processing_time: Date.now() - startTime
       }, { status: 400 })
     }
 
@@ -247,12 +248,13 @@ export async function POST(request: NextRequest) {
     })
 
   } catch (error) {
+    const processingTime = Date.now() - startTime
     console.error('Estimate API Error:', error)
     
     return NextResponse.json({
       success: false,
-      error: 'Fehler bei der Kostenschätzung',
-      processing_time: Date.now() - startTime
+      error: `Fehler bei der Kostenschätzung: ${error instanceof Error ? error.message : 'Unknown error'}`,
+      processing_time: processingTime
     }, { status: 500 })
   }
 }
