@@ -1,9 +1,9 @@
-"use client"
+"use client";
 
-import React from 'react'
-import { motion } from 'framer-motion'
-import { Button } from '@/components/ui/button'
-import { Badge } from '@/components/ui/badge'
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import { Badge } from '@/components/ui/badge';
 import { 
   ArrowRight, 
   Sparkles, 
@@ -13,8 +13,8 @@ import {
   Clock,
   TrendingUp,
   Users
-} from 'lucide-react'
-import Link from 'next/link'
+} from 'lucide-react';
+import Link from 'next/link';
 
 export function HeroSection() {
   return (
@@ -75,10 +75,10 @@ export function HeroSection() {
             className="heading-1 mb-6"
           >
             <span className="text-gray-900">✨ „</span>
-            <span className="bg-gradient-to-r from-primary-gold via-gold-hover to-primary-gold bg-clip-text text-transparent"
+            <span className="bg-gradient-to-r from-primary-gold via-gold-hover to-primary-gold bg-clip-text text-transparent">
               Die erste KI-Beratung für deine Umrah – ehrlich, transparent & auf dich zugeschnitten.
             </span>
-            <span className="text-gray-900">" 🏛️</span>
+            <span className="text-gray-900">„ 🏛️</span>
           </motion.h1>
 
           {/* Subheading */}
@@ -220,5 +220,5 @@ export function HeroSection() {
         </motion.div>
       </div>
     </section>
-  )
+  );
 }
