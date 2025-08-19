@@ -64,10 +64,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de" className="scroll-smooth">
-      <head>
-        <link rel="manifest" href="/manifest.json" />
-        <link rel="apple-touch-icon" href="/icon-192.png" />
-        <meta name="mobile-web-app-capable" content="yes" />
+      <body className={inter.className}>
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -79,8 +76,6 @@ export default function RootLayout({
             `,
           }}
         />
-      </head>
-      <body className={inter.className}>
         <Navbar />
         <main className="min-h-screen">
           {children}

@@ -8,7 +8,7 @@ import { FinalCTASection } from '@/components/sections/final-cta-section'
 
 export default function Home() {
   return (
-    <main className="min-h-screen">
+    <>
       <HeroSection />
       <USPSection />
       <FeaturesSection />
@@ -16,6 +16,6 @@ export default function Home() {
       <HowItWorksSection />
       <FAQSection />
       <FinalCTASection />
-    </main>
+    </>
   )
 }
