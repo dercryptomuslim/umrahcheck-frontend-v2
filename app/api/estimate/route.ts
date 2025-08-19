@@ -152,9 +152,10 @@ function calculateEstimate(data: EstimateRequest): EstimateResponse['estimate'] 
   const personCount = parseInt(data.personen) || 1
 
   // Get base price range
-  const baseCategory = category === 'egal' ? 'standard' : category
-  const basePrices = PRICE_MATRIX[baseCategory as keyof typeof PRICE_MATRIX]?.[budget as keyof typeof PRICE_MATRIX.standard] || 
-                    PRICE_MATRIX.standard['2000-3500']
+  const baseCategory = category === 'egal' ? 'standard' : (category || 'standard')
+  const validCategory = PRICE_MATRIX[baseCategory as keyof typeof PRICE_MATRIX] ? baseCategory : 'standard'
+  const categoryPrices = PRICE_MATRIX[validCategory as keyof typeof PRICE_MATRIX]
+  const basePrices = categoryPrices[budget as keyof typeof categoryPrices] || categoryPrices['2000-3500']
 
   // Apply multipliers
   const seasonMultiplier = SEASONAL_MULTIPLIERS[season as keyof typeof SEASONAL_MULTIPLIERS] || 1.0
