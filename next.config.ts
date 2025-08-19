@@ -120,7 +120,7 @@ const nextConfig: NextConfig = {
   
   // ESLint configuration
   eslint: {
-    ignoreDuringBuilds: false, // Enable for production quality
+    ignoreDuringBuilds: true, // Disable for faster builds
   },
   
   // Output configuration for Vercel

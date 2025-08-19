@@ -149,7 +149,7 @@ export const trackABTestConversion = (testName: TestName, variant: string) => {
     })
   }
   
-  console.log(`[A/B Test] Conversion tracked: ${testName} - ${variant}`)
+  console.log(`[A/B Test] Conversion tracked: ${String(testName)} - ${String(variant)}`)
 }
 
 // Test-Zuweisung tracken
@@ -168,7 +168,7 @@ const trackABTestAssignment = (testName: TestName, variant: string) => {
     })
   }
   
-  console.log(`[A/B Test] User assigned to: ${testName} - ${variant}`)
+  console.log(`[A/B Test] User assigned to: ${String(testName)} - ${String(variant)}`)
 }
 
 // A/B Test Manager Component für globale Tests
@@ -210,7 +210,7 @@ export const forceVariant = <T extends TestName>(
 ) => {
   const cookieName = `${COOKIE_PREFIX}${testName}`
   setCookie(cookieName, variant as string, COOKIE_DAYS)
-  console.log(`[A/B Test] Forced variant: ${testName} - ${variant}`)
+  console.log(`[A/B Test] Forced variant: ${String(testName)} - ${String(variant)}`)
   
   // Reload um Änderung anzuwenden
   if (typeof window !== 'undefined') {
