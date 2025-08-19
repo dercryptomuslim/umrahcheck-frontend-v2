@@ -18,7 +18,7 @@ import Link from 'next/link'
 
 export function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-br from-cream via-sand to-white">
+    <section className="relative overflow-hidden" style={{background: "linear-gradient(to bottom right, #fef3c7, #f5f5dc, #ffffff)"}}>
       {/* Background Pattern */}
       <div className="absolute inset-0 bg-grid-slate-100 [mask-image:linear-gradient(0deg,white,rgba(255,255,255,0.6))] -z-10" />
       
@@ -104,7 +104,7 @@ export function HeroSection() {
               <div className="absolute inset-0 bg-black/40" />
               <div className="absolute inset-0 flex items-center justify-center">
                 <button className="w-20 h-20 bg-white/90 hover:bg-white rounded-full flex items-center justify-center shadow-2xl transition-all duration-300 hover:scale-110 group">
-                  <div className="w-0 h-0 border-l-[16px] border-l-emerald-600 border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1" />
+                  <div className="w-0 h-0 border-l-[16px] border-l-primary-gold border-t-[12px] border-t-transparent border-b-[12px] border-b-transparent ml-1" />
                 </button>
               </div>
             </div>
@@ -156,16 +156,16 @@ export function HeroSection() {
             </div>
             
             <div className="flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-teal-100 flex items-center justify-center mb-2">
-                <Clock className="w-6 h-6 text-teal-600" />
+              <div className="w-12 h-12 rounded-full bg-primary-gold/20 flex items-center justify-center mb-2">
+                <Clock className="w-6 h-6 text-primary-gold" />
               </div>
               <span className="text-sm font-medium text-gray-700">2 Minuten</span>
               <span className="text-xs text-gray-500">Schnelle Analyse</span>
             </div>
             
             <div className="flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-cyan-100 flex items-center justify-center mb-2">
-                <TrendingUp className="w-6 h-6 text-cyan-600" />
+              <div className="w-12 h-12 rounded-full bg-primary-gold/20 flex items-center justify-center mb-2">
+                <TrendingUp className="w-6 h-6 text-primary-gold" />
               </div>
               <span className="text-sm font-medium text-gray-700">Bis zu 30%</span>
               <span className="text-xs text-gray-500">Ersparnis</span>

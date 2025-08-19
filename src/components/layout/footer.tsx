@@ -26,7 +26,7 @@ const currentYear = new Date().getFullYear()
 
 export function Footer() {
   return (
-    <footer className="bg-gradient-to-br from-gray-900 via-emerald-900 to-teal-900 text-white">
+    <footer className="bg-midnight text-white">
       {/* Main Footer Content */}
       <div className="container mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -41,7 +41,7 @@ export function Footer() {
           >
             <div>
               <div className="flex items-center gap-3 mb-4">
-                <div className="w-10 h-10 bg-gradient-to-r from-emerald-400 to-teal-400 rounded-lg flex items-center justify-center">
+                <div className="w-10 h-10 bg-gradient-to-r from-primary-gold to-gold-hover rounded-lg flex items-center justify-center">
                   <span className="text-white font-bold text-lg">🕌</span>
                 </div>
                 <span className="text-2xl font-bold">UMRAHCHECK</span>
@@ -49,7 +49,7 @@ export function Footer() {
               <p className="text-gray-300 leading-relaxed mb-4">
                 Die erste KI-Beratung für deine Umrah – ehrlich, transparent & auf dich zugeschnitten.
               </p>
-              <div className="flex items-center gap-2 text-primary-gold300">
+              <div className="flex items-center gap-2 text-primary-gold">
                 <Shield className="w-4 h-4" />
                 <span className="text-sm font-medium">100% Halal zertifiziert</span>
               </div>
@@ -141,7 +141,7 @@ export function Footer() {
               <li>
                 <Link 
                   href="/umrah-anfrage" 
-                  className="flex items-center gap-2 text-primary-gold300 hover:text-primary-gold200 transition-colors font-medium group"
+                  className="flex items-center gap-2 text-primary-gold hover:text-gold-hover transition-colors font-medium group"
                 >
                   <MessageCircle className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   Kostenlose Beratung
@@ -213,7 +213,7 @@ export function Footer() {
             <h4 className="font-semibold text-white mb-6">Kontakt</h4>
             <div className="space-y-4">
               <div className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-primary-gold300 flex-shrink-0 mt-0.5" />
+                <MapPin className="w-5 h-5 text-primary-gold flex-shrink-0 mt-0.5" />
                 <div className="text-gray-300">
                   <p className="font-medium">UmrahCheck GmbH</p>
                   <p>Musterstraße 123</p>
@@ -222,7 +222,7 @@ export function Footer() {
               </div>
               
               <div className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-primary-gold300" />
+                <Phone className="w-5 h-5 text-primary-gold" />
                 <Link 
                   href="tel:+4912345678901" 
                   className="text-gray-300 hover:text-primary-gold transition-colors"
@@ -232,7 +232,7 @@ export function Footer() {
               </div>
               
               <div className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-primary-gold300" />
+                <Mail className="w-5 h-5 text-primary-gold" />
                 <Link 
                   href="mailto:info@umrahcheck.com" 
                   className="text-gray-300 hover:text-primary-gold transition-colors"
@@ -242,7 +242,7 @@ export function Footer() {
               </div>
 
               <div className="flex items-start gap-3">
-                <Clock className="w-5 h-5 text-primary-gold300 flex-shrink-0 mt-0.5" />
+                <Clock className="w-5 h-5 text-primary-gold flex-shrink-0 mt-0.5" />
                 <div className="text-gray-300 text-sm">
                   <p className="font-medium">Öffnungszeiten:</p>
                   <p>Mo-Fr: 9:00 - 18:00 Uhr</p>
@@ -316,7 +316,7 @@ export function Footer() {
             {/* Trust Badges */}
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-2 text-xs text-gray-400">
-                <Shield className="w-4 h-4 text-primary-gold400" />
+                <Shield className="w-4 h-4 text-primary-gold" />
                 <span>SSL gesichert</span>
               </div>
               <div className="flex items-center gap-2 text-xs text-gray-400">
