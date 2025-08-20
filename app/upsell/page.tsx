@@ -318,11 +318,11 @@ function UpsellContent() {
                       </div>
                       <div className="flex items-center gap-1">
                         <Star className="w-4 h-4" />
-                        4.9/5 Bewertung
+                        4.8/5 Bewertung (28 echte)
                       </div>
                       <div className="flex items-center gap-1">
                         <Users className="w-4 h-4" />
-                        500+ zufriedene Kunden
+                        60 zufriedene Pilger
                       </div>
                     </div>
                   </div>

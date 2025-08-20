@@ -263,7 +263,7 @@ export default function DankePage() {
                     </div>
                     <div className="flex items-center gap-3">
                       <Star className="w-5 h-5 text-[--primary-gold]" />
-                      <span className="text-sm">4.9/5 Sterne (2,400+ Bewertungen)</span>
+                      <span className="text-sm">4.8/5 Sterne (28 echte Bewertungen)</span>
                     </div>
                   </div>
                 </CardContent>

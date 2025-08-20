@@ -144,7 +144,7 @@ export default function CheckoutPage() {
                     </div>
                     <div>
                       <Star className="w-8 h-8 text-[--primary-gold] mx-auto mb-2" />
-                      <div className="font-bold text-lg">4.9/5</div>
+                      <div className="font-bold text-lg">4.8/5</div>
                       <div className="text-xs text-gray-600">Bewertung</div>
                     </div>
                     <div>

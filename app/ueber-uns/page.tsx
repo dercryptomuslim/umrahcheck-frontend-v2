@@ -148,7 +148,7 @@ export default function UeberUnsPage() {
                   <div className="text-sm opacity-90">Partneranbieter</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold mb-2">4.9/5</div>
+                  <div className="text-3xl font-bold mb-2">4.8/5</div>
                   <div className="text-sm opacity-90">Kundenbewertung</div>
                 </div>
                 <div>

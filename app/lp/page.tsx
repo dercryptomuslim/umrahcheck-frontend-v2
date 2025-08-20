@@ -412,7 +412,7 @@ export default function LandingPage() {
               
               <p className="text-xl opacity-90 max-w-3xl mx-auto mb-8">
                 <strong>GRATIS Budget-Check:</strong> Erfahre in 5 Minuten, ob dein Budget realistisch ist.
-                <br />Optional: Hol dir dein persönliches PDF-Angebot für nur 39€ (statt 79€)
+                <br />Optional: Hol dir dein persönliches PDF-Angebot für nur 39€ (statt 119€)
               </p>
 
               <div className="flex flex-wrap justify-center gap-6 text-sm">
@@ -1042,7 +1042,7 @@ export default function LandingPage() {
               </div>
               <div className="trust-badge">
                 <Star className="w-5 h-5 text-[--primary-gold] mx-auto mb-2" />
-                <span className="text-sm font-medium">4.9/5 ⭐ (2,400+ Bewertungen)</span>
+                <span className="text-sm font-medium">4.8/5 ⭐ (28 echte Bewertungen)</span>
               </div>
               <div className="trust-badge">
                 <MessageCircle className="w-5 h-5 text-[--primary-gold] mx-auto mb-2" />
@@ -1052,7 +1052,7 @@ export default function LandingPage() {
 
             <div className="text-center mt-8">
               <p className="text-sm text-muted">
-                Bereits über <span className="font-semibold text-[--primary-gold]">15.000 zufriedene Pilger</span> vertrauen auf UmrahCheck
+                Basierend auf <span className="font-semibold text-[--primary-gold]">60 zufriedenen Pilgern</span> & 28 echten Bewertungen
               </p>
             </div>
           </motion.div>

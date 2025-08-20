@@ -148,7 +148,7 @@ export function Navbar({ className }: NavbarProps) {
           >
             <Link href="/lp">
               <Zap className="w-4 h-4" />
-              Jetzt kostenlos starten
+              KI-Analyse starten
             </Link>
           </Button>
         </div>
@@ -210,7 +210,7 @@ export function Navbar({ className }: NavbarProps) {
                 >
                   <Link href="/lp">
                     <Zap className="w-4 h-4" />
-                    Jetzt kostenlos starten
+                    KI-Analyse starten
                   </Link>
                 </Button>
               </div>
