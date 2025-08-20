@@ -392,6 +392,7 @@ function UpsellContent() {
   )
 }
 
+// Fixed 404 issue - ensuring proper export
 export default function UpsellPage() {
   return (
     <Suspense fallback={

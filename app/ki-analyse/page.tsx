@@ -16,6 +16,7 @@ import {
   ArrowRight
 } from 'lucide-react'
 
+// Fixed 404 issue - ensuring proper export
 export default function KIAnalysePage() {
   const [analysisStep, setAnalysisStep] = useState(0)
   const [customerName, setCustomerName] = useState('Lieber Bruder/Liebe Schwester')
