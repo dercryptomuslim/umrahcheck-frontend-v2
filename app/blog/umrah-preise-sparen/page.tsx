@@ -1,4 +1,5 @@
-import type { Metadata } from 'next'
+"use client"
+
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
@@ -19,45 +20,26 @@ import {
   Hotel,
   Zap
 } from 'lucide-react'
-
-export const metadata: Metadata = {
-  title: 'Warum Umrah-Reisen so teuer geworden sind – und wie du trotzdem sparen kannst',
-  description: 'Die Kosten für Umrah-Reisen sind in den letzten Jahren drastisch gestiegen. Erfahre die wahren Gründe und wie du trotzdem eine erschwingliche Pilgerreise planst. ✈️ Spare bis zu 2.000€!',
-  keywords: 'Umrah Kosten, Umrah günstig, Umrah sparen, Umrah Preise, günstige Umrah, Umrah Budget, Mekka Reise Kosten, Umrah 2024 Preise',
-  openGraph: {
-    title: 'Warum Umrah-Reisen so teuer geworden sind – und wie du trotzdem sparen kannst',
-    description: 'Die Kosten für Umrah-Reisen sind drastisch gestiegen. Erfahre die wahren Gründe und wie du trotzdem bis zu 2.000€ sparen kannst.',
-    url: 'https://umrahcheck.de/blog/umrah-preise-sparen',
-    siteName: 'UmrahCheck',
-    images: [{
-      url: 'https://umrahcheck.de/blog-umrah-preise.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'Umrah Kosten sparen - UmrahCheck Blog'
-    }],
-    locale: 'de_DE',
-    type: 'article',
-    publishedTime: '2024-08-20T10:00:00Z',
-    authors: ['Mustafa Ali'],
-    section: 'Umrah Planung',
-    tags: ['Umrah Kosten', 'Sparen', 'Budget', 'Reiseplanung'],
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Warum Umrah-Reisen so teuer geworden sind – Spartipps',
-    description: 'Erfahre die wahren Gründe für teure Umrah-Reisen und wie du trotzdem bis zu 2.000€ sparen kannst.',
-    images: ['https://umrahcheck.de/blog-umrah-preise.jpg'],
-  },
-  alternates: {
-    canonical: 'https://umrahcheck.de/blog/umrah-preise-sparen',
-  },
-}
+import Head from 'next/head'
 
 export default function UmrahPreiseSparenPage() {
   const publishDate = new Date('2024-08-20')
   
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-[--cream-light] to-[--sand]">
+    <>
+      <Head>
+        <title>Warum Umrah-Reisen so teuer geworden sind – und wie du trotzdem sparen kannst</title>
+        <meta name="description" content="Die Kosten für Umrah-Reisen sind in den letzten Jahren drastisch gestiegen. Erfahre die wahren Gründe und wie du trotzdem eine erschwingliche Pilgerreise planst. ✈️ Spare bis zu 2.000€!" />
+        <meta name="keywords" content="Umrah Kosten, Umrah günstig, Umrah sparen, Umrah Preise, günstige Umrah, Umrah Budget, Mekka Reise Kosten" />
+        <meta property="og:title" content="Warum Umrah-Reisen so teuer geworden sind – und wie du trotzdem sparen kannst" />
+        <meta property="og:description" content="Die Kosten für Umrah-Reisen sind drastisch gestiegen. Erfahre die wahren Gründe und wie du trotzdem bis zu 2.000€ sparen kannst." />
+        <meta property="og:image" content="https://umrahcheck.de/blog-umrah-preise.jpg" />
+        <meta property="og:url" content="https://umrahcheck.de/blog/umrah-preise-sparen" />
+        <meta property="og:type" content="article" />
+        <link rel="canonical" href="https://umrahcheck.de/blog/umrah-preise-sparen" />
+      </Head>
+      
+      <div className="min-h-screen bg-gradient-to-br from-white via-[--cream-light] to-[--sand]">
         
         {/* Header */}
         <div className="bg-gradient-to-r from-[--midnight] to-[--dark-blue] text-white py-8">
@@ -409,6 +391,6 @@ export default function UmrahPreiseSparenPage() {
           </article>
         </div>
       </div>
-    </div>
+    </>
   )
 }
