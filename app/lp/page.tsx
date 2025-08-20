@@ -264,6 +264,7 @@ export default function LandingPage() {
       if (response.ok) {
         // Store lead info for ki-analyse page
         localStorage.setItem('umrahcheck_lead', JSON.stringify({
+          // Original fields for backward compatibility
           name: `${formData.vorname} ${formData.nachname}`.trim(),
           email: formData.email,
           whatsapp: formData.telefon,
@@ -276,6 +277,13 @@ export default function LandingPage() {
           nights_medina: '4',
           nationality: 'deutsch',
           notes: formData.besondere_wuensche,
+          // New structured fields for webhook
+          vorname: formData.vorname,
+          nachname: formData.nachname,
+          telefon: formData.telefon,
+          personen: formData.personen,
+          reisezeitraum: formData.reisezeitraum,
+          besondere_wuensche: formData.besondere_wuensche,
           timestamp: Date.now()
         }))
         
@@ -755,6 +763,74 @@ export default function LandingPage() {
                         </motion.div>
                       )}
                     </AnimatePresence>
+
+                    {/* Expert Recommendation Section */}
+                    {formData.personen && formData.budget && (
+                      <motion.div
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="mt-6 p-6 bg-gradient-to-r from-emerald-50 to-teal-50 rounded-xl border-2 border-emerald-200/50"
+                      >
+                        <div className="flex items-start gap-4">
+                          <div className="w-12 h-12 bg-gradient-to-r from-emerald-500 to-teal-500 rounded-full flex items-center justify-center flex-shrink-0">
+                            <Sparkles className="w-6 h-6 text-white" />
+                          </div>
+                          <div className="flex-1">
+                            <div className="flex items-center gap-2 mb-3">
+                              <h4 className="text-lg font-bold text-emerald-800">Experten-Empfehlung</h4>
+                              <div className="px-2 py-1 bg-emerald-100 text-emerald-700 text-xs font-semibold rounded-full">
+                                2025 Update
+                              </div>
+                            </div>
+                            
+                            <div className="space-y-3">
+                              <div className="flex items-center gap-3">
+                                <Users className="w-5 h-5 text-emerald-600" />
+                                <div>
+                                  <div className="font-semibold text-emerald-800 text-sm">
+                                    Optimal für 4er-Gruppe: 1.200€ - 1.250€ pro Person
+                                  </div>
+                                  <div className="text-emerald-700 text-sm">
+                                    Komfortables Reisen mit guten Airlines und europäischem Hotel-Standard
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              <div className="flex items-center gap-3">
+                                <Clock className="w-5 h-5 text-emerald-600" />
+                                <div>
+                                  <div className="font-semibold text-emerald-800 text-sm">
+                                    Buchung: 6-8 Wochen im Voraus
+                                  </div>
+                                  <div className="text-emerald-700 text-sm">
+                                    Für beste Preise und Verfügbarkeit (außer Ramadan)
+                                  </div>
+                                </div>
+                              </div>
+                              
+                              <div className="flex items-center gap-3">
+                                <TrendingUp className="w-5 h-5 text-emerald-600" />
+                                <div>
+                                  <div className="font-semibold text-emerald-800 text-sm">
+                                    Aktuelle Wirtschaftslage Saudi-Arabien
+                                  </div>
+                                  <div className="text-emerald-700 text-sm">
+                                    Stabile Preise und verbesserte Hotel-Standards in 2025
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div className="mt-4 p-3 bg-white/70 rounded-lg border border-emerald-200/50">
+                              <div className="text-emerald-800 text-xs font-medium">
+                                💡 Tipp: Wähle das Budget "1.150€ - 1.300€" für optimales Preis-Leistungs-Verhältnis
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </motion.div>
+                    )}
                   </motion.div>
                 )}
 
