@@ -2,6 +2,8 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
+import { Button } from '@/components/ui/button';
+import Link from 'next/link';
 import { 
   Eye, 
   PiggyBank, 
@@ -157,18 +159,16 @@ export function USPSection() {
           <p className="text-gray-600 mb-4">
             Bereit für ehrliche Umrah-Beratung ohne versteckte Kosten?
           </p>
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
+          <Button
+            className="cta-gold hover-lift"
+            size="lg"
+            asChild
           >
-            <a 
-              href="/umrah-anfrage"
-              className="inline-flex items-center gap-2 bg-gradient-to-r from-primary-gold to-gold-hover text-white font-semibold px-8 py-3 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
-            >
+            <Link href="/lp">
               <Zap className="w-5 h-5" />
               Jetzt kostenlos starten
-            </a>
-          </motion.div>
+            </Link>
+          </Button>
         </motion.div>
       </div>
     </section>
