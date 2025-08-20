@@ -116,10 +116,27 @@ function UpsellContent() {
   return (
     <div className={`min-h-screen bg-gradient-to-br ${config.bgGradient}`}>
       <div className="container mx-auto px-4 py-12">
+        {/* Thank You Message */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-center mb-8"
+        >
+          <div className="bg-white/90 backdrop-blur rounded-2xl p-6 shadow-lg border border-emerald-200">
+            <h2 className="text-2xl font-bold text-emerald-800 mb-2">
+              Vielen Dank! 🕌
+            </h2>
+            <p className="text-lg text-gray-700">
+              Deine Anfrage wurde erfolgreich übermittelt. Wir melden uns innerhalb von 24 Stunden bei dir.
+            </p>
+          </div>
+        </motion.div>
+
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.1 }}
           className="text-center mb-12"
         >
           <div className="flex justify-center mb-6">

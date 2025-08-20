@@ -54,40 +54,30 @@ export default function UmrahAnfragePage() {
 
   const handleSubmit = async () => {
     console.log('Submitting form data:', formData)
-    setIsSubmitted(true)
+    
+    // Store lead data in localStorage for KI-Analyse page
+    const leadData = {
+      name: `${formData.vorname} ${formData.nachname}`,
+      email: formData.email,
+      whatsapp: formData.whatsapp,
+      budget: formData.budget,
+      persons: formData.gruppengröße,
+      destination: formData.zielflughafen,
+      departure: formData.abflughafen,
+      date: formData.abflugdatum,
+      nights_mecca: formData.naechte_mekka,
+      nights_medina: formData.naechte_medina,
+      nationality: formData.staatsangehoerigkeit,
+      notes: formData.anmerkungen
+    }
+    
+    localStorage.setItem('umrahcheck_lead', JSON.stringify(leadData))
+    
+    // Redirect directly to KI analysis page (which will then redirect to upsell)
+    window.location.href = '/ki-analyse'
   }
 
-  if (isSubmitted) {
-    return (
-      <div className="min-h-screen relative" style={{
-        background: 'linear-gradient(135deg, #F3E8C7 0%, #E8D5A3 100%)',
-        backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' width='200' height='200' fill='none' stroke='%23D4AF37' stroke-width='1' opacity='0.1'%3e%3cpath d='M40 40 L60 20 L80 40 L100 20 L120 40 L140 20 L160 40 L180 20 L200 40 L180 60 L200 80 L180 100 L200 120 L180 140 L200 160 L180 180 L160 160 L140 180 L120 160 L100 180 L80 160 L60 180 L40 160 L20 180 L0 160 L20 140 L0 120 L20 100 L0 80 L20 60 L0 40 L20 20 L40 40'/%3e%3c/svg%3e")`
-      }}>
-        <div className="container mx-auto px-4 py-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="max-w-2xl mx-auto text-center"
-          >
-            <div className="bg-white rounded-2xl p-8 shadow-xl">
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">
-                Vielen Dank! 🕌
-              </h1>
-              <p className="text-lg text-gray-600 mb-6">
-                Deine Anfrage wurde erfolgreich übermittelt. Wir melden uns innerhalb von 24 Stunden bei dir.
-              </p>
-              <Button 
-                onClick={() => window.location.href = '/'}
-                className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-3"
-              >
-                Zur Startseite
-              </Button>
-            </div>
-          </motion.div>
-        </div>
-      </div>
-    )
-  }
+  // Form submission now redirects directly to /ki-analyse, no need for thank you page
 
   return (
     <div className="min-h-screen relative" style={{
