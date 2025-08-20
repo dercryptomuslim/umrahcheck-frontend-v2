@@ -1,7 +1,9 @@
-import type { Metadata } from 'next'
+"use client"
+
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
+import Head from 'next/head'
 import { 
   ArrowLeft,
   Clock,
@@ -11,35 +13,6 @@ import {
   BookOpen,
   Zap
 } from 'lucide-react'
-
-export const metadata: Metadata = {
-  title: 'UmrahCheck Blog - Spartipps und Ratgeber für deine Umrah-Reise',
-  description: 'Entdecke echte Spartipps, ehrliche Preisanalysen und praktische Ratgeber für deine Umrah-Reise. Von praktizierenden Muslimen für Muslime - transparent und ohne versteckte Verkaufsabsichten.',
-  keywords: 'Umrah Blog, Umrah Spartipps, Umrah Kosten, günstige Umrah, Umrah Ratgeber, Mekka Reise, Medina Reise, Umrah Planung',
-  openGraph: {
-    title: 'UmrahCheck Blog - Spartipps und Ratgeber für deine Umrah',
-    description: 'Echte Spartipps und ehrliche Preisanalysen für deine Umrah-Reise',
-    url: 'https://umrahcheck.de/blog',
-    siteName: 'UmrahCheck',
-    images: [{
-      url: 'https://umrahcheck.de/blog-header.jpg',
-      width: 1200,
-      height: 630,
-      alt: 'UmrahCheck Blog'
-    }],
-    locale: 'de_DE',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'UmrahCheck Blog - Spartipps für deine Umrah',
-    description: 'Echte Spartipps und ehrliche Preisanalysen für deine Umrah-Reise',
-    images: ['https://umrahcheck.de/blog-header.jpg'],
-  },
-  alternates: {
-    canonical: 'https://umrahcheck.de/blog',
-  },
-}
 
 const blogPosts = [
   {
@@ -57,7 +30,19 @@ const blogPosts = [
 
 export default function BlogPage() {
   return (
-    <div className="min-h-screen bg-gradient-to-br from-white via-[--cream-light] to-[--sand]">
+    <>
+      <Head>
+        <title>UmrahCheck Blog - Spartipps und Ratgeber für deine Umrah-Reise</title>
+        <meta name="description" content="Entdecke echte Spartipps, ehrliche Preisanalysen und praktische Ratgeber für deine Umrah-Reise. Von praktizierenden Muslimen für Muslime - transparent und ohne versteckte Verkaufsabsichten." />
+        <meta name="keywords" content="Umrah Blog, Umrah Spartipps, Umrah Kosten, günstige Umrah, Umrah Ratgeber, Mekka Reise, Medina Reise, Umrah Planung" />
+        <meta property="og:title" content="UmrahCheck Blog - Spartipps und Ratgeber für deine Umrah" />
+        <meta property="og:description" content="Echte Spartipps und ehrliche Preisanalysen für deine Umrah-Reise" />
+        <meta property="og:url" content="https://umrahcheck.de/blog" />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://umrahcheck.de/blog" />
+      </Head>
+      
+      <div className="min-h-screen bg-gradient-to-br from-white via-[--cream-light] to-[--sand]">
       
       {/* Header */}
       <div className="bg-gradient-to-r from-[--midnight] to-[--dark-blue] text-white py-16">
@@ -207,6 +192,6 @@ export default function BlogPage() {
           </Card>
         </div>
       </div>
-    </div>
+    </>
   )
 }
