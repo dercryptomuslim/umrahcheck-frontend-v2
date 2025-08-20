@@ -44,10 +44,6 @@ export default function ImpressumPage() {
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">Kontakt</h2>
               <div className="space-y-2 text-gray-700">
                 <div className="flex items-center gap-2">
-                  <Phone className="w-4 h-4 text-emerald-600" />
-                  <span>WhatsApp: +966 56 063 0947</span>
-                </div>
-                <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-emerald-600" />
                   <span>E-Mail: info@umrahcheck.de</span>
                 </div>

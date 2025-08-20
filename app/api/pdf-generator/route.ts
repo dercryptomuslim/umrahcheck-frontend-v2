@@ -378,7 +378,6 @@ const generateHTMLTemplate = (pkg: UmrahPackage): string => {
     <div class="contact-info">
       <h3 style="color: #10b981; margin-bottom: 10px;">Ihr persönlicher Berater</h3>
       <p><strong>Mustafa Ali</strong> - Direkt aus Medina</p>
-      <p>📱 WhatsApp: +966 56 063 0947</p>
       <p>✉️ E-Mail: info@umrahcheck.com</p>
       <p style="margin-top: 10px; font-style: italic;">
         "Ich begleite Sie persönlich bei jedem Schritt Ihrer spirituellen Reise."

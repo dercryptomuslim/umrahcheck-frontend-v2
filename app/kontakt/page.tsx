@@ -41,17 +41,17 @@ export default function KontaktPage() {
 
   if (isSubmitted) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50 py-20">
+      <div className="min-h-screen bg-gradient-to-br from-[--cream] via-white to-[--sand] py-20">
         <div className="container mx-auto px-4">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-2xl mx-auto text-center"
           >
-            <Card className="shadow-xl border-emerald-200">
+            <Card className="shadow-xl border-[--primary-gold]/20">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <CheckCircle className="w-8 h-8 text-emerald-600" />
+                <div className="w-16 h-16 bg-[--cream] rounded-full flex items-center justify-center mx-auto mb-6">
+                  <CheckCircle className="w-8 h-8 text-[--primary-gold]" />
                 </div>
                 <h1 className="text-3xl font-bold text-gray-900 mb-4">
                   Nachricht gesendet! 🕌
@@ -62,14 +62,14 @@ export default function KontaktPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button 
                     onClick={() => window.location.href = '/'}
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3"
+                    className="bg-[--primary-gold] hover:bg-[--primary-gold-light] text-white px-8 py-3"
                   >
                     Zur Startseite
                   </Button>
                   <Button 
                     onClick={() => setIsSubmitted(false)}
                     variant="outline"
-                    className="border-emerald-200 hover:bg-emerald-50 px-8 py-3"
+                    className="border-[--primary-gold]/20 hover:bg-[--cream] px-8 py-3"
                   >
                     Neue Nachricht
                   </Button>
@@ -83,12 +83,12 @@ export default function KontaktPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-emerald-50 via-white to-emerald-50">
+    <div className="min-h-screen bg-gradient-to-br from-[--cream] via-white to-[--sand]">
       
       {/* Header */}
-      <div className="bg-gradient-to-r from-emerald-600 to-emerald-700 text-white py-16">
+      <div className="bg-gradient-to-r from-[--primary-gold] to-[--primary-gold-light] text-white py-16">
         <div className="container mx-auto px-4">
-          <Button variant="outline" asChild className="mb-6 border-white text-white hover:bg-white hover:text-emerald-600">
+          <Button variant="outline" asChild className="mb-6 border-white text-white hover:bg-white hover:text-[--primary-gold]">
             <Link href="/">
               <ArrowLeft className="w-4 h-4 mr-2" />
               Zurück zur Startseite
@@ -112,47 +112,23 @@ export default function KontaktPage() {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-4xl mx-auto mb-16"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="max-w-md mx-auto">
             
-            {/* WhatsApp */}
-            <Card className="text-center shadow-lg border-emerald-200 hover:shadow-xl transition-shadow">
-              <CardContent className="p-8">
-                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <MessageCircle className="w-8 h-8 text-emerald-600" />
-                </div>
-                <h3 className="text-xl font-semibold text-gray-900 mb-4">WhatsApp</h3>
-                <p className="text-gray-600 mb-4">Direkte Beratung mit Mustafa aus Medina</p>
-                <div className="space-y-2">
-                  <p className="text-lg font-medium text-emerald-600">+966 56 063 0947</p>
-                  <p className="text-sm text-gray-500">Täglich erreichbar</p>
-                  <p className="text-sm text-gray-500">Persönliche Umrah-Beratung</p>
-                </div>
-                <Button 
-                  className="mt-4 bg-emerald-600 hover:bg-emerald-700 text-white"
-                  asChild
-                >
-                  <Link href="https://wa.me/966560630947?text=Assalamu%20alaikum!%20Ich%20interessiere%20mich%20für%20eine%20Umrah-Beratung%20mit%20Mustafa%20aus%20Medina.">
-                    WhatsApp öffnen
-                  </Link>
-                </Button>
-              </CardContent>
-            </Card>
-
             {/* E-Mail */}
-            <Card className="text-center shadow-lg border-emerald-200 hover:shadow-xl transition-shadow">
+            <Card className="text-center shadow-lg border-[--primary-gold]/20 hover:shadow-xl transition-shadow">
               <CardContent className="p-8">
-                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                  <Mail className="w-8 h-8 text-emerald-600" />
+                <div className="w-16 h-16 bg-[--cream] rounded-full flex items-center justify-center mx-auto mb-6">
+                  <Mail className="w-8 h-8 text-[--primary-gold]" />
                 </div>
                 <h3 className="text-xl font-semibold text-gray-900 mb-4">E-Mail</h3>
                 <p className="text-gray-600 mb-4">Detaillierte Anfragen per E-Mail</p>
                 <div className="space-y-2">
-                  <p className="text-lg font-medium text-emerald-600">info@umrahcheck.com</p>
+                  <p className="text-lg font-medium text-[--primary-gold]">info@umrahcheck.com</p>
                   <p className="text-sm text-gray-500">Antwort binnen 24h</p>
                   <p className="text-sm text-gray-500">Ausführliche Beratung</p>
                 </div>
                 <Button 
-                  className="mt-4 bg-emerald-600 hover:bg-emerald-700 text-white"
+                  className="mt-4 bg-[--primary-gold] hover:bg-[--primary-gold-light] text-white"
                   asChild
                 >
                   <Link href="mailto:info@umrahcheck.com?subject=Umrah-Beratung%20Anfrage&body=Assalamu%20alaikum,%0A%0Aich%20interessiere%20mich%20für%20eine%20Umrah-Beratung.%0A%0AMeine%20Daten:%0AName:%0ATelefon/WhatsApp:%0AReisezeitraum:%0APersonen:%0ABudget:%0A%0AVielen%20Dank!">
@@ -171,7 +147,7 @@ export default function KontaktPage() {
           transition={{ delay: 0.2 }}
           className="max-w-4xl mx-auto mb-16"
         >
-          <Card className="shadow-xl border-emerald-200">
+          <Card className="shadow-xl border-[--primary-gold]/20">
             <CardContent className="p-8">
               <div className="text-center mb-8">
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Schreibe uns eine Nachricht</h2>
@@ -190,7 +166,7 @@ export default function KontaktPage() {
                       value={formData.name}
                       onChange={(e) => handleInputChange('name', e.target.value)}
                       placeholder="Dein vollständiger Name"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary-gold] focus:border-[--primary-gold]"
                     />
                   </div>
                   <div>
@@ -201,7 +177,7 @@ export default function KontaktPage() {
                       value={formData.email}
                       onChange={(e) => handleInputChange('email', e.target.value)}
                       placeholder="deine@email.de"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--primary-gold] focus:border-[--primary-gold]"
                     />
                   </div>
                 </div>
@@ -240,7 +216,7 @@ export default function KontaktPage() {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="bg-emerald-600 hover:bg-emerald-700 text-white px-8 py-3 text-lg"
+                    className="bg-[--primary-gold] hover:bg-[--primary-gold-light] text-white px-8 py-3 text-lg"
                   >
                     {isSubmitting ? (
                       <>
@@ -267,16 +243,16 @@ export default function KontaktPage() {
           transition={{ delay: 0.4 }}
           className="max-w-4xl mx-auto"
         >
-          <Card className="shadow-lg border-emerald-200">
+          <Card className="shadow-lg border-[--primary-gold]/20">
             <CardContent className="p-8">
               <div className="text-center mb-8">
                 <div className="flex items-center justify-center gap-3 mb-6">
-                  <MapPin className="w-6 h-6 text-emerald-600" />
+                  <MapPin className="w-6 h-6 text-[--primary-gold]" />
                   <h3 className="text-2xl font-semibold text-gray-900">Unternehmensinformationen</h3>
                 </div>
                 
                 <div className="max-w-2xl mx-auto">
-                  <div className="bg-emerald-50 rounded-lg p-6 mb-6">
+                  <div className="bg-[--cream] rounded-lg p-6 mb-6">
                     <h4 className="text-lg font-semibold text-gray-900 mb-4">Nomad Agency for Marketing & Consulting LLC</h4>
                     <div className="space-y-2 text-gray-700">
                       <p>2880W OAKLAND PARK BLVD</p>
@@ -297,8 +273,8 @@ export default function KontaktPage() {
                     </div>
                   </div>
 
-                  <div className="mt-6 p-4 bg-emerald-50 rounded-lg">
-                    <p className="text-sm text-emerald-800 font-medium">
+                  <div className="mt-6 p-4 bg-[--cream] rounded-lg">
+                    <p className="text-sm text-[--text-primary] font-medium">
                       🕌 Von Muslim für Muslime - Persönliche Beratung direkt aus Medina
                     </p>
                   </div>
