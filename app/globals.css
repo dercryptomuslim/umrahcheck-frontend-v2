@@ -86,31 +86,31 @@
 }
 
 @layer components {
-  /* UmrahCheck Standard CTA Buttons */
+  /* UmrahCheck Standard CTA Buttons - Rounded Design */
   .cta-gold {
-    @apply bg-gradient-to-r from-[--primary-gold] to-[#C89B2D] hover:from-[#C89B2D] hover:to-[--primary-gold] text-white font-bold text-base px-6 py-3 rounded-lg shadow-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-2;
+    @apply bg-gradient-to-r from-[--primary-gold] to-[#C89B2D] hover:from-[#C89B2D] hover:to-[--primary-gold] text-white font-bold text-base px-6 py-3 rounded-xl shadow-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-2;
   }
   
   .cta-gold-large {
-    @apply bg-gradient-to-r from-[--primary-gold] to-[#C89B2D] hover:from-[#C89B2D] hover:to-[--primary-gold] text-white font-bold text-lg px-8 py-4 rounded-lg shadow-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-2;
+    @apply bg-gradient-to-r from-[--primary-gold] to-[#C89B2D] hover:from-[#C89B2D] hover:to-[--primary-gold] text-white font-bold text-lg px-8 py-4 rounded-xl shadow-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-2;
   }
   
   .hover-lift {
     @apply hover:-translate-y-1 transition-transform duration-200;
   }
   
-  /* Legacy Support */
+  /* Legacy Support - Rounded Design */
   .btn-gold {
-    @apply bg-gradient-to-r from-[--primary-gold] to-[#C89B2D] hover:from-[#C89B2D] hover:to-[--primary-gold] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-2;
+    @apply bg-gradient-to-r from-[--primary-gold] to-[#C89B2D] hover:from-[#C89B2D] hover:to-[--primary-gold] text-white font-bold px-6 py-3 rounded-xl shadow-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-2;
   }
   
   .btn-gold-outline {
-    @apply border-2 border-[--primary-gold] text-[--primary-gold] hover:bg-[--primary-gold] hover:text-white font-semibold px-6 py-3 rounded-lg transition-all duration-200;
+    @apply border-2 border-[--primary-gold] text-[--primary-gold] hover:bg-[--primary-gold] hover:text-white font-semibold px-6 py-3 rounded-xl transition-all duration-200;
   }
   
-  /* Form Styles */
+  /* Form Styles - Rounded Design */
   .form-input {
-    @apply w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[--ring-color] focus:border-[--primary-gold] transition-colors;
+    @apply w-full px-4 py-3 border border-gray-300 rounded-xl focus:ring-2 focus:ring-[--ring-color] focus:border-[--primary-gold] transition-colors;
   }
   
   .form-label {
