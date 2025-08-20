@@ -1,0 +1,5 @@
+# Ignore build cache to force fresh install
+.next
+node_modules
+.cache
+*.log
