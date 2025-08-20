@@ -142,12 +142,12 @@ export function Navbar({ className }: NavbarProps) {
           
           <Button
             size="lg"
-            className="cta-gold text-white font-semibold shadow-lg hover-lift group"
+            className="bg-gradient-to-r from-[--primary-gold] to-amber-500 hover:from-amber-600 hover:to-amber-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 px-6 py-2 rounded-lg group z-50 relative"
             asChild
           >
-            <Link href="/umrah-anfrage">
-              Dein Angebot starten
-              <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+            <Link href="/lp">
+              KI-Analyse starten
+              <Sparkles className="w-4 h-4 ml-2 group-hover:scale-110 transition-transform" />
             </Link>
           </Button>
         </div>

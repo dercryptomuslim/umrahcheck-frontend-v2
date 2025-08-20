@@ -336,11 +336,45 @@ export function ToolsSection() {
                 </div>
 
                 <div className="bg-primary-gold/10 rounded-2xl p-6 text-center">
-                  <h3 className="text-lg font-semibold text-dark-blue mb-2">📲 Dein Begleiter in der Tasche</h3>
-                  <p className="text-gray-700">
+                  <h3 className="text-lg font-semibold text-dark-blue mb-4">📲 Dein Begleiter in der Tasche</h3>
+                  <p className="text-gray-700 mb-6">
                     Alle Tools sind mobilfreundlich und jederzeit verfügbar. 
                     Ob Visa-Check, Packliste oder Restaurant-Guide – du hast alles dabei.
                   </p>
+                  
+                  <Button 
+                    className="cta-gold"
+                    onClick={() => {
+                      // Generate and download PDF
+                      const packingList = packingItems.map(category => 
+                        `${category.category}:\n${category.items.map(item => `• ${item}`).join('\n')}`
+                      ).join('\n\n');
+                      
+                      const pdfContent = `
+UMRAH PACKLISTE 2024/2025 - UmrahCheck.de
+=========================================
+
+${packingList}
+
+---
+Generiert von UmrahCheck.de - Deine Umrah-Experten
+Weitere Tools unter: https://umrahcheck.de/tools
+                      `;
+                      
+                      const blob = new Blob([pdfContent], { type: 'text/plain' });
+                      const url = URL.createObjectURL(blob);
+                      const a = document.createElement('a');
+                      a.href = url;
+                      a.download = 'umrah-packliste-2025.txt';
+                      document.body.appendChild(a);
+                      a.click();
+                      document.body.removeChild(a);
+                      URL.revokeObjectURL(url);
+                    }}
+                  >
+                    <Download className="w-4 h-4 mr-2" />
+                    Packliste als Datei herunterladen
+                  </Button>
                 </div>
               </motion.div>
             )}

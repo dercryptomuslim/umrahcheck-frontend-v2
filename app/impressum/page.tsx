@@ -27,14 +27,14 @@ export default function ImpressumPage() {
             <section>
               <h2 className="text-2xl font-semibold text-gray-900 mb-4">Anbieter</h2>
               <div className="space-y-2 text-gray-700">
-                <p className="text-lg font-medium">UmrahCheck GmbH</p>
+                <p className="text-lg font-medium">Mustafa Ali</p>
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-emerald-600" />
-                  <span>Musterstraße 123</span>
+                  <span>Einzelunternehmer</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <MapPin className="w-4 h-4 text-emerald-600" />
-                  <span>12345 Berlin, Deutschland</span>
+                  <span>Deutschland</span>
                 </div>
               </div>
             </section>
@@ -45,36 +45,21 @@ export default function ImpressumPage() {
               <div className="space-y-2 text-gray-700">
                 <div className="flex items-center gap-2">
                   <Phone className="w-4 h-4 text-emerald-600" />
-                  <span>Telefon: +49 (0) 123 456 789 01</span>
+                  <span>WhatsApp: +966 56 063 0947</span>
                 </div>
                 <div className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-emerald-600" />
-                  <span>E-Mail: info@umrahcheck.com</span>
+                  <span>E-Mail: info@umrahcheck.de</span>
                 </div>
               </div>
             </section>
 
-            {/* Geschäftsführung */}
+            {/* Geschäftstätigkeit */}
             <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Geschäftsführung</h2>
-              <p className="text-gray-700">Mustafa Ali (Geschäftsführer)</p>
-            </section>
-
-            {/* Handelsregister */}
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Handelsregister</h2>
-              <div className="space-y-2 text-gray-700">
-                <p>Handelsregister: Amtsgericht Berlin</p>
-                <p>Registernummer: HRB 123456 B</p>
-              </div>
-            </section>
-
-            {/* Umsatzsteuer */}
-            <section>
-              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Umsatzsteuer-ID</h2>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-4">Geschäftstätigkeit</h2>
               <p className="text-gray-700">
-                Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
-                DE123456789
+                Umrah-Beratungsservice, Reise-Tools und Preisvergleiche. 
+                Kein Reiseveranstalter - reine Vermittlungs- und Beratungstätigkeit.
               </p>
             </section>
 

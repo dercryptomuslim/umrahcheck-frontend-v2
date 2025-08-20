@@ -65,6 +65,15 @@ export default function RootLayout({
 }) {
   return (
     <html lang="de" className="scroll-smooth">
+      <head>
+        <script 
+          id="Cookiebot" 
+          src="https://consent.cookiebot.com/uc.js" 
+          data-cbid="fd402bfe-7103-44fe-bda6-a685244210c9" 
+          data-blockingmode="auto" 
+          type="text/javascript"
+        />
+      </head>
       <body className={inter.className}>
         <script
           dangerouslySetInnerHTML={{
