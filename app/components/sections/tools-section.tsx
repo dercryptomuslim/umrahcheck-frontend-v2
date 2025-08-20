@@ -18,6 +18,7 @@ import {
   Smartphone,
   Heart,
   CheckCircle,
+  Zap,
   MapPin,
   Star,
   Shield,
@@ -485,12 +486,12 @@ Weitere Tools unter: https://umrahcheck.de/tools
               
               <Button
                 size="xl"
-                className="cta-gold text-lg px-12 py-4 hover-lift group"
+                className="cta-gold-large hover-lift"
                 asChild
               >
-                <a href="/umrah-anfrage">
-                  Dein Angebot starten
-                  <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                <a href="/lp">
+                  <Zap className="w-5 h-5" />
+                  Jetzt kostenlos starten
                 </a>
               </Button>
             </motion.div>

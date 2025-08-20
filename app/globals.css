@@ -86,9 +86,22 @@
 }
 
 @layer components {
-  /* Golden Button Styles */
+  /* UmrahCheck Standard CTA Buttons */
+  .cta-gold {
+    @apply bg-gradient-to-r from-[--primary-gold] to-[#C89B2D] hover:from-[#C89B2D] hover:to-[--primary-gold] text-white font-bold text-base px-6 py-3 rounded-lg shadow-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-2;
+  }
+  
+  .cta-gold-large {
+    @apply bg-gradient-to-r from-[--primary-gold] to-[#C89B2D] hover:from-[#C89B2D] hover:to-[--primary-gold] text-white font-bold text-lg px-8 py-4 rounded-lg shadow-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-2;
+  }
+  
+  .hover-lift {
+    @apply hover:-translate-y-1 transition-transform duration-200;
+  }
+  
+  /* Legacy Support */
   .btn-gold {
-    @apply bg-[--primary-gold] hover:bg-[--primary-gold-hover] text-white font-semibold px-6 py-3 rounded-lg shadow-md transition-all duration-200 hover:shadow-lg active:scale-95;
+    @apply bg-gradient-to-r from-[--primary-gold] to-[#C89B2D] hover:from-[#C89B2D] hover:to-[--primary-gold] text-white font-bold px-6 py-3 rounded-lg shadow-md transition-all duration-200 hover:shadow-lg active:scale-95 flex items-center justify-center gap-2;
   }
   
   .btn-gold-outline {

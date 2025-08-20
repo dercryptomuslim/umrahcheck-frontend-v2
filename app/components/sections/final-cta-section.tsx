@@ -10,7 +10,8 @@ import {
   Shield,
   ArrowRight,
   CheckCircle,
-  Sparkles
+  Sparkles,
+  Zap
 } from 'lucide-react'
 import Link from 'next/link'
 
@@ -101,12 +102,12 @@ export function FinalCTASection() {
               >
                 <Button
                   size="xl"
-                  className="cta-gold text-black font-bold text-xl px-12 py-6 hover-lift"
+                  className="cta-gold-large hover-lift"
                   asChild
                 >
-                  <Link href="/umrah-anfrage">
-                    Jetzt Umrah-Angebot sichern
-                    <ArrowRight className="ml-3 h-6 w-6 group-hover:translate-x-1 transition-transform" />
+                  <Link href="/lp">
+                    <Zap className="h-5 w-5" />
+                    Jetzt kostenlos starten
                   </Link>
                 </Button>
               </motion.div>

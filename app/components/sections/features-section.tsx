@@ -13,7 +13,8 @@ import {
   TrendingDown,
   MapPin,
   Shield,
-  Smartphone
+  Smartphone,
+  Zap
 } from 'lucide-react'
 
 const features = [
@@ -226,11 +227,12 @@ export function FeaturesSection() {
         >
           <Button
             size="xl"
-            className="cta-gold text-lg px-12 py-4 hover-lift"
+            className="cta-gold-large hover-lift"
             asChild
           >
-            <Link href="/umrah-anfrage">
-              Jetzt kostenlos prüfen
+            <Link href="/lp">
+              <Zap className="h-5 w-5" />
+              Jetzt kostenlos starten
             </Link>
           </Button>
         </motion.div>

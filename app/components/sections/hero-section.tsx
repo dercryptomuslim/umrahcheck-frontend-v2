@@ -12,7 +12,8 @@ import {
   Shield,
   Clock,
   TrendingUp,
-  Users
+  Users,
+  Zap
 } from 'lucide-react';
 import Link from 'next/link';
 
@@ -119,12 +120,12 @@ export function HeroSection() {
           >
             <Button
               size="xl"
-              className="cta-gold text-lg px-8 py-4 hover-lift"
+              className="cta-gold-large hover-lift"
               asChild
             >
-              <Link href="/umrah-anfrage">
-                JETZT TESTEN
-                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              <Link href="/lp">
+                <Zap className="h-5 w-5" />
+                Jetzt kostenlos starten
               </Link>
             </Button>
             

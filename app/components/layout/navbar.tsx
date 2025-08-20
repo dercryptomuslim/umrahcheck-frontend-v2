@@ -28,6 +28,7 @@ import {
   Calculator,
   BookOpen,
   Users,
+  Zap,
   ArrowRight
 } from 'lucide-react';
 
@@ -142,12 +143,12 @@ export function Navbar({ className }: NavbarProps) {
           
           <Button
             size="lg"
-            className="bg-gradient-to-r from-[--primary-gold] to-amber-500 hover:from-amber-600 hover:to-amber-700 text-white font-semibold shadow-lg hover:shadow-xl transition-all duration-300 px-6 py-2 rounded-lg group z-50 relative"
+            className="cta-gold hover-lift z-50 relative"
             asChild
           >
             <Link href="/lp">
-              KI-Analyse starten
-              <Sparkles className="w-4 h-4 ml-2 group-hover:scale-110 transition-transform" />
+              <Zap className="w-4 h-4" />
+              Jetzt kostenlos starten
             </Link>
           </Button>
         </div>
@@ -203,13 +204,13 @@ export function Navbar({ className }: NavbarProps) {
                 
                 <Button
                   size="lg"
-                  className="w-full cta-gold text-white font-semibold shadow-lg hover-lift group"
+                  className="w-full cta-gold hover-lift"
                   onClick={() => setIsOpen(false)}
                   asChild
                 >
-                  <Link href="/umrah-anfrage">
-                    Dein Angebot starten
-                    <ArrowRight className="w-4 h-4 ml-2 group-hover:translate-x-1 transition-transform" />
+                  <Link href="/lp">
+                    <Zap className="w-4 h-4" />
+                    Jetzt kostenlos starten
                   </Link>
                 </Button>
               </div>
