@@ -1,9 +1,7 @@
-"use client"
-
+import type { Metadata } from 'next'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
 import { 
   ArrowLeft,
   Clock,
@@ -13,7 +11,35 @@ import {
   BookOpen,
   Zap
 } from 'lucide-react'
-import Head from 'next/head'
+
+export const metadata: Metadata = {
+  title: 'UmrahCheck Blog - Spartipps und Ratgeber für deine Umrah-Reise',
+  description: 'Entdecke echte Spartipps, ehrliche Preisanalysen und praktische Ratgeber für deine Umrah-Reise. Von praktizierenden Muslimen für Muslime - transparent und ohne versteckte Verkaufsabsichten.',
+  keywords: 'Umrah Blog, Umrah Spartipps, Umrah Kosten, günstige Umrah, Umrah Ratgeber, Mekka Reise, Medina Reise, Umrah Planung',
+  openGraph: {
+    title: 'UmrahCheck Blog - Spartipps und Ratgeber für deine Umrah',
+    description: 'Echte Spartipps und ehrliche Preisanalysen für deine Umrah-Reise',
+    url: 'https://umrahcheck.de/blog',
+    siteName: 'UmrahCheck',
+    images: [{
+      url: 'https://umrahcheck.de/blog-header.jpg',
+      width: 1200,
+      height: 630,
+      alt: 'UmrahCheck Blog'
+    }],
+    locale: 'de_DE',
+    type: 'website',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'UmrahCheck Blog - Spartipps für deine Umrah',
+    description: 'Echte Spartipps und ehrliche Preisanalysen für deine Umrah-Reise',
+    images: ['https://umrahcheck.de/blog-header.jpg'],
+  },
+  alternates: {
+    canonical: 'https://umrahcheck.de/blog',
+  },
+}
 
 const blogPosts = [
   {
@@ -31,19 +57,7 @@ const blogPosts = [
 
 export default function BlogPage() {
   return (
-    <>
-      <Head>
-        <title>UmrahCheck Blog - Spartipps und Ratgeber für deine Umrah-Reise</title>
-        <meta name="description" content="Entdecke echte Spartipps, ehrliche Preisanalysen und praktische Ratgeber für deine Umrah-Reise. Von praktizierenden Muslimen für Muslime - transparent und ohne versteckte Verkaufsabsichten." />
-        <meta name="keywords" content="Umrah Blog, Umrah Spartipps, Umrah Kosten, günstige Umrah, Umrah Ratgeber, Mekka Reise, Medina Reise, Umrah Planung" />
-        <meta property="og:title" content="UmrahCheck Blog - Spartipps und Ratgeber für deine Umrah" />
-        <meta property="og:description" content="Echte Spartipps und ehrliche Preisanalysen für deine Umrah-Reise" />
-        <meta property="og:url" content="https://umrahcheck.de/blog" />
-        <meta property="og:type" content="website" />
-        <link rel="canonical" href="https://umrahcheck.de/blog" />
-      </Head>
-      
-      <div className="min-h-screen bg-gradient-to-br from-white via-[--cream-light] to-[--sand]">
+    <div className="min-h-screen bg-gradient-to-br from-white via-[--cream-light] to-[--sand]">
       
       {/* Header */}
       <div className="bg-gradient-to-r from-[--midnight] to-[--dark-blue] text-white py-16">
@@ -69,10 +83,8 @@ export default function BlogPage() {
         
         {/* Featured Article */}
         {blogPosts.filter(post => post.featured).map((post) => (
-          <motion.div
+          <div
             key={post.id}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto mb-16"
           >
             <Card className="overflow-hidden shadow-2xl border-0 bg-white/90 backdrop-blur">
@@ -131,16 +143,11 @@ export default function BlogPage() {
                 </CardContent>
               </div>
             </Card>
-          </motion.div>
+          </div>
         ))}
 
         {/* Coming Soon Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-          className="max-w-4xl mx-auto"
-        >
+        <div className="max-w-4xl mx-auto">
           <Card className="bg-gradient-to-r from-[--cream] to-[--sand] border-[--primary-gold]/30">
             <CardContent className="p-8 text-center">
               <div className="w-16 h-16 bg-[--primary-gold]/20 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -172,15 +179,10 @@ export default function BlogPage() {
               </div>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
 
         {/* CTA Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-          className="text-center mt-16"
-        >
+        <div className="text-center mt-16">
           <Card className="max-w-2xl mx-auto bg-gradient-to-r from-[--midnight] to-[--dark-blue] text-white">
             <CardContent className="p-8">
               <h2 className="text-3xl font-bold mb-4">
@@ -203,8 +205,8 @@ export default function BlogPage() {
               </Button>
             </CardContent>
           </Card>
-        </motion.div>
+        </div>
       </div>
-    </>
+    </div>
   )
 }
