@@ -399,11 +399,11 @@ export default function LandingPage() {
             >
               <div className="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
                 <Zap className="w-4 h-4" />
-                🔥 ENTLARVT: Umrah-Agenturen verlangen 3.500€ für 1.450€ Reisen!
+                🔥 ENTLARVT: Umrah-Agenturen verlangen bis zu 2.500€ für 1.800€ Reisen!
               </div>
               
               <h1 className="text-5xl md:text-6xl font-bold mb-6">
-                Spare <span className="text-[--primary-gold]">bis zu 2.000€</span> bei deiner Umrah
+                Spare <span className="text-[--primary-gold]">400-600€ pro Person</span> bei deiner Umrah
                 <br />mit unserer KI-Analyse
               </h1>
               
@@ -437,7 +437,7 @@ export default function LandingPage() {
               <div className="text-center mb-8">
                 <div className="inline-flex items-center gap-2 bg-green-100 text-green-800 px-4 py-2 rounded-full text-sm font-medium mb-4">
                   <TrendingUp className="w-4 h-4" />
-                  Basierend auf 50.000+ echten Buchungen
+                  Basierend auf 60 zufriedenen Pilgern & 28 echten Bewertungen
                 </div>
                 <h2 className="text-3xl font-bold text-midnight mb-4">
                   Das bekommst du in deinem persönlichen Umrah-Angebot:
@@ -544,13 +544,13 @@ export default function LandingPage() {
                       🚨 Deine potenzielle Ersparnis:
                     </h3>
                     <p className="text-gray-700">
-                      Während "Umrah-Organisationen" für dasselbe Paket <strong>3.500-4.500€</strong> verlangen,
-                      zeigt dir unsere KI die echten Preise: <strong>nur 1.450-2.200€</strong>
+                      Während "Umrah-Organisationen" für dasselbe Paket <strong>2.200-2.800€</strong> verlangen,
+                      zeigt dir unsere KI die echten Preise: <strong>ehrlich 1.800-2.200€</strong>
                     </p>
                   </div>
                   <div className="text-center">
-                    <div className="text-4xl font-bold text-red-600">-2.000€</div>
-                    <div className="text-sm text-gray-600">Durchschnittliche Ersparnis</div>
+                    <div className="text-4xl font-bold text-red-600">-500€</div>
+                    <div className="text-sm text-gray-600">Durchschnittliche Ersparnis pro Person</div>
                   </div>
                 </div>
               </div>
@@ -660,8 +660,8 @@ export default function LandingPage() {
                         >
                           <option value="">Budget wählen</option>
                           <option value="bis-2000">Bis 2.000€ (Budget)</option>
-                          <option value="2000-3500">2.000€ - 3.500€ (Standard)</option>
-                          <option value="3500-5000">3.500€ - 5.000€ (Premium)</option>
+                          <option value="2000-2800">2.000€ - 2.800€ (Standard)</option>
+                          <option value="2800-4000">2.800€ - 4.000€ (Premium)</option>
                           <option value="ab-5000">Ab 5.000€ (Luxus)</option>
                         </select>
                       </div>

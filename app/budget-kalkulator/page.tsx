@@ -85,7 +85,7 @@ const hotelCategories: HotelCategory[] = [
 ]
 
 export default function BudgetKalkulator() {
-  const [budget, setBudget] = useState(1200)
+  const [budget, setBudget] = useState(1800)
   const [days, setDays] = useState(10)
   const [persons, setPersons] = useState(2)
   const [hotelStandard, setHotelStandard] = useState(3)
@@ -101,12 +101,12 @@ export default function BudgetKalkulator() {
   // Calculate available budget
   const availableBudget = budget - visaCost - serviceCost
   
-  // Flight costs based on budget
+  // Flight costs based on budget - realistic pricing
   const getFlightCost = (budget: number) => {
-    if (budget < 850) return 380 // Very budget airlines
     if (budget < 1200) return 450 // Budget airlines
-    if (budget < 1600) return 550 // Good airlines
-    return 650 // Premium airlines
+    if (budget < 1800) return 550 // Good airlines  
+    if (budget < 2500) return 650 // Premium airlines
+    return 750 // Luxury airlines
   }
   
   const flightCost = getFlightCost(budget)
@@ -140,16 +140,16 @@ export default function BudgetKalkulator() {
   // Calculate how many days possible with current standards
   const maxDaysWithStandard = Math.floor((availableBudget - flightCost) / hotelCostPerNight)
   
-  // Recommendations
+  // Recommendations - realistic budget advice
   const getRecommendation = () => {
-    if (budget < 850) {
+    if (budget < 1200) {
       return {
         type: 'warning',
-        text: 'Budget sehr knapp! Empfehlung: Mindestens 850€ für eine angenehme Umrah.',
+        text: 'Budget sehr knapp! Empfehlung: Mindestens 1.200€ für eine angenehme Umrah.',
         icon: AlertCircle
       }
     }
-    if (budget < 1200 && persons < 3) {
+    if (budget < 1800 && persons < 3) {
       return {
         type: 'info',
         text: 'Tipp: Mit 3-4 Personen kannst du 25% bei Hotels sparen!',
@@ -229,15 +229,15 @@ export default function BudgetKalkulator() {
                   <Slider
                     value={[budget]}
                     onValueChange={(value) => setBudget(value[0])}
-                    min={600}
-                    max={3000}
+                    min={1000}
+                    max={4000}
                     step={50}
                     className="mb-2"
                   />
                   <div className="flex justify-between text-xs text-gray-400">
-                    <span>600€</span>
-                    <span>1500€</span>
-                    <span>3000€</span>
+                    <span>1000€</span>
+                    <span>2000€</span>
+                    <span>4000€</span>
                   </div>
                 </div>
 
@@ -474,7 +474,7 @@ export default function BudgetKalkulator() {
             </Card>
 
             {/* CTA */}
-            {budgetStatus === 'sufficient' && budget >= 850 && (
+            {budgetStatus === 'sufficient' && budget >= 1200 && (
               <Card className="bg-gradient-to-r from-emerald-600 to-gold-600 border-0">
                 <CardContent className="p-6 text-center">
                   <h3 className="text-2xl font-bold text-white mb-3">
