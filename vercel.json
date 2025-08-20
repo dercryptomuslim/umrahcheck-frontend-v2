@@ -47,10 +47,5 @@
         }
       ]
     }
-  ],
-  "env": {
-    "NEXT_PUBLIC_API_URL": "@api-url",
-    "NEXT_PUBLIC_N8N_WEBHOOK": "@n8n-webhook",
-    "NEXT_PUBLIC_COPECART_URL": "@copecart-url"
-  }
+  ]
 }
