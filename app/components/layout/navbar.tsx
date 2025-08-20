@@ -53,6 +53,12 @@ export function Navbar({ className }: NavbarProps) {
       description: 'Flüge + Hotels budget-optimiert'
     },
     {
+      name: 'Blog',
+      href: '/blog',
+      icon: BookOpen,
+      description: 'Spartipps & Umrah-Ratgeber'
+    },
+    {
       name: 'Tools & Guides',
       href: '/tools',
       icon: BookOpen,
