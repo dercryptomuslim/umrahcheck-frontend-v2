@@ -72,27 +72,54 @@ export default function KIAnalysePage() {
         const budget = parsed.budget || '1200'
         const name = parsed.name || 'Kunde'
         
-        // Determine status based on budget (per person for 10-12 days)
+        // Determine status based on new budget categories
         let status = 'optimal'
         let recommendation = ''
         let details = ''
         
-        if (parseInt(budget) < 850) {
+        // Handle new budget range format
+        const budgetRange = parsed.budget || '1200'
+        
+        if (budgetRange === 'unter-900') {
           status = 'insufficient'
-          recommendation = 'Budget sehr knapp - Umrah nur mit Kompromissen möglich'
-          details = 'Nur sehr einfache Hotels und günstige Flüge möglich. Empfehlung: Budget auf mindestens 850€ erhöhen.'
-        } else if (parseInt(budget) >= 850 && parseInt(budget) < 1200) {
+          recommendation = 'Budget sehr knapp - nur kurze Umrah möglich'
+          details = 'Nur 5-7 Tage Umrah mit einfachen Hotels und günstigen Flügen. Empfehlung: Budget auf Smart Budget (900-1.150€) erhöhen.'
+        } else if (budgetRange === '900-1150') {
           status = 'good'
-          recommendation = 'Gutes Budget für eine schöne Umrah!'
-          details = 'Empfehlung: 3-4 Personen für bessere Hotelpreise. 4-5 Sterne Hotels ohne Frühstück möglich. Ideal: 1000€ Budget.'
-        } else if (parseInt(budget) >= 1200 && parseInt(budget) < 1600) {
+          recommendation = 'Smart Budget - Gutes Preis-Leistungs-Verhältnis!'
+          details = '3-4 Sterne Hotels mit gutem Service. Kurze Busfahrt zum Haram. Ideale Basis für eine schöne Umrah.'
+        } else if (budgetRange === '1150-1300') {
           status = 'optimal'
-          recommendation = 'Optimales Budget - Premium Umrah möglich!'
-          details = '5 Sterne Hotels mit Frühstück. Bei 3-4 Personen noch bessere Konditionen möglich.'
-        } else {
+          recommendation = 'Komfort Klasse - Sehr gute Auswahl!'
+          details = '4-5 Sterne Hotels mit Komfort-Zimmern. Nähere Lage zum Haram. Frühstück optional buchbar.'
+        } else if (budgetRange === '1300-1600') {
+          status = 'optimal'
+          recommendation = 'Premium Klasse - Erstklassige Umrah!'
+          details = '5 Sterne Hotels mit Premium-Service. Fußläufig zum Haram. Vollpension und Luxus-Ausstattung.'
+        } else if (budgetRange === '1600-2500') {
           status = 'premium'
-          recommendation = 'Luxus-Budget - Erstklassige Umrah garantiert!'
-          details = 'Premium Hotels direkt am Haram mit allen Annehmlichkeiten.'
+          recommendation = 'Luxus Klasse - VIP Behandlung garantiert!'
+          details = 'Exklusive 5 Sterne Hotels direkt am Haram. VIP-Service, Vollpension und alle Annehmlichkeiten.'
+        } else if (budgetRange === 'ab-2500') {
+          status = 'premium'
+          recommendation = 'High Class - Absolute Luxus-Umrah!'
+          details = 'Die besten Hotels am Markt mit Royal-Service. Private Transfers und exklusive Behandlung.'
+        } else {
+          // Fallback for old budget format (if any)
+          const budgetNum = parseInt(budgetRange)
+          if (budgetNum < 900) {
+            status = 'insufficient'
+            recommendation = 'Budget sehr knapp - nur kurze Umrah möglich'
+            details = 'Nur 5-7 Tage Umrah mit einfachen Hotels. Empfehlung: Budget erhöhen für bessere Optionen.'
+          } else if (budgetNum < 1300) {
+            status = 'good'
+            recommendation = 'Gutes Budget für eine schöne Umrah!'
+            details = '4-5 Sterne Hotels mit gutem Service und vernünftiger Entfernung zum Haram.'
+          } else {
+            status = 'optimal'
+            recommendation = 'Optimales Budget - Premium Umrah möglich!'
+            details = '5 Sterne Hotels mit Frühstück und exzellenter Lage.'
+          }
         }
         
         // Redirect to upsell with params

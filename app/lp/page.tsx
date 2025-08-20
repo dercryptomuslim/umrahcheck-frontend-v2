@@ -5,7 +5,6 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent } from '@/components/ui/card'
 import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
-import { CESModal, useCESTracking } from '@/components/ces-modal'
 import { useAnalytics, initializeScrollTracking } from '@/lib/analytics'
 import { useABTest } from '@/lib/ab-testing-lp'
 import { 
@@ -38,7 +37,8 @@ interface FormData {
   besondere_wuensche: string
   
   // Step 3: Kontakt
-  name: string
+  vorname: string
+  nachname: string
   email: string
   telefon: string
 }
@@ -72,7 +72,8 @@ export default function LandingPage() {
     hotel_kategorie: '',
     entfernung_haram: '',
     besondere_wuensche: '',
-    name: '',
+    vorname: '',
+    nachname: '',
     email: '',
     telefon: ''
   })
@@ -81,8 +82,6 @@ export default function LandingPage() {
   const [estimate, setEstimate] = useState<EstimateData | null>(null)
   const [isEstimating, setIsEstimating] = useState(false)
   
-  // CES Tracking
-  const { modalState, showCESModal, closeCESModal, handleCESSubmit } = useCESTracking()
   
   // Analytics Tracking
   const analytics = useAnalytics()
@@ -175,13 +174,6 @@ export default function LandingPage() {
           // Track estimate received
           analytics.trackEstimateReceived(result.estimate, responseTime)
           
-          // Trigger CES after first estimate (only once)
-          if (!localStorage.getItem('umrahcheck_estimate_ces_shown')) {
-            setTimeout(() => {
-              showCESModal('estimate_received')
-              localStorage.setItem('umrahcheck_estimate_ces_shown', 'true')
-            }, 3000) // Give user time to review the estimate
-          }
         }
       }
     } catch (error) {
@@ -217,12 +209,6 @@ export default function LandingPage() {
     if (currentStep < 3) {
       setCurrentStep(currentStep + 1)
       
-      // Trigger CES after step 2 (preferences completed)
-      if (currentStep === 2) {
-        setTimeout(() => {
-          showCESModal('step_completion')
-        }, 1500) // Show modal after user has time to see step 3
-      }
     }
   }
 
@@ -239,8 +225,8 @@ export default function LandingPage() {
     try {
       // Prepare webhook payload for n8n (exact format for dercryptomuslim.app.n8n.cloud)
       const webhookPayload = {
-        first_name: formData.name.split(' ')[0] || formData.name,
-        nachname: formData.name.split(' ').slice(1).join(' ') || '',
+        first_name: formData.vorname,
+        nachname: formData.nachname,
         email: formData.email,
         whatsappnummer: formData.telefon,
         '1-6-Personen': formData.personen === '1' ? 'Solo' : 
@@ -276,11 +262,20 @@ export default function LandingPage() {
       })
       
       if (response.ok) {
-        // Store lead info for thank you page
+        // Store lead info for ki-analyse page
         localStorage.setItem('umrahcheck_lead', JSON.stringify({
-          name: formData.name,
+          name: `${formData.vorname} ${formData.nachname}`.trim(),
           email: formData.email,
-          budget: webhookPayload.budget,
+          whatsapp: formData.telefon,
+          budget: formData.budget,
+          persons: formData.personen,
+          destination: 'Medina',
+          departure: 'Frankfurt', 
+          date: formData.reisezeitraum,
+          nights_mecca: '5',
+          nights_medina: '4',
+          nationality: 'deutsch',
+          notes: formData.besondere_wuensche,
           timestamp: Date.now()
         }))
         
@@ -659,10 +654,12 @@ export default function LandingPage() {
                           onChange={(e) => updateFormData('budget', e.target.value)}
                         >
                           <option value="">Budget wählen</option>
-                          <option value="bis-2000">Bis 2.000€ (Budget)</option>
-                          <option value="2000-2800">2.000€ - 2.800€ (Standard)</option>
-                          <option value="2800-4000">2.800€ - 4.000€ (Premium)</option>
-                          <option value="ab-5000">Ab 5.000€ (Luxus)</option>
+                          <option value="unter-900">Unter 900€ (Kurze Umrah 5-7 Tage)</option>
+                          <option value="900-1150">900€ - 1.150€ (Smart Budget)</option>
+                          <option value="1150-1300">1.150€ - 1.300€ (Komfort Klasse)</option>
+                          <option value="1300-1600">1.300€ - 1.600€ (Premium Klasse)</option>
+                          <option value="1600-2500">1.600€ - 2.500€ (Luxus Klasse)</option>
+                          <option value="ab-2500">Ab 2.500€ (High Class)</option>
                         </select>
                       </div>
                     </div>
@@ -844,25 +841,36 @@ export default function LandingPage() {
                     <div className="space-y-6">
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
-                          <label className="form-label">Dein Name</label>
+                          <label className="form-label">Vorname *</label>
                           <input 
                             type="text"
                             className="form-input"
-                            placeholder="z.B. Ahmed Mohammed"
-                            value={formData.name}
-                            onChange={(e) => updateFormData('name', e.target.value)}
+                            placeholder="z.B. Ahmed"
+                            value={formData.vorname}
+                            onChange={(e) => updateFormData('vorname', e.target.value)}
                           />
                         </div>
                         <div>
-                          <label className="form-label">WhatsApp/Telefon</label>
+                          <label className="form-label">Nachname *</label>
                           <input 
-                            type="tel"
+                            type="text"
                             className="form-input"
-                            placeholder="+49 123 456 789"
-                            value={formData.telefon}
-                            onChange={(e) => updateFormData('telefon', e.target.value)}
+                            placeholder="z.B. Mohammed"
+                            value={formData.nachname}
+                            onChange={(e) => updateFormData('nachname', e.target.value)}
                           />
                         </div>
+                      </div>
+
+                      <div>
+                        <label className="form-label">WhatsApp/Telefon</label>
+                        <input 
+                          type="tel"
+                          className="form-input"
+                          placeholder="+49 123 456 789"
+                          value={formData.telefon}
+                          onChange={(e) => updateFormData('telefon', e.target.value)}
+                        />
                       </div>
 
                       <div>
@@ -925,7 +933,7 @@ export default function LandingPage() {
                   <Button 
                     onClick={handleSubmit}
                     className="btn-gold"
-                    disabled={isSubmitting || !formData.name || !formData.email || !formData.telefon}
+                    disabled={isSubmitting || !formData.vorname || !formData.nachname || !formData.email || !formData.telefon}
                   >
                     {isSubmitting ? (
                       <>
@@ -976,17 +984,6 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* CES Modal */}
-      <CESModal
-        isOpen={modalState.isOpen}
-        onClose={closeCESModal}
-        trigger={modalState.trigger}
-        onSubmit={(rating, feedback, improvements) => {
-          analytics.trackCESResponse(rating, modalState.trigger, feedback, improvements)
-          trackMetric('ces_score', rating, { trigger: modalState.trigger })
-          handleCESSubmit(rating, feedback, improvements)
-        }}
-      />
     </div>
   )
 }
