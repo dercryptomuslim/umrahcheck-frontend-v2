@@ -123,8 +123,8 @@ const nextConfig: NextConfig = {
     ignoreDuringBuilds: true, // Disable for faster builds
   },
   
-  // Output configuration for Vercel
-  output: 'standalone',
+  // Output configuration - removed 'standalone' for Vercel compatibility
+  // output: 'standalone', // Commented out - causes issues with Vercel deployment
   
   // Webpack configuration
   webpack: (config, { isServer }) => {
