@@ -237,29 +237,33 @@ export default function LandingPage() {
     analytics.trackFormSubmission(formData)
     
     try {
-      // Prepare webhook payload for n8n
+      // Prepare webhook payload for n8n (exact format for dercryptomuslim.app.n8n.cloud)
       const webhookPayload = {
         first_name: formData.name.split(' ')[0] || formData.name,
         nachname: formData.name.split(' ').slice(1).join(' ') || '',
         email: formData.email,
         whatsappnummer: formData.telefon,
-        abflugort: 'Frankfurt', // Default or from form
-        zielflughafen: 'Medina', // Default
-        abflugdatum: formData.reisezeitraum === 'ramadan-2025' ? '01.03.2025' : '01.06.2025',
+        '1-6-Personen': formData.personen === '1' ? 'Solo' : 
+                       formData.personen === '2' ? 'Starter' : 
+                       formData.personen === '3-4' ? 'Familie' : 'Gruppe',
+        abflugort: 'Frankfurt',
+        zielflughafen: 'Medina', 
+        abflugdatum: formData.reisezeitraum === 'ramadan-2025' ? '19.03.2025' : 
+                     formData.reisezeitraum === 'sommer-2025' ? '19.08.2025' : '19.06.2025',
         flexibilitaet: '4',
         mekka_nacht: '5',
         medina_nacht: '4', 
         personenanzahl: formData.personen,
-        budget: formData.budget.includes('bis-2000') ? '1500' : 
+        budget: formData.budget.includes('bis-2000') ? '1100' : 
                 formData.budget.includes('2000-3500') ? '2500' :
                 formData.budget.includes('3500-5000') ? '4000' : '5500',
         Staatsangehoerigkeit: 'deutsch',
-        Anmerkungen: formData.besondere_wuensche,
+        Anmerkungen: formData.besondere_wuensche || '',
         'Accept-privacy-policy': 'on',
-        utm_source: 'landing_page',
-        utm_medium: 'organic',
-        utm_campaign: 'lp_test',
-        referrer_url: window.location.href
+        utm_source: typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('utm_source') || 'tiktok' : 'tiktok',
+        utm_medium: typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('utm_medium') || 'ad' : 'ad', 
+        utm_campaign: typeof window !== 'undefined' ? new URLSearchParams(window.location.search).get('utm_campaign') || 'eid_sale' : 'eid_sale',
+        referrer_url: typeof window !== 'undefined' ? window.location.href : 'https://umrahcheck.de/landingpage'
       }
       
       // Send to n8n webhook
@@ -284,8 +288,8 @@ export default function LandingPage() {
         analytics.trackConversion('form_completion')
         trackConversion('form_completion')
         
-        // Redirect to thank you page
-        window.location.href = '/danke'
+        // Redirect to KI analysis page
+        window.location.href = '/ki-analyse'
       } else {
         throw new Error('Webhook submission failed')
       }
