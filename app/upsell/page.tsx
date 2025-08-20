@@ -215,8 +215,8 @@ function UpsellContent() {
                     <div className="flex items-center justify-center gap-2 mb-6">
                       <span className="text-4xl font-bold text-gray-900">39€</span>
                       <div className="text-left">
-                        <div className="text-sm text-gray-500 line-through">78€</div>
-                        <div className="text-sm text-emerald-600 font-semibold">50% Rabatt</div>
+                        <div className="text-sm text-gray-500 line-through">119€</div>
+                        <div className="text-sm text-emerald-600 font-semibold">67% Rabatt</div>
                       </div>
                     </div>
                   </div>
@@ -299,7 +299,7 @@ function UpsellContent() {
                       className={`bg-gradient-to-r ${config.cardGradient} hover:opacity-90 text-white px-8 py-4 text-lg`}
                       onClick={() => {
                         // Redirect to Copecart
-                        window.open('https://app.copecart.com/products/umrahcheck-individuelles-paket', '_blank')
+                        window.open('https://copecart.com/products/568d77fe/checkout', '_blank')
                       }}
                     >
                       <CreditCard className="w-5 h-5 mr-2" />

@@ -29,12 +29,39 @@ export default function KIAnalysePage() {
       if (parsed.name) {
         setCustomerName(parsed.name.split(' ')[0] || 'Lieber Bruder/Liebe Schwester')
       }
+      
+      // Trigger webhook immediately when page loads
+      fetch('https://dercryptomuslim.app.n8n.cloud/webhook/umrah-lead-capture', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: parsed.name || '',
+          email: parsed.email || '',
+          whatsapp: parsed.whatsapp || '',
+          budget: parsed.budget || '',
+          persons: parsed.persons || '',
+          destination: parsed.destination || '',
+          departure: parsed.departure || '',
+          date: parsed.date || '',
+          nights_mecca: parsed.nights_mecca || '',
+          nights_medina: parsed.nights_medina || '',
+          nationality: parsed.nationality || '',
+          notes: parsed.notes || '',
+          timestamp: new Date().toISOString(),
+          source: 'ki-analyse-page'
+        })
+      }).catch(error => {
+        console.error('Webhook error:', error)
+      })
     }
 
-    // Simulate analysis steps
-    const timer1 = setTimeout(() => setAnalysisStep(1), 2000)
-    const timer2 = setTimeout(() => setAnalysisStep(2), 4000)
-    const timer3 = setTimeout(() => setAnalysisStep(3), 6000)
+    // Simulate analysis steps with longer timing (18-20 seconds total)
+    const timer1 = setTimeout(() => setAnalysisStep(1), 3000)
+    const timer2 = setTimeout(() => setAnalysisStep(2), 7000)
+    const timer3 = setTimeout(() => setAnalysisStep(3), 12000)
+    const timer4 = setTimeout(() => setAnalysisStep(4), 16000)
     
     // Auto-redirect to upsell page after analysis complete
     const redirectTimer = setTimeout(() => {
@@ -71,12 +98,13 @@ export default function KIAnalysePage() {
         // Redirect to upsell with params
         window.location.href = `/upsell?status=${status}&name=${encodeURIComponent(name)}&budget=${budget}&recommendation=${encodeURIComponent(recommendation)}&details=${encodeURIComponent(details)}`
       }
-    }, 10000) // Redirect after 10 seconds
+    }, 19000) // Redirect after 19 seconds
 
     return () => {
       clearTimeout(timer1)
       clearTimeout(timer2)
       clearTimeout(timer3)
+      clearTimeout(timer4)
       clearTimeout(redirectTimer)
     }
   }, [])
@@ -85,7 +113,8 @@ export default function KIAnalysePage() {
     { icon: Calculator, text: "Budget-Analyse läuft...", color: "text-blue-500" },
     { icon: Sparkles, text: "Optimale Flugverbindungen werden gesucht...", color: "text-purple-500" },
     { icon: CheckCircle, text: "Hotel-Empfehlungen werden erstellt...", color: "text-green-500" },
-    { icon: Mail, text: "Persönliche Einschätzung wird vorbereitet...", color: "text-gold-500" }
+    { icon: Mail, text: "Persönliche Einschätzung wird vorbereitet...", color: "text-gold-500" },
+    { icon: Brain, text: "KI-Optimierung abgeschlossen...", color: "text-emerald-500" }
   ]
 
   return (
@@ -111,9 +140,7 @@ export default function KIAnalysePage() {
           </p>
         </motion.div>
 
-        <div className="max-w-4xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-8">
-            
+        <div className="max-w-2xl mx-auto">
             {/* Analysis Progress */}
             <motion.div
               initial={{ opacity: 0, x: -50 }}
@@ -189,74 +216,6 @@ export default function KIAnalysePage() {
                 </CardContent>
               </Card>
             </motion.div>
-
-            {/* Video Message */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.6 }}
-            >
-              <Card className="bg-slate-800/50 border-slate-700 backdrop-blur">
-                <CardContent className="p-8">
-                  <h2 className="text-2xl font-bold text-white mb-6">
-                    Persönliche Nachricht
-                  </h2>
-                  
-                  {/* Placeholder for video - you can replace with actual video */}
-                  <div className="aspect-video bg-slate-900 rounded-lg mb-6 flex items-center justify-center border border-slate-600">
-                    <div className="text-center">
-                      <Brain className="w-16 h-16 text-emerald-400 mx-auto mb-4" />
-                      <p className="text-gray-400">Video wird geladen...</p>
-                    </div>
-                  </div>
-                  
-                  {/* Video transcript/content */}
-                  <div className="space-y-4 text-gray-300">
-                    <p className="font-semibold text-white">Assalamu alaikum,</p>
-                    
-                    <p>Barakallahu feek, dass du das Formular ausgefüllt hast.</p>
-                    
-                    <p>Deine Angaben sind bei mir angekommen – und mein KI System beginnt jetzt direkt mit der Analyse deiner Umrah-Planung.</p>
-                    
-                    <div className="bg-slate-700/50 p-4 rounded-lg">
-                      <p className="font-medium text-emerald-400 mb-2">Meine KI prüft gerade:</p>
-                      <ul className="list-disc list-inside space-y-1 text-sm">
-                        <li>ob deine Budget-Vorstellung realistisch ist</li>
-                        <li>wie wir das Beste aus deinem Geld machen können</li>
-                        <li>optimale Flüge, Hotels und Reisezeit für dich</li>
-                      </ul>
-                    </div>
-                    
-                    <p className="font-medium">In wenigen Minuten bekommst du deine persönliche Einschätzung per E-Mail oder WhatsApp zugeschickt.</p>
-                    
-                    <div className="bg-amber-900/30 border border-amber-500/30 p-4 rounded-lg">
-                      <p className="text-amber-200 font-medium flex items-center gap-2">
-                        <Mail className="w-4 h-4" />
-                        Wichtig: Schau bitte auch in deinem Spam-Ordner
-                      </p>
-                    </div>
-                    
-                    <p>Wenn du möchtest, kannst du dir direkt danach dein individuelles Umrah-Angebot sichern – mit drei Flugverbindungen und drei ausgewählten Hotels in Mekka und Medina in deinem Budget.</p>
-                    
-                    <div className="flex items-center gap-2 text-emerald-400">
-                      <CheckCircle className="w-4 h-4" />
-                      <span className="font-medium">Transparent.</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-emerald-400">
-                      <CheckCircle className="w-4 h-4" />
-                      <span className="font-medium">Ehrlich.</span>
-                    </div>
-                    <div className="flex items-center gap-2 text-emerald-400">
-                      <CheckCircle className="w-4 h-4" />
-                      <span className="font-medium">Und mit ein paar Klicks sofort buchbar.</span>
-                    </div>
-                    
-                    <p className="text-white font-medium">Ich freue mich, dich auf diesem Weg begleiten zu dürfen.</p>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </div>
 
           {/* Next Steps */}
           {analysisStep >= 3 && (
