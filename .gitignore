@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# Ensure node_modules are ignored
+node_modules
+.next
+.vercel
