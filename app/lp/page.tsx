@@ -483,15 +483,15 @@ export default function LandingPage() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">3⭐ Hotel:</span>
-                      <span className="font-medium">ab 120€/N</span>
+                      <span className="font-medium">ab 50€/N</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">4⭐ Hotel:</span>
-                      <span className="font-medium">ab 191€/N</span>
+                      <span className="font-medium">ab 80€/N</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">5⭐ Hotel:</span>
-                      <span className="font-medium">ab 250€/N</span>
+                      <span className="font-medium">ab 115€/N</span>
                     </div>
                   </div>
                   <div className="mt-4 pt-4 border-t border-emerald-200">
@@ -512,15 +512,15 @@ export default function LandingPage() {
                   <div className="space-y-2 text-sm">
                     <div className="flex justify-between">
                       <span className="text-gray-600">3⭐ Hotel:</span>
-                      <span className="font-medium">ab 95€/N</span>
+                      <span className="font-medium">ab 55€/N</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">4⭐ Hotel:</span>
-                      <span className="font-medium">ab 142€/N</span>
+                      <span className="font-medium">ab 90€/N</span>
                     </div>
                     <div className="flex justify-between">
                       <span className="text-gray-600">5⭐ Hotel:</span>
-                      <span className="font-medium">ab 200€/N</span>
+                      <span className="font-medium">ab 125€/N</span>
                     </div>
                   </div>
                   <div className="mt-4 pt-4 border-t border-amber-200">

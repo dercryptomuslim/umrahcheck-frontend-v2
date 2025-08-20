@@ -35,25 +35,31 @@ interface EstimateResponse {
   processing_time: number
 }
 
-// Price matrices based on real booking data
+// Price matrices based on real booking data - updated for new budget categories
 const PRICE_MATRIX = {
   budget: {
-    'bis-2000': { min: 1400, max: 1800 },
-    '2000-3500': { min: 1800, max: 2200 },
-    '3500-5000': { min: 2200, max: 2800 },
-    'ab-5000': { min: 2800, max: 4000 }
+    'unter-900': { min: 850, max: 900 },
+    '900-1150': { min: 900, max: 1150 },
+    '1150-1300': { min: 1150, max: 1300 },
+    '1300-1600': { min: 1300, max: 1600 },
+    '1600-2500': { min: 1600, max: 2500 },
+    'ab-2500': { min: 2500, max: 4000 }
   },
   standard: {
-    'bis-2000': { min: 1600, max: 2000 },
-    '2000-3500': { min: 2000, max: 3200 },
-    '3500-5000': { min: 2800, max: 4200 },
-    'ab-5000': { min: 3500, max: 5500 }
+    'unter-900': { min: 850, max: 900 },
+    '900-1150': { min: 900, max: 1150 },
+    '1150-1300': { min: 1150, max: 1300 },
+    '1300-1600': { min: 1300, max: 1600 },
+    '1600-2500': { min: 1600, max: 2500 },
+    'ab-2500': { min: 2500, max: 4500 }
   },
   premium: {
-    'bis-2000': { min: 1800, max: 2400 },
-    '2000-3500': { min: 2400, max: 3800 },
-    '3500-5000': { min: 3200, max: 5000 },
-    'ab-5000': { min: 4500, max: 8000 }
+    'unter-900': { min: 850, max: 900 },
+    '900-1150': { min: 900, max: 1150 },
+    '1150-1300': { min: 1150, max: 1300 },
+    '1300-1600': { min: 1300, max: 1600 },
+    '1600-2500': { min: 1600, max: 2500 },
+    'ab-2500': { min: 2500, max: 5000 }
   }
 }
 
@@ -74,7 +80,7 @@ const DISTANCE_MULTIPLIERS = {
   'no-preference': 1.0
 }
 
-// Hotel recommendations database
+// Hotel recommendations database - updated with realistic prices
 const HOTEL_RECOMMENDATIONS = {
   budget: {
     walking: [
@@ -82,14 +88,14 @@ const HOTEL_RECOMMENDATIONS = {
         name: "Al Kiswah Towers",
         category: "3⭐ Budget",
         distance: "400m zum Haram",
-        price_range: "1600-2200€",
+        price_range: "900-1150€",
         features: ["Klimaanlage", "24h Rezeption", "Gebetsteppich", "Halal Restaurant"]
       },
       {
         name: "Dar Al Ghufran",
         category: "3⭐ Budget", 
         distance: "500m zum Haram",
-        price_range: "1400-1900€",
+        price_range: "850-1100€",
         features: ["Saubere Zimmer", "WiFi", "Wäscheservice", "Nahe Souks"]
       }
     ],
@@ -98,7 +104,7 @@ const HOTEL_RECOMMENDATIONS = {
         name: "Olaya Suites",
         category: "3⭐ Budget",
         distance: "2km zum Haram",
-        price_range: "1200-1600€", 
+        price_range: "800-950€", 
         features: ["Shuttle Service", "Familienfreundlich", "Kühlschrank", "Balkon"]
       }
     ]
@@ -107,16 +113,16 @@ const HOTEL_RECOMMENDATIONS = {
     walking: [
       {
         name: "Makkah Hilton",
-        category: "5⭐ Standard",
+        category: "4⭐ Standard",
         distance: "200m zum Haram", 
-        price_range: "3200-4800€",
+        price_range: "1300-1600€",
         features: ["Haram Blick", "Buffet Restaurant", "Fitness Center", "Business Center"]
       },
       {
         name: "Pullman ZamZam", 
-        category: "5⭐ Standard",
+        category: "4⭐ Standard",
         distance: "150m zum Haram",
-        price_range: "3500-5200€",
+        price_range: "1400-1700€",
         features: ["Premium Lage", "Spa", "24h Room Service", "Concierge"]
       }
     ]
@@ -127,14 +133,14 @@ const HOTEL_RECOMMENDATIONS = {
         name: "Raffles Makkah Palace",
         category: "5⭐ Luxus",
         distance: "100m zum Haram",
-        price_range: "6000-12000€",
+        price_range: "2500-4000€",
         features: ["Direkter Haram Zugang", "Butler Service", "Premium Spa", "VIP Lounge"]
       },
       {
         name: "Conrad Makkah",
         category: "5⭐ Luxus", 
         distance: "80m zum Haram",
-        price_range: "5500-10000€",
+        price_range: "2200-3500€",
         features: ["Panorama Haram Blick", "Executive Lounge", "Gourmet Dining", "Personal Concierge"]
       }
     ]
@@ -158,7 +164,7 @@ function calculateEstimate(data: EstimateRequest): EstimateResponse['estimate'] 
   const baseCategory = category === 'egal' ? 'standard' : (category || 'standard')
   const validCategory = PRICE_MATRIX[baseCategory as keyof typeof PRICE_MATRIX] ? baseCategory : 'standard'
   const categoryPrices = PRICE_MATRIX[validCategory as keyof typeof PRICE_MATRIX]
-  const basePrices = categoryPrices[budget as keyof typeof categoryPrices] || categoryPrices['2000-3500']
+  const basePrices = categoryPrices[budget as keyof typeof categoryPrices] || categoryPrices['1150-1300']
 
   // Apply multipliers
   const seasonMultiplier = SEASONAL_MULTIPLIERS[season as keyof typeof SEASONAL_MULTIPLIERS] || 1.0
