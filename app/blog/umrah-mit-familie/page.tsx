@@ -745,7 +745,7 @@ export default function UmrahMitFamilie() {
                   5 Gebete täglich im Haram + 2x Tawaf + Rawdah-Besuch? Mit Kindern unmöglich!
                 </p>
                 <p className="text-green-700 font-semibold">
-                  ✅ Lösung: 2-3 Gebete im Haram sind genug. Qualität > Quantität
+                  ✅ Lösung: 2-3 Gebete im Haram sind genug. Qualität &gt; Quantität
                 </p>
               </div>
 
