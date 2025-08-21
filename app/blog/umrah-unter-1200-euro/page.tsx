@@ -199,7 +199,7 @@ export default function UmrahUnter1200Euro() {
                   <div className="bg-red-50 p-4 rounded">
                     <h4 className="font-semibold text-red-900 mb-2">🕵️ So checkst du die Seriosität:</h4>
                     <ul className="text-sm space-y-1">
-                      <li>✓ Google Maps: Mind. 20+ Reviews, Durchschnitt >3.5</li>
+                      <li>✓ Google Maps: Mind. 20+ Reviews, Durchschnitt &gt;3.5</li>
                       <li>✓ Facebook: Echte Profile kommentieren</li>
                       <li>✓ Trustpilot: Verifizierte Käufer</li>
                       <li>✓ WhatsApp-Gruppen: Frag andere Muslime nach Erfahrungen</li>
