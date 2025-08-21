@@ -131,7 +131,7 @@ export default function ReisebueroVsOnline() {
                       <span className="text-red-600"><strong>7.800€ (!)</strong></span>
                     </div>
                   </div>
-                  <div class="mt-4 bg-red-100 p-2 rounded text-xs text-center">
+                  <div className="mt-4 bg-red-100 p-2 rounded text-xs text-center">
                     <strong>87% Aufschlag!</strong>
                   </div>
                 </div>

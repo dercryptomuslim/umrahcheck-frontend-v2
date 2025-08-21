@@ -498,7 +498,7 @@ export default function BesteHotelsKaaba() {
                   <span className="bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3">2</span>
                   📅 Die "Early-Bird-Spezial-Strategie"
                 </h3>
-                <div class="bg-purple-50 p-4 rounded-lg">
+                <div className="bg-purple-50 p-4 rounded-lg">
                   <p className="text-purple-800 mb-3">
                     <strong>Geheimtipp:</strong> Hotels bieten 4-6 Monate im Voraus bis zu 35% Rabatt 
                     + kostenlose Stornierung bis 30 Tage vorher.
@@ -526,7 +526,7 @@ export default function BesteHotelsKaaba() {
                 </div>
               </div>
 
-              <div class="grid md:grid-cols-2 gap-4">
+              <div className="grid md:grid-cols-2 gap-4">
                 <div className="bg-white border border-gray-200 rounded-lg p-4">
                   <h3 className="text-lg font-bold text-gray-900 mb-2 flex items-center">
                     <span className="bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold mr-2">4</span>

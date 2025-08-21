@@ -324,7 +324,7 @@ export default function UmrahRamadanVsWinter() {
                       </ul>
                     </div>
 
-                    <div class="bg-purple-100 p-4 rounded-lg">
+                    <div className="bg-purple-100 p-4 rounded-lg">
                       <h5 className="font-semibold text-purple-800 mb-2">💫 Mein emotionales Highlight:</h5>
                       <p className="text-sm text-purple-800 italic">
                         "Maghrib-Gebet, 2 Millionen Menschen brechen gleichzeitig das Fasten. 
