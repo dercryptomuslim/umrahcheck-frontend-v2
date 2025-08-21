@@ -422,12 +422,22 @@ export default function BlogPage() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
             <a 
               href="mailto:hallo@umrahcheck.de"
+              onClick={() => {
+                if (typeof window !== 'undefined' && window.posthog) {
+                  window.posthog.capture('contact_clicked', { method: 'email_hallo', location: 'blog_page' })
+                }
+              }}
               className="flex items-center gap-3 px-6 py-3 bg-[--primary-gold] text-white font-semibold rounded-lg hover:bg-[--secondary-gold] transition-colors"
             >
               📧 hallo@umrahcheck.de
             </a>
             <a 
               href="mailto:info@umrahcheck.de"
+              onClick={() => {
+                if (typeof window !== 'undefined' && window.posthog) {
+                  window.posthog.capture('contact_clicked', { method: 'email_info', location: 'blog_page' })
+                }
+              }}
               className="flex items-center gap-3 px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors"
             >
               📨 info@umrahcheck.de
@@ -436,6 +446,11 @@ export default function BlogPage() {
               href="https://wa.me/966560630947"
               target="_blank"
               rel="noopener noreferrer"
+              onClick={() => {
+                if (typeof window !== 'undefined' && window.posthog) {
+                  window.posthog.capture('contact_clicked', { method: 'whatsapp', location: 'blog_page' })
+                }
+              }}
               className="flex items-center gap-3 px-6 py-3 bg-green-500 text-white font-semibold rounded-lg hover:bg-green-600 transition-colors"
             >
               📱 WhatsApp

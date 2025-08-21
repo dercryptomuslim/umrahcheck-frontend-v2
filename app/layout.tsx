@@ -5,6 +5,7 @@ import { Navbar } from '@/components/layout/navbar'
 import { Footer } from '@/components/layout/footer'
 import { FloatingWhatsApp } from '@/components/ui/floating-whatsapp'
 import GoogleAnalytics from '@/components/analytics/GoogleAnalytics'
+import { PostHogProvider } from '@/components/analytics/PostHogProvider'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -80,27 +81,29 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <GoogleAnalytics />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              if ('serviceWorker' in navigator) {
-                window.addEventListener('load', () => {
-                  navigator.serviceWorker.register('/sw.js');
-                });
-              }
-            `,
-          }}
-        />
-        <Navbar />
-        <main className="min-h-screen">
-          {children}
-        </main>
-        <Footer />
-        <FloatingWhatsApp 
-          phoneNumber="966560630947"
-          message="Assalamu alaikum! Ich interessiere mich für eine Umrah-Beratung mit Mustafa aus Medina."
-          showAfter={3000}
-        />
+        <PostHogProvider>
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+                if ('serviceWorker' in navigator) {
+                  window.addEventListener('load', () => {
+                    navigator.serviceWorker.register('/sw.js');
+                  });
+                }
+              `,
+            }}
+          />
+          <Navbar />
+          <main className="min-h-screen">
+            {children}
+          </main>
+          <Footer />
+          <FloatingWhatsApp 
+            phoneNumber="966560630947"
+            message="Assalamu alaikum! Ich interessiere mich für eine Umrah-Beratung mit Mustafa aus Medina."
+            showAfter={3000}
+          />
+        </PostHogProvider>
       </body>
     </html>
   )
