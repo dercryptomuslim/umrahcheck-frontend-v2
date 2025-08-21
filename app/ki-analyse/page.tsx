@@ -20,6 +20,8 @@ import {
 export default function KIAnalysePage() {
   const [analysisStep, setAnalysisStep] = useState(0)
   const [customerName, setCustomerName] = useState('Lieber Bruder/Liebe Schwester')
+  const [isWebhookLoading, setIsWebhookLoading] = useState(true)
+  const [webhookError, setWebhookError] = useState(false)
 
   useEffect(() => {
     // Get customer name from localStorage
@@ -30,7 +32,8 @@ export default function KIAnalysePage() {
         setCustomerName(parsed.name.split(' ')[0] || 'Lieber Bruder/Liebe Schwester')
       }
       
-      // Trigger webhook immediately when page loads
+      // Trigger webhook immediately when page loads with loading state
+      setIsWebhookLoading(true)
       fetch('https://dercryptomuslim.app.n8n.cloud/webhook/umrah-lead-capture', {
         method: 'POST',
         headers: {
@@ -54,8 +57,17 @@ export default function KIAnalysePage() {
           timestamp: new Date().toISOString(),
           source: 'ki-analyse-page'
         })
-      }).catch(error => {
+      })
+      .then(response => {
+        setIsWebhookLoading(false)
+        if (!response.ok) {
+          throw new Error('Webhook failed')
+        }
+      })
+      .catch(error => {
         console.error('Webhook error:', error)
+        setIsWebhookLoading(false)
+        setWebhookError(true)
       })
     }
 
@@ -178,10 +190,29 @@ export default function KIAnalysePage() {
             >
               <Card className="bg-slate-800/50 border-slate-700 backdrop-blur">
                 <CardContent className="p-8">
-                  <h2 className="text-2xl font-bold text-white mb-6 flex items-center gap-3">
-                    <Clock className="w-6 h-6 text-emerald-400" />
-                    Live Analyse-Status
-                  </h2>
+                  <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-2xl font-bold text-white flex items-center gap-3">
+                      <Clock className="w-6 h-6 text-emerald-400" />
+                      Live Analyse-Status
+                    </h2>
+                    {isWebhookLoading && (
+                      <div className="flex items-center gap-2 text-blue-400">
+                        <div className="w-4 h-4 border-2 border-blue-400 border-t-transparent rounded-full animate-spin"></div>
+                        <span className="text-sm">Daten werden übertragen...</span>
+                      </div>
+                    )}
+                    {webhookError && (
+                      <div className="flex items-center gap-2 text-orange-400">
+                        <span className="text-sm">⚠️ Offline-Modus aktiv</span>
+                      </div>
+                    )}
+                    {!isWebhookLoading && !webhookError && (
+                      <div className="flex items-center gap-2 text-emerald-400">
+                        <CheckCircle className="w-4 h-4" />
+                        <span className="text-sm">Verbindung erfolgreich</span>
+                      </div>
+                    )}
+                  </div>
                   
                   <div className="space-y-6">
                     {analysisSteps.map((step, index) => {

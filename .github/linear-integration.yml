@@ -1,0 +1,37 @@
+# Linear + GitHub Integration für UmrahCheck
+
+name: Linear Integration
+
+on:
+  pull_request:
+    types: [opened, closed, reopened]
+  push:
+    branches: [main]
+
+jobs:
+  sync-linear:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Extract Linear Issue ID
+        id: extract
+        run: |
+          # Extract UMRAH-XXX from PR title or commit message
+          echo "::set-output name=issue_id::$(echo '${{ github.event.pull_request.title }}' | grep -oE 'UMRAH-[0-9]+')"
+      
+      - name: Update Linear Issue
+        if: steps.extract.outputs.issue_id
+        run: |
+          # Update issue status based on PR state
+          if [[ "${{ github.event.action }}" == "opened" ]]; then
+            STATUS="In Review"
+          elif [[ "${{ github.event.action }}" == "closed" && "${{ github.event.pull_request.merged }}" == "true" ]]; then
+            STATUS="Done"
+          fi
+          
+          # Would need Linear API call here
+          echo "Would update ${{ steps.extract.outputs.issue_id }} to $STATUS"
+
+# Commit Message Convention:
+# feat: Add feature [UMRAH-123]
+# fix: Fix bug [UMRAH-124]
+# docs: Update docs [UMRAH-125]

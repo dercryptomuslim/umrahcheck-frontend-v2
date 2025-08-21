@@ -3,7 +3,7 @@ import AuthorBio from "@/components/blog/AuthorBio";
 import ContactSection from "@/components/blog/ContactSection";
 
 export const metadata: Metadata = {
-  title: "Budget-Umrah für unter 450€ - Mit echten Preisen aus 2024",
+  title: "Budget-Umrah für unter 450€ - Mit echten Preisen aus 2025",
   description:
     "Schock! Umrah für 412€ möglich. Echter Screenshot: Wizz Air Flug für 299€. Günstige Hotels ab 25€/Nacht. Budget-Tabelle mit allen Kosten. Von Mustafa aus Medina.",
   keywords: [
@@ -14,7 +14,7 @@ export const metadata: Metadata = {
     canonical: "https://umrahcheck.de/blog/budget-umrah-unter-450-euro",
   },
   openGraph: {
-    title: "Budget-Umrah für unter 450€ - Mit echten Preisen 2024",
+    title: "Budget-Umrah für unter 450€ - Mit echten Preisen 2025",
     description: "Schock! Umrah für 412€ möglich. Echter Screenshot zeigt wie.",
     url: "https://umrahcheck.de/blog/budget-umrah-unter-450-euro",
     siteName: "UmrahCheck",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Budget-Umrah für unter 450€ - Mit echten Preisen 2024",
+    title: "Budget-Umrah für unter 450€ - Mit echten Preisen 2025",
     description: "Schock! Umrah für 412€ möglich. Echter Screenshot zeigt wie.",
   },
 };
@@ -99,7 +99,7 @@ export default function BudgetUmrahPage() {
 
           <div className="bg-amber-50 rounded-lg p-4 my-6 border border-amber-200">
             <p className="text-amber-800">
-              <strong>⚠️ Wichtig:</strong> Diese Preise schwanken täglich. Der Screenshot wurde am 21. August 2024 
+              <strong>⚠️ Wichtig:</strong> Diese Preise schwanken täglich. Der Screenshot wurde am 19. August 2025 
               aufgenommen und zeigt echte, verfügbare Preise zu diesem Zeitpunkt.
             </p>
           </div>
