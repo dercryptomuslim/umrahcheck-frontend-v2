@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
   title: "Häufig gestellte Fragen (FAQ) - UmrahCheck",

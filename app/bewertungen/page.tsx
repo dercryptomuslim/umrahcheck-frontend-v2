@@ -1,6 +1,4 @@
 import type { Metadata } from "next";
-import { StarIcon } from "@heroicons/react/24/solid";
-import { StarIcon as StarOutlineIcon } from "@heroicons/react/24/outline";
 
 export const metadata: Metadata = {
   title: "Bewertungen & Erfahrungen - UmrahCheck",
@@ -28,11 +26,11 @@ function StarRating({ rating }: { rating: number }) {
   return (
     <div className="flex gap-1">
       {[1, 2, 3, 4, 5].map((star) => (
-        <span key={star}>
+        <span key={star} className="text-lg">
           {star <= rating ? (
-            <StarIcon className="w-5 h-5 text-[--primary-gold]" />
+            <span className="text-[--primary-gold]">⭐</span>
           ) : (
-            <StarOutlineIcon className="w-5 h-5 text-gray-300" />
+            <span className="text-gray-300">☆</span>
           )}
         </span>
       ))}
