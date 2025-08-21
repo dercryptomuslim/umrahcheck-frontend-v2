@@ -61,7 +61,7 @@ export default function BlogPage() {
                 <div className="md:w-2/3 p-6 md:p-8">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">BUDGET-BEWEIS</span>
-                    <span className="text-xs text-gray-500">21. Aug 2024 • 12 Min. Lesezeit</span>
+                    <span className="text-xs text-gray-500">19. Aug 2025 • 12 Min. Lesezeit</span>
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight hover:text-[--primary-gold] transition-colors">
                     Budget-Umrah für unter 450€ – Mit echten Screenshots bewiesen!
@@ -100,7 +100,7 @@ export default function BlogPage() {
                   </div>
                   <div className="absolute top-4 left-4">
                     <span className="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">
-                      🔥 NEU 2024
+                      🔥 NEU 2025
                     </span>
                   </div>
                 </div>
@@ -108,13 +108,13 @@ export default function BlogPage() {
                 <div className="md:w-2/3 p-6 md:p-8">
                   <div className="flex items-center gap-2 mb-3">
                     <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">PREIS-EXPLOSION</span>
-                    <span className="text-xs text-gray-500">15. Aug 2024 • 8 Min. Lesezeit</span>
+                    <span className="text-xs text-gray-500">15. Aug 2025 • 8 Min. Lesezeit</span>
                   </div>
                   <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight hover:text-[--primary-gold] transition-colors">
                     Warum Umrah-Reisen so teuer geworden sind – und wie du trotzdem sparen kannst
                   </h2>
                   <p className="text-gray-600 mb-6 leading-relaxed text-lg">
-                    Umrah-Preise sind 2024 um bis zu <strong>40% gestiegen</strong>! Als UmrahCheck-Gründer 
+                    Umrah-Preise sind 2025 um bis zu <strong>40% gestiegen</strong>! Als UmrahCheck-Gründer 
                     enthülle ich die wahren Gründe und zeige dir <strong>7 bewährte Strategien</strong>, 
                     um bei deiner Umrah-Reise bis zu <strong>800€ zu sparen</strong>.
                   </p>
@@ -154,7 +154,7 @@ export default function BlogPage() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">SPARTIPPS</span>
-                  <span className="text-xs text-gray-500">10. Jul 2024 • 6 Min.</span>
+                  <span className="text-xs text-gray-500">25. Jun 2025 • 6 Min.</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
                   Umrah-Spartipps: So reduzierst du deine Reisekosten um 30%
@@ -193,7 +193,7 @@ export default function BlogPage() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">BUCHUNGSTIPPS</span>
-                  <span className="text-xs text-gray-500">21. Aug 2024 • 8 Min.</span>
+                  <span className="text-xs text-gray-500">02. Jul 2025 • 8 Min.</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
                   Diese 5 Fehler machen viele bei der Umrah-Buchung
@@ -228,7 +228,7 @@ export default function BlogPage() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">SPAREN</span>
-                  <span className="text-xs text-gray-500">21. Aug 2024 • 7 Min.</span>
+                  <span className="text-xs text-gray-500">08. Jul 2025 • 7 Min.</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
                   Umrah für unter 1.200€? So erkennst du seriöse Angebote
@@ -263,7 +263,7 @@ export default function BlogPage() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">FAMILIENREISE</span>
-                  <span className="text-xs text-gray-500">21. Aug 2024 • 12 Min.</span>
+                  <span className="text-xs text-gray-500">15. Jul 2025 • 12 Min.</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
                   Umrah mit der Familie – Was du bei Hotels und Budget beachten musst
@@ -298,7 +298,7 @@ export default function BlogPage() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded">LUXURY</span>
-                  <span className="text-xs text-gray-500">21. Aug 2024 • 15 Min.</span>
+                  <span className="text-xs text-gray-500">22. Jul 2025 • 15 Min.</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
                   Die 7 besten Hotels direkt an der Kaaba – Mit Preisvergleich
@@ -333,7 +333,7 @@ export default function BlogPage() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded">TIMING</span>
-                  <span className="text-xs text-gray-500">21. Aug 2024 • 10 Min.</span>
+                  <span className="text-xs text-gray-500">29. Jul 2025 • 10 Min.</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
                   Umrah in Ramadan oder im Winter? Was du unbedingt wissen solltest
@@ -368,7 +368,7 @@ export default function BlogPage() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs bg-cyan-100 text-cyan-800 px-2 py-1 rounded">STRATEGIE</span>
-                  <span className="text-xs text-gray-500">21. Aug 2024 • 9 Min.</span>
+                  <span className="text-xs text-gray-500">05. Aug 2025 • 9 Min.</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
                   Vergleich: Reisebüro vs. Online-Buchung – was ist wirklich günstiger?
@@ -403,7 +403,7 @@ export default function BlogPage() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">AUFPREISE</span>
-                  <span className="text-xs text-gray-500">21. Aug 2024 • 8 Min.</span>
+                  <span className="text-xs text-gray-500">12. Aug 2025 • 8 Min.</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
                   So erkennst du versteckte Aufpreise bei Umrah-Angeboten
@@ -438,7 +438,7 @@ export default function BlogPage() {
               <div className="p-6">
                 <div className="flex items-center gap-2 mb-3">
                   <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">TECHNOLOGIE</span>
-                  <span className="text-xs text-gray-500">21. Aug 2024 • 3 Min.</span>
+                  <span className="text-xs text-gray-500">19. Aug 2025 • 3 Min.</span>
                 </div>
                 <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
                   Wie funktioniert der KI-Preisvergleich von UmrahCheck – erklärt in 3 Minuten
