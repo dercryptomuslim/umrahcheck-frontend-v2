@@ -67,6 +67,9 @@ export default function RootLayout({
   return (
     <html lang="de" className="scroll-smooth">
       <head>
+        {/* Google Search Console Verification */}
+        <meta name="google-site-verification" content="ydkpvPjcDDiz4ucC0zN2ug0YWYcgcc7odcA0pgtpAKk" />
+        
         <script 
           id="Cookiebot" 
           src="https://consent.cookiebot.com/uc.js" 
