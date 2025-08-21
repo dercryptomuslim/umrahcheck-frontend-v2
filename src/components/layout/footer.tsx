@@ -140,11 +140,11 @@ export function Footer() {
               </li>
               <li>
                 <Link 
-                  href="/umrah-tipps" 
+                  href="/tools" 
                   className="flex items-center gap-2 text-gray-300 hover:text-emerald-400 transition-colors group"
                 >
                   <Lightbulb className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  Umrah-Tipps
+                  Tools & Guides
                 </Link>
               </li>
               <li>
