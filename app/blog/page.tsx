@@ -128,24 +128,285 @@ export default function BlogPage() {
             </Link>
           </article>
 
-          {/* Coming Soon Article */}
-          <article className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl shadow-lg overflow-hidden border-2 border-dashed border-gray-300">
-            <div className="p-6 text-center">
-              <div className="text-4xl mb-4 opacity-50">📝</div>
-              <h2 className="text-xl font-bold text-gray-700 mb-3">
-                Weitere Artikel in Vorbereitung
-              </h2>
-              <p className="text-gray-600 mb-4 leading-relaxed">
-                Wir arbeiten an weiteren hochwertigen Artikeln zu Umrah-Hotels, 
-                Visa-Prozess und spiritueller Vorbereitung.
-              </p>
-              <Link
-                href="/ki-analyse"
-                className="inline-flex items-center px-6 py-3 bg-[--primary-gold] text-white font-semibold rounded-lg hover:bg-[--secondary-gold] transition-colors"
-              >
-                🤖 Zwischenzeitlich: KI-Analyse starten
-              </Link>
-            </div>
+          {/* Neue Artikel Grid */}
+          <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <Link href="/blog/5-fehler-umrah-buchung">
+              <div className="aspect-video bg-gradient-to-r from-red-100 to-red-200 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-6xl opacity-20">❌</div>
+                </div>
+                <div className="absolute top-4 left-4">
+                  <span className="bg-red-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    FEHLER VERMEIDEN
+                  </span>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs bg-red-100 text-red-800 px-2 py-1 rounded">BUCHUNGSTIPPS</span>
+                  <span className="text-xs text-gray-500">21. Aug 2024 • 8 Min.</span>
+                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
+                  Diese 5 Fehler machen viele bei der Umrah-Buchung
+                </h2>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Diese kostspieligen Buchungsfehler haben mir Pilger aus über 200 persönlichen Gesprächen erzählt. Vermeide sie und spare bis zu 650€.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-[--primary-gold] rounded-full flex items-center justify-center text-white text-sm font-bold">M</div>
+                    <span className="text-sm text-gray-600">Mustafa Ali</span>
+                  </div>
+                  <span className="text-[--primary-gold] font-semibold text-sm">Artikel lesen →</span>
+                </div>
+              </div>
+            </Link>
+          </article>
+
+          <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <Link href="/blog/umrah-unter-1200-euro">
+              <div className="aspect-video bg-gradient-to-r from-green-100 to-green-200 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-6xl opacity-20">💰</div>
+                </div>
+                <div className="absolute top-4 left-4">
+                  <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    BUDGET-TIPPS
+                  </span>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">SPAREN</span>
+                  <span className="text-xs text-gray-500">21. Aug 2024 • 7 Min.</span>
+                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
+                  Umrah für unter 1.200€? So erkennst du seriöse Angebote
+                </h2>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Budget-Umrah ohne Betrug: 7 Warnsignale für unseriöse Billig-Angebote und 5 legitime Wege, wirklich günstig zu reisen.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-[--primary-gold] rounded-full flex items-center justify-center text-white text-sm font-bold">M</div>
+                    <span className="text-sm text-gray-600">Mustafa Ali</span>
+                  </div>
+                  <span className="text-[--primary-gold] font-semibold text-sm">Artikel lesen →</span>
+                </div>
+              </div>
+            </Link>
+          </article>
+
+          <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <Link href="/blog/umrah-mit-familie">
+              <div className="aspect-video bg-gradient-to-r from-purple-100 to-purple-200 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-6xl opacity-20">👨‍👩‍👧‍👦</div>
+                </div>
+                <div className="absolute top-4 left-4">
+                  <span className="bg-purple-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    FAMILIE
+                  </span>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs bg-purple-100 text-purple-800 px-2 py-1 rounded">FAMILIENREISE</span>
+                  <span className="text-xs text-gray-500">21. Aug 2024 • 12 Min.</span>
+                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
+                  Umrah mit der Familie – Was du bei Hotels und Budget beachten musst
+                </h2>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Nach 5 eigenen Familien-Umrahs: Die besten kinderfreundlichen Hotels, realistische Budgets und wie du 70% Stress vermeidest.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-[--primary-gold] rounded-full flex items-center justify-center text-white text-sm font-bold">M</div>
+                    <span className="text-sm text-gray-600">Mustafa Ali</span>
+                  </div>
+                  <span className="text-[--primary-gold] font-semibold text-sm">Artikel lesen →</span>
+                </div>
+              </div>
+            </Link>
+          </article>
+
+          <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <Link href="/blog/beste-hotels-kaaba">
+              <div className="aspect-video bg-gradient-to-r from-amber-100 to-amber-200 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-6xl opacity-20">🏨</div>
+                </div>
+                <div className="absolute top-4 left-4">
+                  <span className="bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    HOTELS
+                  </span>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs bg-amber-100 text-amber-800 px-2 py-1 rounded">LUXURY</span>
+                  <span className="text-xs text-gray-500">21. Aug 2024 • 15 Min.</span>
+                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
+                  Die 7 besten Hotels direkt an der Kaaba – Mit Preisvergleich
+                </h2>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Persönlicher Test von 27 Hotels: Die 7 besten Unterkünfte mit Kaaba-Blick, Insider-Preise und geheime Buchungstricks der Profis.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-[--primary-gold] rounded-full flex items-center justify-center text-white text-sm font-bold">M</div>
+                    <span className="text-sm text-gray-600">Mustafa Ali</span>
+                  </div>
+                  <span className="text-[--primary-gold] font-semibold text-sm">Artikel lesen →</span>
+                </div>
+              </div>
+            </Link>
+          </article>
+
+          <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <Link href="/blog/umrah-ramadan-vs-winter">
+              <div className="aspect-video bg-gradient-to-r from-blue-100 to-indigo-200 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-6xl opacity-20">🌙</div>
+                </div>
+                <div className="absolute top-4 left-4">
+                  <span className="bg-indigo-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    SAISONVERGLEICH
+                  </span>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs bg-indigo-100 text-indigo-800 px-2 py-1 rounded">TIMING</span>
+                  <span className="text-xs text-gray-500">21. Aug 2024 • 10 Min.</span>
+                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
+                  Umrah in Ramadan oder im Winter? Was du unbedingt wissen solltest
+                </h2>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Basierend auf 8 persönlichen Umrah-Erfahrungen: Ramadan vs. Winter Umrah mit Preisen, Menschenmassen, Wetter und spiritueller Atmosphäre.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-[--primary-gold] rounded-full flex items-center justify-center text-white text-sm font-bold">M</div>
+                    <span className="text-sm text-gray-600">Mustafa Ali</span>
+                  </div>
+                  <span className="text-[--primary-gold] font-semibold text-sm">Artikel lesen →</span>
+                </div>
+              </div>
+            </Link>
+          </article>
+
+          <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <Link href="/blog/reisebuero-vs-online">
+              <div className="aspect-video bg-gradient-to-r from-cyan-100 to-cyan-200 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-6xl opacity-20">📊</div>
+                </div>
+                <div className="absolute top-4 left-4">
+                  <span className="bg-cyan-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    VERGLEICH
+                  </span>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs bg-cyan-100 text-cyan-800 px-2 py-1 rounded">STRATEGIE</span>
+                  <span className="text-xs text-gray-500">21. Aug 2024 • 9 Min.</span>
+                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
+                  Vergleich: Reisebüro vs. Online-Buchung – was ist wirklich günstiger?
+                </h2>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Echter Test mit 40+ Anbietern: Reisebüro vs. Online vs. Direktbuchung vs. UmrahCheck. Die 4-Wege-Strategie für maximale Ersparnis.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-[--primary-gold] rounded-full flex items-center justify-center text-white text-sm font-bold">M</div>
+                    <span className="text-sm text-gray-600">Mustafa Ali</span>
+                  </div>
+                  <span className="text-[--primary-gold] font-semibold text-sm">Artikel lesen →</span>
+                </div>
+              </div>
+            </Link>
+          </article>
+
+          <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <Link href="/blog/versteckte-aufpreise-erkennen">
+              <div className="aspect-video bg-gradient-to-r from-red-100 to-orange-200 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-6xl opacity-20">💸</div>
+                </div>
+                <div className="absolute top-4 left-4">
+                  <span className="bg-orange-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    KOSTENFALLEN
+                  </span>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs bg-orange-100 text-orange-800 px-2 py-1 rounded">AUFPREISE</span>
+                  <span className="text-xs text-gray-500">21. Aug 2024 • 8 Min.</span>
+                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
+                  So erkennst du versteckte Aufpreise bei Umrah-Angeboten
+                </h2>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Versteckte Kosten können deine Umrah um bis zu 800€ teurer machen. Hier sind 8 Tricks der Anbieter und wie du sie sofort erkennst.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-[--primary-gold] rounded-full flex items-center justify-center text-white text-sm font-bold">M</div>
+                    <span className="text-sm text-gray-600">Mustafa Ali</span>
+                  </div>
+                  <span className="text-[--primary-gold] font-semibold text-sm">Artikel lesen →</span>
+                </div>
+              </div>
+            </Link>
+          </article>
+
+          <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300">
+            <Link href="/blog/wie-funktioniert-umrahcheck-ki">
+              <div className="aspect-video bg-gradient-to-r from-blue-100 to-blue-200 relative overflow-hidden">
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-6xl opacity-20">🤖</div>
+                </div>
+                <div className="absolute top-4 left-4">
+                  <span className="bg-blue-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    KI-TECHNOLOGIE
+                  </span>
+                </div>
+              </div>
+              
+              <div className="p-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded">TECHNOLOGIE</span>
+                  <span className="text-xs text-gray-500">21. Aug 2024 • 3 Min.</span>
+                </div>
+                <h2 className="text-xl font-bold text-gray-900 mb-3 leading-tight hover:text-[--primary-gold] transition-colors">
+                  Wie funktioniert der KI-Preisvergleich von UmrahCheck – erklärt in 3 Minuten
+                </h2>
+                <p className="text-gray-600 mb-4 leading-relaxed">
+                  Du gibst deine Wünsche ein, unsere KI durchsucht in Sekunden über 50 Anbieter. Hier erfährst du, wie die Technologie funktioniert und warum sie dir hunderte Euro spart.
+                </p>
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-[--primary-gold] rounded-full flex items-center justify-center text-white text-sm font-bold">M</div>
+                    <span className="text-sm text-gray-600">Mustafa Ali</span>
+                  </div>
+                  <span className="text-[--primary-gold] font-semibold text-sm">Artikel lesen →</span>
+                </div>
+              </div>
+            </Link>
           </article>
         </div>
 
