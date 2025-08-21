@@ -37,13 +37,9 @@ export function initPostHog() {
       loaded: (posthog) => {
         if (process.env.NODE_ENV === 'development') posthog.debug()
       },
-      // Enable heatmaps and session recordings
-      enable_heatmaps: true,
-      enable_recording: true,
-      // Web vitals
-      capture_web_vitals: true,
-      // Dead clicks
-      capture_dead_clicks: true,
+      // Session recordings are enabled by default
+      disable_session_recording: false,
+      // Heatmaps are included with recordings
     })
   }
 }
