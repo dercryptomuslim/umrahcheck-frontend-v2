@@ -21,16 +21,9 @@ export default function ContactSection() {
       </p>
       <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
         <a 
-          href="mailto:hallo@umrahcheck.de"
-          onClick={() => trackContact('email_hallo')}
-          className="flex items-center gap-3 px-6 py-3 bg-[--primary-gold] text-white font-semibold rounded-lg hover:bg-[--secondary-gold] transition-colors"
-        >
-          📧 hallo@umrahcheck.de
-        </a>
-        <a 
           href="mailto:info@umrahcheck.de"
           onClick={() => trackContact('email_info')}
-          className="flex items-center gap-3 px-6 py-3 bg-blue-500 text-white font-semibold rounded-lg hover:bg-blue-600 transition-colors"
+          className="flex items-center gap-3 px-6 py-3 bg-[--primary-gold] text-white font-semibold rounded-lg hover:bg-[--secondary-gold] transition-colors"
         >
           📨 info@umrahcheck.de
         </a>

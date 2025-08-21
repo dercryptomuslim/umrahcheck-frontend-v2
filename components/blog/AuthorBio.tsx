@@ -52,7 +52,7 @@ export default function AuthorBio({ showFull = true }: AuthorBioProps) {
             </a>
             <span className="text-gray-400">|</span>
             <span className="text-gray-600">
-              📧 Kontakt: hallo@umrahcheck.de
+              📧 Kontakt: info@umrahcheck.de
             </span>
           </div>
         </div>

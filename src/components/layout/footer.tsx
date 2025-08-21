@@ -18,7 +18,9 @@ import {
   Star,
   Plane,
   Hotel,
-  Lightbulb
+  Lightbulb,
+  Youtube,
+  Music
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
@@ -55,41 +57,57 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Social Media */}
+            {/* Social Media - Coming Soon */}
             <div>
               <h4 className="font-semibold text-white mb-3">Folge uns</h4>
-              <div className="flex gap-3">
+              <div className="flex gap-2 flex-wrap">
                 <Button
                   size="sm"
                   variant="outline"
-                  className="border-gray-600 hover:bg-emerald-600 hover:border-emerald-600 text-gray-300 hover:text-white"
-                  asChild
+                  className="border-gray-600 hover:bg-emerald-600 hover:border-emerald-600 text-gray-300 hover:text-white opacity-50"
+                  disabled
+                  title="Coming Soon"
                 >
-                  <Link href="#" aria-label="Facebook">
-                    <Facebook className="w-4 h-4" />
-                  </Link>
+                  <Instagram className="w-4 h-4" />
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
-                  className="border-gray-600 hover:bg-emerald-600 hover:border-emerald-600 text-gray-300 hover:text-white"
-                  asChild
+                  className="border-gray-600 hover:bg-emerald-600 hover:border-emerald-600 text-gray-300 hover:text-white opacity-50"
+                  disabled
+                  title="Coming Soon"
                 >
-                  <Link href="#" aria-label="Instagram">
-                    <Instagram className="w-4 h-4" />
-                  </Link>
+                  <Facebook className="w-4 h-4" />
                 </Button>
                 <Button
                   size="sm"
                   variant="outline"
-                  className="border-gray-600 hover:bg-emerald-600 hover:border-emerald-600 text-gray-300 hover:text-white"
-                  asChild
+                  className="border-gray-600 hover:bg-emerald-600 hover:border-emerald-600 text-gray-300 hover:text-white opacity-50"
+                  disabled
+                  title="Coming Soon"
                 >
-                  <Link href="#" aria-label="Twitter">
-                    <Twitter className="w-4 h-4" />
-                  </Link>
+                  <Music className="w-4 h-4" />
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="border-gray-600 hover:bg-emerald-600 hover:border-emerald-600 text-gray-300 hover:text-white opacity-50"
+                  disabled
+                  title="Coming Soon"
+                >
+                  <Twitter className="w-4 h-4" />
+                </Button>
+                <Button
+                  size="sm"
+                  variant="outline"
+                  className="border-gray-600 hover:bg-emerald-600 hover:border-emerald-600 text-gray-300 hover:text-white opacity-50"
+                  disabled
+                  title="Coming Soon"
+                >
+                  <Youtube className="w-4 h-4" />
                 </Button>
               </div>
+              <p className="text-xs text-gray-500 mt-2">Bald verfügbar</p>
             </div>
           </motion.div>
 
@@ -225,10 +243,10 @@ export function Footer() {
               <div className="flex items-center gap-3">
                 <Mail className="w-5 h-5 text-emerald-400" />
                 <Link 
-                  href="mailto:info@umrahcheck.com" 
+                  href="mailto:info@umrahcheck.de" 
                   className="text-gray-300 hover:text-emerald-400 transition-colors"
                 >
-                  info@umrahcheck.com
+                  info@umrahcheck.de
                 </Link>
               </div>
 
