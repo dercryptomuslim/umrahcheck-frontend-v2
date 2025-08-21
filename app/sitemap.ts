@@ -38,6 +38,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+    // FEATURED: Budget-Artikel mit echten Preisen
+    {
+      url: `${baseUrl}/blog/budget-umrah-unter-450-euro`,
+      lastModified: new Date('2024-08-21'),
+      changeFrequency: 'monthly',
+      priority: 0.9,
+    },
     {
       url: `${baseUrl}/blog/5-fehler-umrah-buchung`,
       lastModified: new Date('2024-08-21'),

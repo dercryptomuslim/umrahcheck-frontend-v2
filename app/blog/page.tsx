@@ -43,7 +43,54 @@ export default function BlogPage() {
       {/* Content */}
       <section className="mx-auto max-w-5xl px-6 py-10">
         <div className="grid gap-8 lg:grid-cols-2">
-          {/* Hauptartikel - Neuer Artikel */}
+          {/* FEATURED: Neuer Budget-Artikel */}
+          <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 lg:col-span-2 border-2 border-green-200">
+            <Link href="/blog/budget-umrah-unter-450-euro">
+              <div className="md:flex">
+                <div className="md:w-1/3 aspect-video md:aspect-square bg-gradient-to-r from-green-100 to-[--primary-gold]/20 relative overflow-hidden">
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <div className="text-6xl opacity-20">💰</div>
+                  </div>
+                  <div className="absolute top-4 left-4">
+                    <span className="bg-green-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                      🔥 SCHOCK-PREIS
+                    </span>
+                  </div>
+                </div>
+                
+                <div className="md:w-2/3 p-6 md:p-8">
+                  <div className="flex items-center gap-2 mb-3">
+                    <span className="text-xs bg-green-100 text-green-800 px-2 py-1 rounded">BUDGET-BEWEIS</span>
+                    <span className="text-xs text-gray-500">21. Aug 2024 • 12 Min. Lesezeit</span>
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4 leading-tight hover:text-[--primary-gold] transition-colors">
+                    Budget-Umrah für unter 450€ – Mit echten Screenshots bewiesen!
+                  </h2>
+                  <p className="text-gray-600 mb-6 leading-relaxed text-lg">
+                    <strong>Unmöglich? Nein!</strong> Mit einem echten Wizz Air Screenshot zeige ich dir, 
+                    wie eine komplette Umrah für nur <strong>412€</strong> machbar ist. Inklusive Flug, 
+                    Hotel und allen Kosten. <strong>Günstige Hotels ab 25€/Nacht</strong> in den besten Gebieten.
+                  </p>
+                  <div className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <div className="w-10 h-10 bg-[--primary-gold] rounded-full flex items-center justify-center text-white font-bold">
+                        M
+                      </div>
+                      <div>
+                        <div className="font-semibold text-gray-900">Mustafa Ali</div>
+                        <div className="text-xs text-gray-500">Mit Preisbeweisen</div>
+                      </div>
+                    </div>
+                    <div className="text-[--primary-gold] font-semibold">
+                      Schock-Preise ansehen →
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Link>
+          </article>
+
+          {/* Zweiter Artikel - Umrah Preise 2024 */}
           <article className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300 lg:col-span-2">
             <Link href="/blog/umrah-preise-2024-sparen">
               <div className="md:flex">
