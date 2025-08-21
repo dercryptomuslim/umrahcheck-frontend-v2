@@ -42,6 +42,21 @@ export default function DashboardPage() {
 
   const fetchAnalytics = async () => {
     try {
+      // Check if Supabase is configured
+      if (!supabase) {
+        console.warn('Supabase not configured');
+        setAnalytics({
+          totalUsers: 0,
+          totalAnalyses: 0,
+          totalRevenue: 0,
+          conversionRate: 0,
+          recentAnalyses: [],
+          popularCities: [],
+          budgetDistribution: []
+        });
+        return;
+      }
+
       // Fetch total users
       const { count: userCount } = await supabase
         .from('users')

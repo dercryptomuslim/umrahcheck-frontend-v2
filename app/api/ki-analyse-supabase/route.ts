@@ -5,6 +5,12 @@ export async function POST(request: Request) {
   try {
     const formData = await request.json();
     
+    // Check if Supabase is configured
+    if (!supabase) {
+      console.warn('Supabase not configured, falling back to n8n only');
+      return handleFallbackMode(formData);
+    }
+    
     // 1. Create or find user/lead
     const { data: existingUser } = await supabase
       .from('users')
@@ -110,6 +116,32 @@ export async function POST(request: Request) {
       { status: 500 }
     );
   }
+}
+
+// Fallback mode when Supabase is not configured
+async function handleFallbackMode(formData: any) {
+  const analysis = generateAIAnalysis(formData);
+  
+  // Send to n8n only
+  try {
+    await fetch('https://n8n.umrahcheck.de/webhook/umrahcheck-ki-analyse', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        ...formData,
+        fallback_mode: true,
+        timestamp: new Date().toISOString()
+      })
+    });
+  } catch (webhookError) {
+    console.error('Webhook error:', webhookError);
+  }
+
+  return NextResponse.json({
+    success: true,
+    message: 'Analyse erfolgreich verarbeitet (Fallback-Modus)',
+    data: { recommendation: analysis }
+  });
 }
 
 // Generate AI Analysis (simplified version)
