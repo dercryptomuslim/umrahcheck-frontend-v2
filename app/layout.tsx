@@ -26,11 +26,11 @@ export const metadata: Metadata = {
     statusBarStyle: 'default',
     title: 'UmrahCheck',
   },
-  metadataBase: new URL('https://umrahcheck-frontend-v2.vercel.app'),
+  metadataBase: new URL('https://umrahcheck.de'),
   openGraph: {
     title: 'UmrahCheck - Premium Halal Hotels für deine Umrah',
     description: 'Die erste KI-Beratung für deine Umrah. Finde die besten Halal Hotels in Makkah & Medina.',
-    url: 'https://umrahcheck-frontend-v2.vercel.app',
+    url: 'https://umrahcheck.de',
     siteName: 'UmrahCheck',
     images: [
       {
