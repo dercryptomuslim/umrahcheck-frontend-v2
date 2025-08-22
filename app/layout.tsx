@@ -102,7 +102,6 @@ export default function RootLayout({
             phoneNumber="966560630947"
             message="Assalamu alaikum! Ich interessiere mich für eine Umrah-Beratung mit Mustafa aus Medina."
             showAfter={3000}
-            antiScamMode={true}
           />
         </PostHogProvider>
       </body>
