@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Mein Umrah Journal - {{vorname}} {{nachname}}</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Amiri:wght@400;700&display=swap');
+    
+    /* Reset & Base */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      line-height: 1.6;
+      color: #1a202c;
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      font-size: 16px;
+    }
+
+    .arabic {
+      font-family: 'Amiri', serif;
+      font-size: 1.2em;
+      direction: rtl;
+      text-align: right;
+      line-height: 1.8;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #ffffff;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #d4af37 0%, #b8941f 100%);
+      padding: 60px 40px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="islamic" patternUnits="userSpaceOnUse" width="40" height="40"><circle cx="20" cy="20" r="2" fill="rgba(255,255,255,0.1)"/></pattern></defs><rect width="100" height="100" fill="url(%23islamic)"/></svg>');
+      opacity: 0.3;
+    }
+    
+    .logo-section {
+      position: relative;
+      z-index: 2;
+    }
+
+    .basmala {
+      font-family: 'Amiri', serif;
+      font-size: 2rem;
+      color: #ffffff;
+      margin-bottom: 20px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+    
+    .journal-title {
+      font-size: 3rem;
+      font-weight: 800;
+      color: #ffffff;
+      letter-spacing: -0.5px;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+      margin: 20px 0;
+    }
+
+    .journal-subtitle {
+      font-family: 'Amiri', serif;
+      font-size: 1.8rem;
+      color: rgba(255, 255, 255, 0.95);
+      margin: 10px 0;
+    }
+    
+    .personal-info {
+      display: inline-block;
+      background: rgba(255, 255, 255, 0.2);
+      backdrop-filter: blur(10px);
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      padding: 15px 30px;
+      border-radius: 25px;
+      margin-top: 20px;
+      color: #ffffff;
+    }
+
+    .personal-name {
+      font-size: 1.4rem;
+      font-weight: 700;
+      margin-bottom: 5px;
+    }
+
+    .travel-dates {
+      font-size: 1rem;
+      opacity: 0.9;
+    }
+    
+    /* Content */
+    .content {
+      padding: 40px;
+    }
+
+    /* Page Sections */
+    .page-section {
+      margin-bottom: 60px;
+      page-break-inside: avoid;
+    }
+
+    .section-header {
+      background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+      border-left: 5px solid #d4af37;
+      padding: 20px 30px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 10px;
+    }
+
+    .section-subtitle {
+      font-size: 1rem;
+      color: #4a5568;
+      font-style: italic;
+    }
+
+    /* Journey Info */
+    .journey-info {
+      background: #f7fafc;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    .journey-table {
+      width: 100%;
+      margin-top: 15px;
+    }
+
+    .journey-table td {
+      padding: 10px 0;
+      border-bottom: 1px solid #e2e8f0;
+    }
+
+    .journey-table td:first-child {
+      font-weight: 600;
+      color: #2d3748;
+      width: 40%;
+    }
+
+    .journey-table td:last-child {
+      color: #4a5568;
+    }
+
+    /* Goals & Intentions */
+    .goals-section {
+      background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    .goals-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #0c4a6e;
+      margin-bottom: 20px;
+    }
+
+    .goal-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.7);
+      border-radius: 8px;
+    }
+
+    .goal-checkbox {
+      width: 24px;
+      height: 24px;
+      border: 2px solid #d4af37;
+      border-radius: 4px;
+      margin-right: 15px;
+      flex-shrink: 0;
+    }
+
+    .goal-text {
+      flex: 1;
+      color: #1a202c;
+      font-size: 1rem;
+    }
+
+    .goal-custom {
+      width: 100%;
+      border: none;
+      background: transparent;
+      border-bottom: 1px dotted #cbd5e0;
+      padding: 5px 0;
+      font-family: inherit;
+      font-size: 1rem;
+      color: #1a202c;
+    }
+
+    /* Daily Journal */
+    .daily-entry {
+      background: #ffffff;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 30px;
+      margin-bottom: 30px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .day-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 25px;
+      padding-bottom: 15px;
+      border-bottom: 2px solid #d4af37;
+    }
+
+    .day-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #1a202c;
+    }
+
+    .day-date {
+      color: #718096;
+      font-size: 0.95rem;
+    }
+
+    .entry-section {
+      margin-bottom: 25px;
+    }
+
+    .entry-label {
+      font-weight: 600;
+      color: #2d3748;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .entry-icon {
+      font-size: 1.2rem;
+    }
+
+    .entry-field {
+      width: 100%;
+      min-height: 60px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 12px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: #4a5568;
+      background: #f7fafc;
+      resize: vertical;
+    }
+
+    .entry-field:focus {
+      outline: none;
+      border-color: #d4af37;
+      background: #ffffff;
+    }
+
+    /* Dua List */
+    .dua-list {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    .dua-list-title {
+      font-size: 1.3rem;
+      font-weight: 600;
+      color: #78350f;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .dua-category {
+      margin-bottom: 20px;
+    }
+
+    .dua-category-title {
+      font-weight: 600;
+      color: #92400e;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .dua-input {
+      width: 100%;
+      border: none;
+      background: rgba(255, 255, 255, 0.7);
+      border-bottom: 1px dotted #92400e;
+      padding: 8px;
+      margin-bottom: 8px;
+      font-size: 0.95rem;
+      border-radius: 4px;
+    }
+
+    /* Special Moments */
+    .special-moment {
+      background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+      border-left: 4px solid #10b981;
+      padding: 25px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    .moment-title {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #047857;
+      margin-bottom: 20px;
+    }
+
+    .moment-field {
+      width: 100%;
+      min-height: 100px;
+      border: 1px solid #a7f3d0;
+      border-radius: 8px;
+      padding: 15px;
+      font-family: inherit;
+      font-size: 1rem;
+      color: #065f46;
+      background: rgba(255, 255, 255, 0.8);
+      resize: vertical;
+    }
+
+    /* Reflection */
+    .reflection-section {
+      background: linear-gradient(135deg, #ede9fe 0%, #ddd6fe 100%);
+      padding: 30px;
+      border-radius: 12px;
+      margin-bottom: 30px;
+    }
+
+    .reflection-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: #581c87;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .reflection-question {
+      font-weight: 600;
+      color: #6b21a8;
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+    }
+
+    .reflection-field {
+      width: 100%;
+      min-height: 80px;
+      border: 1px solid #c084fc;
+      border-radius: 8px;
+      padding: 12px;
+      font-family: inherit;
+      font-size: 0.95rem;
+      color: #581c87;
+      background: rgba(255, 255, 255, 0.7);
+      resize: vertical;
+      margin-bottom: 20px;
+    }
+
+    /* Footer */
+    .footer {
+      background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+      color: #ffffff;
+      padding: 40px;
+      text-align: center;
+    }
+    
+    .footer-brand {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: #d4af37;
+      margin-bottom: 15px;
+      letter-spacing: -0.5px;
+    }
+    
+    .footer-text {
+      font-size: 1rem;
+      color: #cbd5e0;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .qr-section {
+      background: rgba(255, 255, 255, 0.1);
+      padding: 20px;
+      border-radius: 12px;
+      margin-top: 30px;
+    }
+
+    .qr-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: #d4af37;
+      margin-bottom: 15px;
+    }
+
+    .qr-placeholder {
+      width: 150px;
+      height: 150px;
+      background: #ffffff;
+      margin: 0 auto;
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.8rem;
+      color: #4a5568;
+    }
+
+    /* Print Styles */
+    @media print {
+      body {
+        background: #ffffff;
+      }
+      
+      .container {
+        box-shadow: none;
+        margin: 0;
+        max-width: 100%;
+      }
+
+      .page-section {
+        page-break-inside: avoid;
+        page-break-after: auto;
+      }
+
+      .daily-entry {
+        page-break-inside: avoid;
+      }
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        margin: 10px;
+        border-radius: 15px;
+      }
+      
+      .header {
+        padding: 40px 20px;
+      }
+      
+      .journal-title {
+        font-size: 2.5rem;
+      }
+      
+      .content {
+        padding: 30px 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Header -->
+    <header class="header">
+      <div class="logo-section">
+        <div class="basmala arabic">بِسْمِ اللّهِ الرَّحْمَنِ الرَّحِيْمِ</div>
+        <h1 class="journal-title">MEIN UMRAH JOURNAL</h1>
+        <div class="journal-subtitle arabic">رحلتي إلى العُمرة</div>
+        
+        <div class="personal-info">
+          <div class="personal-name">{{vorname}} {{nachname}}</div>
+          <div class="travel-dates">{{abflug_datum}} - {{rueckflug_datum}}</div>
+        </div>
+      </div>
+    </header>
+
+    <main class="content">
+      <!-- Introduction -->
+      <section class="page-section">
+        <div class="section-header">
+          <h2 class="section-title">📖 Willkommen zu deiner spirituellen Reise</h2>
+          <p class="section-subtitle">"Und verkünde den Menschen die Hadsch, dass sie zu dir kommen" (22:27)</p>
+        </div>
+        
+        <div class="journey-info">
+          <h3 style="font-size: 1.3rem; font-weight: 600; color: #1a202c; margin-bottom: 15px;">
+            🗓️ Deine UmrahCheck Reisedetails
+          </h3>
+          <table class="journey-table">
+            <tr>
+              <td>✈️ Abflug</td>
+              <td>{{abflughafen}} am {{abflug_datum}}</td>
+            </tr>
+            <tr>
+              <td>🏨 Hotel Makkah</td>
+              <td>{{hotel_mekka_name}} ({{naechte_mekka}} Nächte)</td>
+            </tr>
+            <tr>
+              <td>🏨 Hotel Medina</td>
+              <td>{{hotel_medina_name}} ({{naechte_medina}} Nächte)</td>
+            </tr>
+            <tr>
+              <td>✈️ Rückflug</td>
+              <td>{{rueckflug_datum}}</td>
+            </tr>
+            <tr>
+              <td>👥 Reisende</td>
+              <td>{{pro_person}} Person(en)</td>
+            </tr>
+            <tr>
+              <td>📱 WhatsApp Support</td>
+              <td>+966 560 630 947 (Mustafa aus Medina)</td>
+            </tr>
+          </table>
+        </div>
+      </section>
+
+      <!-- Personal Goals -->
+      <section class="page-section">
+        <div class="section-header">
+          <h2 class="section-title">🎯 Meine persönlichen Ziele für diese Umrah</h2>
+          <p class="section-subtitle">Was möchte ich spirituell erreichen?</p>
+        </div>
+
+        <div class="goals-section">
+          <div class="goal-item">
+            <div class="goal-checkbox"></div>
+            <span class="goal-text">Jeden Fajr in der Haram beten</span>
+          </div>
+          <div class="goal-item">
+            <div class="goal-checkbox"></div>
+            <span class="goal-text">Den Quran in den heiligen Stätten vollenden (Khatm)</span>
+          </div>
+          <div class="goal-item">
+            <div class="goal-checkbox"></div>
+            <span class="goal-text">Geduld und Demut in jeder Situation üben</span>
+          </div>
+          <div class="goal-item">
+            <div class="goal-checkbox"></div>
+            <span class="goal-text">Täglich mindestens 1000x Salawat sprechen</span>
+          </div>
+          <div class="goal-item">
+            <div class="goal-checkbox"></div>
+            <input type="text" class="goal-custom" placeholder="Eigenes Ziel..." />
+          </div>
+          <div class="goal-item">
+            <div class="goal-checkbox"></div>
+            <input type="text" class="goal-custom" placeholder="Eigenes Ziel..." />
+          </div>
+        </div>
+      </section>
+
+      <!-- Dua List -->
+      <section class="page-section">
+        <div class="section-header">
+          <h2 class="section-title">🤲 Meine Dua-Liste</h2>
+          <p class="section-subtitle">Für wen möchte ich besonders Dua machen?</p>
+        </div>
+
+        <div class="dua-list">
+          <div class="dua-list-title">اللَّهُمَّ اسْتَجِبْ دُعَائِي</div>
+          
+          <div class="dua-category">
+            <div class="dua-category-title">👨‍👩‍👧‍👦 Familie</div>
+            <input type="text" class="dua-input" placeholder="Name..." />
+            <input type="text" class="dua-input" placeholder="Name..." />
+            <input type="text" class="dua-input" placeholder="Name..." />
+          </div>
+
+          <div class="dua-category">
+            <div class="dua-category-title">👥 Freunde</div>
+            <input type="text" class="dua-input" placeholder="Name..." />
+            <input type="text" class="dua-input" placeholder="Name..." />
+            <input type="text" class="dua-input" placeholder="Name..." />
+          </div>
+
+          <div class="dua-category">
+            <div class="dua-category-title">🕊️ Verstorbene</div>
+            <input type="text" class="dua-input" placeholder="Name (Allah yerhamo/a)..." />
+            <input type="text" class="dua-input" placeholder="Name (Allah yerhamo/a)..." />
+          </div>
+
+          <div class="dua-category">
+            <div class="dua-category-title">🌍 Ummah & Besondere Anliegen</div>
+            <input type="text" class="dua-input" placeholder="Anliegen..." />
+            <input type="text" class="dua-input" placeholder="Anliegen..." />
+          </div>
+        </div>
+      </section>
+
+      <!-- Special Moment: First Sight of Kaaba -->
+      <section class="page-section">
+        <div class="special-moment">
+          <h2 class="moment-title">🕋 Erste Sicht auf die Kaaba</h2>
+          <div class="arabic" style="font-size: 1.1rem; margin-bottom: 15px; text-align: center;">
+            اللَّهُمَّ زِدْ هَذَا الْبَيْتَ تَشْرِيفًا وَتَعْظِيمًا وَتَكْرِيمًا وَمَهَابَةً
+          </div>
+          <p style="text-align: center; font-size: 0.9rem; color: #047857; margin-bottom: 20px;">
+            "O Allah, mehre diesem Haus Ehre, Verherrlichung, Würde und Ehrfurcht"
+          </p>
+          <textarea class="moment-field" placeholder="Meine Emotionen und Gedanken beim ersten Anblick der Kaaba..."></textarea>
+        </div>
+      </section>
+
+      <!-- Daily Journal - Makkah Days -->
+      <section class="page-section">
+        <div class="section-header">
+          <h2 class="section-title">🕌 Makkah Tagebuch</h2>
+          <p class="section-subtitle">Tägliche Reflexion und spirituelle Momente</p>
+        </div>
+
+        <!-- Day 1 -->
+        <div class="daily-entry">
+          <div class="day-header">
+            <h3 class="day-title">Tag 1 - Ankunft in Makkah</h3>
+            <input type="text" class="day-date" placeholder="Datum: __________" />
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">🌅</span> Fajr Reflexion
+            </label>
+            <textarea class="entry-field" placeholder="Wo habe ich Fajr gebetet? Wie war meine Khushoo?"></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">🕋</span> Tawaf heute
+            </label>
+            <textarea class="entry-field" placeholder="Anzahl der Tawafs, Uhrzeit, besondere Momente..."></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">🏃‍♂️</span> Sa'i Reflexion
+            </label>
+            <textarea class="entry-field" placeholder="Gedanken über Hadschar (RA) und das Vertrauen auf Allah..."></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">📿</span> Heutige Duas
+            </label>
+            <textarea class="entry-field" placeholder="Wofür habe ich heute besonders Dua gemacht?"></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">😌</span> Dankbarkeitsmoment
+            </label>
+            <textarea class="entry-field" placeholder="Wofür bin ich heute besonders dankbar?"></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">💡</span> Erkenntnisse des Tages
+            </label>
+            <textarea class="entry-field" placeholder="Was habe ich heute über mich und meinen Iman gelernt?"></textarea>
+          </div>
+        </div>
+
+        <!-- Additional Days Template -->
+        <div class="daily-entry">
+          <div class="day-header">
+            <h3 class="day-title">Tag ___ in Makkah</h3>
+            <input type="text" class="day-date" placeholder="Datum: __________" />
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">🌅</span> Fajr Reflexion
+            </label>
+            <textarea class="entry-field" placeholder="Wo habe ich Fajr gebetet? Wie war meine Khushoo?"></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">🕋</span> Tawaf heute
+            </label>
+            <textarea class="entry-field" placeholder="Anzahl der Tawafs, Uhrzeit, besondere Momente..."></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">📚</span> Quran & Dhikr
+            </label>
+            <textarea class="entry-field" placeholder="Welche Suren habe ich gelesen? Lieblings-Ayah heute?"></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">🤲</span> Wichtigster Dua heute
+            </label>
+            <textarea class="entry-field" placeholder="Meine wichtigste Bitte an Allah heute..."></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">⭐</span> Höhepunkt des Tages
+            </label>
+            <textarea class="entry-field" placeholder="Der spirituell bewegendste Moment heute..."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Daily Journal - Medina Days -->
+      <section class="page-section">
+        <div class="section-header">
+          <h2 class="section-title">🕌 Medina Tagebuch</h2>
+          <p class="section-subtitle">In der Stadt des Propheten ﷺ</p>
+        </div>
+
+        <div class="special-moment" style="background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%); border-color: #10b981;">
+          <div class="arabic" style="font-size: 1.3rem; text-align: center; margin-bottom: 15px; color: #047857;">
+            اللَّهُمَّ صَلِّ عَلَى مُحَمَّدٍ وَعَلَى آلِ مُحَمَّدٍ
+          </div>
+          <h3 style="font-size: 1.3rem; font-weight: 600; color: #047857; margin-bottom: 20px;">
+            💚 Ankunft in Medina - Erste Gefühle
+          </h3>
+          <textarea class="moment-field" placeholder="Meine ersten Eindrücke und Gefühle in der Stadt des Propheten ﷺ..."></textarea>
+        </div>
+
+        <div class="daily-entry">
+          <div class="day-header">
+            <h3 class="day-title">Tag ___ in Medina</h3>
+            <input type="text" class="day-date" placeholder="Datum: __________" />
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">🌅</span> Fajr in Masjid an-Nabawi
+            </label>
+            <textarea class="entry-field" placeholder="In welcher Reihe? Besondere Momente?"></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">🌱</span> Rawdah Sharif Erfahrung
+            </label>
+            <textarea class="entry-field" placeholder="Konnte ich Rawdah betreten? Meine Duas dort..."></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">🚶‍♂️</span> Ziyarat heute
+            </label>
+            <textarea class="entry-field" placeholder="Quba, Uhud, Qiblatain, Baqi - welche Orte habe ich besucht?"></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">💭</span> Reflexion über den Propheten ﷺ
+            </label>
+            <textarea class="entry-field" placeholder="Was habe ich heute über sein Leben und seine Sunnah gelernt?"></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">📿</span> Salawat Count
+            </label>
+            <textarea class="entry-field" placeholder="Wie oft habe ich heute Salawat gesprochen?"></textarea>
+          </div>
+
+          <div class="entry-section">
+            <label class="entry-label">
+              <span class="entry-icon">😌</span> Friedliche Momente
+            </label>
+            <textarea class="entry-field" placeholder="Momente der Ruhe und des Friedens in Medina..."></textarea>
+          </div>
+        </div>
+      </section>
+
+      <!-- Final Reflection -->
+      <section class="page-section">
+        <div class="section-header">
+          <h2 class="section-title">🔮 Nach der Umrah - Reflexion & Versprechen</h2>
+          <p class="section-subtitle">Was nehme ich mit nach Hause?</p>
+        </div>
+
+        <div class="reflection-section">
+          <h3 class="reflection-title">🌟 Was hat sich in mir verändert?</h3>
+          
+          <div style="margin-bottom: 25px;">
+            <p class="reflection-question">Spirituell - Wie hat sich mein Iman entwickelt?</p>
+            <textarea class="reflection-field" placeholder="Vorher vs. Nachher..."></textarea>
+          </div>
+
+          <div style="margin-bottom: 25px;">
+            <p class="reflection-question">Mental - Wie hat sich meine Denkweise verändert?</p>
+            <textarea class="reflection-field" placeholder="Neue Perspektiven und Erkenntnisse..."></textarea>
+          </div>
+
+          <div style="margin-bottom: 25px;">
+            <p class="reflection-question">Emotional - Wie fühle ich mich jetzt?</p>
+            <textarea class="reflection-field" placeholder="Innerer Frieden, Dankbarkeit..."></textarea>
+          </div>
+        </div>
+
+        <div class="goals-section" style="background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);">
+          <h3 class="goals-title" style="color: #78350f;">🤝 Meine Versprechen an Allah</h3>
+          
+          <div class="goal-item" style="background: rgba(255, 255, 255, 0.8);">
+            <div class="goal-checkbox"></div>
+            <input type="text" class="goal-custom" placeholder="Versprechen 1..." />
+          </div>
+          <div class="goal-item" style="background: rgba(255, 255, 255, 0.8);">
+            <div class="goal-checkbox"></div>
+            <input type="text" class="goal-custom" placeholder="Versprechen 2..." />
+          </div>
+          <div class="goal-item" style="background: rgba(255, 255, 255, 0.8);">
+            <div class="goal-checkbox"></div>
+            <input type="text" class="goal-custom" placeholder="Versprechen 3..." />
+          </div>
+        </div>
+
+        <div class="special-moment" style="background: linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%); border-color: #9333ea;">
+          <h3 style="font-size: 1.3rem; font-weight: 600; color: #6b21a8; margin-bottom: 20px;">
+            💌 Brief an mich selbst in einem Jahr
+          </h3>
+          <textarea class="moment-field" style="min-height: 150px;" 
+            placeholder="Liebe(r) {{vorname}},&#10;&#10;Wenn du das in einem Jahr liest, erinnere dich an..."></textarea>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="footer-brand">🕋 UMRAHCHECK PREMIUM JOURNAL</div>
+      <p class="footer-text">
+        Deine spirituelle Reise - dokumentiert und bewahrt für die Ewigkeit
+      </p>
+      
+      <div class="qr-section">
+        <h3 class="qr-title">📱 Digitale Extras</h3>
+        <div class="qr-placeholder">[QR Code zu deiner UmrahCheck Analyse]</div>
+        <p style="margin-top: 15px; font-size: 0.9rem; color: #cbd5e0;">
+          WhatsApp Support: +966 560 630 947<br/>
+          Website: www.umrahcheck.de
+        </p>
+      </div>
+
+      <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.1);">
+        <p style="font-size: 0.85rem; color: #a0aec0;">
+          © 2025 UmrahCheck - Premium Umrah Services<br/>
+          Erstellt am: <span id="creation-date"></span> | Version 1.0
+        </p>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Set creation date
+    const creationDate = document.getElementById('creation-date');
+    if (creationDate) {
+      const now = new Date();
+      creationDate.textContent = now.toLocaleDateString('de-DE');
+    }
+
+    // Print functionality
+    function printJournal() {
+      window.print();
+    }
+
+    // Auto-save to localStorage (optional)
+    const textareas = document.querySelectorAll('textarea, input[type="text"]');
+    textareas.forEach((element, index) => {
+      // Load saved content
+      const savedContent = localStorage.getItem(`journal-field-${index}`);
+      if (savedContent) {
+        element.value = savedContent;
+      }
+      
+      // Save on change
+      element.addEventListener('input', () => {
+        localStorage.setItem(`journal-field-${index}`, element.value);
+      });
+    });
+  </script>
+</body>
+</html>

@@ -40,6 +40,13 @@ export function Navbar({ className }: NavbarProps) {
 
   const navigationItems = [
     {
+      name: 'Umrah Journal',
+      href: '/journal',
+      icon: BookOpen,
+      description: 'NEU: Dein persönliches Umrah Tagebuch',
+      badge: 'NEU'
+    },
+    {
       name: 'Preisvergleich',
       href: '/preisvergleich',
       icon: Calculator,
@@ -120,6 +127,11 @@ export function Navbar({ className }: NavbarProps) {
               <div className="flex items-center gap-2">
                 <item.icon className="w-4 h-4 text-primary-gold group-hover:scale-110 transition-transform" />
                 {item.name}
+                {item.badge && (
+                  <Badge className="ml-1 bg-red-500 text-white text-xs px-1.5 py-0 h-5">
+                    {item.badge}
+                  </Badge>
+                )}
               </div>
               
               {/* Hover tooltip */}
@@ -183,8 +195,15 @@ export function Navbar({ className }: NavbarProps) {
                     onClick={() => setIsOpen(false)}
                   >
                     <item.icon className="w-5 h-5 text-primary-gold group-hover:scale-110 transition-transform" />
-                    <div>
-                      <span className="font-medium">{item.name}</span>
+                    <div className="flex-1">
+                      <div className="flex items-center gap-2">
+                        <span className="font-medium">{item.name}</span>
+                        {item.badge && (
+                          <Badge className="bg-red-500 text-white text-xs px-1.5 py-0 h-5">
+                            {item.badge}
+                          </Badge>
+                        )}
+                      </div>
                       <p className="text-xs text-gray-500 mt-0.5">{item.description}</p>
                     </div>
                   </Link>
