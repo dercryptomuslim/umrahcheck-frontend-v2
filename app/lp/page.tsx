@@ -96,18 +96,26 @@ export default function LandingPage() {
   // Track Anti-Scam messaging exposure
   useEffect(() => {
     // Track exposure to anti-scam messaging
-    analytics.track('anti_scam_messaging_viewed', {
-      timestamp: new Date().toISOString(),
-      savings_highlighted: '4000_euro_family_savings',
-      comparison_shown: 'organization_vs_real_prices'
+    analytics.trackEvent({
+      event_name: 'anti_scam_messaging_viewed',
+      event_category: 'engagement',
+      parameters: {
+        timestamp: new Date().toISOString(),
+        savings_highlighted: '4000_euro_family_savings',
+        comparison_shown: 'organization_vs_real_prices'
+      }
     })
 
     // Track specific messaging elements
     setTimeout(() => {
-      analytics.track('savings_proof_section_viewed', {
-        organization_price: '8800_euro',
-        real_price: '4800_euro',
-        savings_amount: '4000_euro'
+      analytics.trackEvent({
+        event_name: 'savings_proof_section_viewed',
+        event_category: 'engagement',
+        parameters: {
+          organization_price: '8800_euro',
+          real_price: '4800_euro',
+          savings_amount: '4000_euro'
+        }
       })
     }, 3000)
   }, [])

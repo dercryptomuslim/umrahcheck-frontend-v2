@@ -76,10 +76,14 @@ export default function UmrahJournalPage() {
     
     // Track conversion
     if (typeof window !== 'undefined' && (window as any).analytics) {
-      (window as any).analytics.track('journal_order_initiated', {
-        package_type: packageType,
-        price: packages[packageType as keyof typeof packages].price,
-        timestamp: new Date().toISOString()
+      (window as any).analytics.trackEvent({
+        event_name: 'journal_order_initiated',
+        event_category: 'conversion',
+        parameters: {
+          package_type: packageType,
+          price: packages[packageType as keyof typeof packages].price,
+          timestamp: new Date().toISOString()
+        }
       })
     }
 
