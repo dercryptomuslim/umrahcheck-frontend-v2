@@ -19,7 +19,7 @@ TEST_REQUEST = {
     "destination": "Medina",
     "departure_airport": "Frankfurt",
     "arrival_airport": "Jeddah",
-    "departure_date": "10.12.2025",  # Future date for testing
+    "departure_date": "10.10.2025",  # Future date for testing
     "nights_mekka": "5",
     "nights_medina": "4",
     "nationality": "deutsch", 
