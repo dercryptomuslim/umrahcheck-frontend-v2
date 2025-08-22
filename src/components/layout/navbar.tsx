@@ -35,10 +35,18 @@ interface NavbarProps {
   className?: string;
 }
 
+interface NavigationItem {
+  name: string;
+  href: string;
+  icon: any;
+  description: string;
+  badge?: string;
+}
+
 export function Navbar({ className }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navigationItems = [
+  const navigationItems: NavigationItem[] = [
     {
       name: 'Umrah Journal',
       href: '/journal',
