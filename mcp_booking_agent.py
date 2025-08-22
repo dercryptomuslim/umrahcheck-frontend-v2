@@ -647,16 +647,24 @@ class UmrahBookingAgent:
     
     def _get_budget_aware_fallback_hotels(self, request: BookingRequest, budget_allocation, 
                                         persons: int, nights_mekka: int, nights_medina: int) -> Dict:
-        """Budget-aware fallback hotel data"""
+        """Budget-aware fallback hotel data with 4-bed room rule"""
         fallback_prices = create_realistic_fallback_prices(
             budget_allocation, persons, nights_mekka, nights_medina
         )
         
         dep_date, medina_checkout, mekka_checkout = self._parse_dates(request)
         
-        # Use budget-appropriate pricing
-        mekka_per_night = fallback_prices['hotel_mekka_per_night']
-        medina_per_night = fallback_prices['hotel_medina_per_night']
+        # Use budget-appropriate pricing - ROOM BASED
+        rooms_needed = fallback_prices['rooms_needed']
+        beds_per_room = fallback_prices['beds_per_room']
+        
+        # Price per room per night
+        mekka_per_room = fallback_prices['hotel_mekka_per_room_per_night']
+        medina_per_room = fallback_prices['hotel_medina_per_room_per_night']
+        
+        # Total price for all rooms for the entire stay
+        mekka_total = mekka_per_room * nights_mekka * rooms_needed
+        medina_total = medina_per_room * nights_medina * rooms_needed
         
         # Determine appropriate hotel names and stars based on budget
         budget_per_person = budget_allocation.total_budget // persons
@@ -686,9 +694,9 @@ class UmrahBookingAgent:
                 "check_in": dep_date.strftime("%d.%m.%Y"),
                 "check_out": medina_checkout.strftime("%d.%m.%Y"),
                 "nights": nights_medina,
-                "room_type": f"{'Superior' if stars >= 4 else 'Standard'} Room ({persons} beds)",
-                "price_total": f"€{medina_per_night * nights_medina}",
-                "price_per_night": f"€{medina_per_night}",
+                "room_type": f"{'Superior' if stars >= 4 else 'Standard'} Room ({beds_per_room} beds) × {rooms_needed} room(s)",
+                "price_total": f"€{medina_total}",
+                "price_per_night": f"€{medina_per_room}/room (€{medina_per_room // beds_per_room}/person)",
                 "booking_url": f"https://booking.com/search?destination=medina",
                 "amenities": ["WiFi", "AC", "Mosque View" if stars >= 4 else "City View", "Halal Restaurant"],
                 "rating": 4.5 if stars >= 4 else 4.0
@@ -700,9 +708,9 @@ class UmrahBookingAgent:
                 "check_in": medina_checkout.strftime("%d.%m.%Y"),
                 "check_out": mekka_checkout.strftime("%d.%m.%Y"),
                 "nights": nights_mekka,
-                "room_type": f"{'Superior' if stars >= 4 else 'Standard'} Room ({persons} beds)",
-                "price_total": f"€{mekka_per_night * nights_mekka}",
-                "price_per_night": f"€{mekka_per_night}",
+                "room_type": f"{'Superior' if stars >= 4 else 'Standard'} Room ({beds_per_room} beds) × {rooms_needed} room(s)",
+                "price_total": f"€{mekka_total}",
+                "price_per_night": f"€{mekka_per_room}/room (€{mekka_per_room // beds_per_room}/person)",
                 "booking_url": f"https://booking.com/search?destination=makkah",
                 "amenities": ["WiFi", "AC", "Haram View" if stars == 5 else "City View", "Room Service"],
                 "rating": 4.5 if stars >= 4 else 4.0

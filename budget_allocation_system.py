@@ -158,6 +158,9 @@ class SmartBudgetAllocator:
         """
         Generiere konkrete Preis-Ziele für die Suche
         
+        WICHTIG: Berücksichtigt die 3/4-Bett-Regel in Saudi Hotels!
+        Hotels haben standardmäßig 3-4 Betten pro Zimmer.
+        
         Args:
             allocation: Budget-Allokation
             persons: Anzahl Reisende  
@@ -174,9 +177,19 @@ class SmartBudgetAllocator:
         mekka_hotel_budget = int(allocation.hotels_budget * 0.6)
         medina_hotel_budget = int(allocation.hotels_budget * 0.4)
         
-        # Max. Hotelpreis pro Nacht (für alle Personen zusammen)
-        max_hotel_price_per_night_mekka = mekka_hotel_budget // nights_mekka if nights_mekka > 0 else 0
-        max_hotel_price_per_night_medina = medina_hotel_budget // nights_medina if nights_medina > 0 else 0
+        # KRITISCH: 3/4-Bett-Regel anwenden!
+        # Berechne wie viele Zimmer benötigt werden
+        beds_per_room = 4 if persons >= 4 else 3  # Standard: 4-Bett-Zimmer, bei weniger Personen 3-Bett
+        rooms_needed = math.ceil(persons / beds_per_room)
+        
+        # Max. Hotelpreis PRO ZIMMER pro Nacht (nicht pro Person!)
+        # Das Budget ist für alle Personen, aber wir brauchen nur rooms_needed Zimmer
+        max_hotel_price_per_room_per_night_mekka = (mekka_hotel_budget // nights_mekka // rooms_needed) if nights_mekka > 0 else 0
+        max_hotel_price_per_room_per_night_medina = (medina_hotel_budget // nights_medina // rooms_needed) if nights_medina > 0 else 0
+        
+        # Für die Targets verwenden wir den Zimmerpreis
+        max_hotel_price_per_night_mekka = max_hotel_price_per_room_per_night_mekka
+        max_hotel_price_per_night_medina = max_hotel_price_per_room_per_night_medina
         
         # Bestimme Ziel-Sternebewertung basierend auf Budget
         budget_per_person = allocation.total_budget // persons
@@ -248,7 +261,7 @@ def create_realistic_fallback_prices(allocation: BudgetAllocation, persons: int,
                                    nights_mekka: int, nights_medina: int) -> Dict:
     """
     Erstelle realistische Fallback-Preise basierend auf Budget
-    Wird verwendet wenn Live-Scraping fehlschlägt
+    WICHTIG: Berücksichtigt die 3/4-Bett-Regel!
     """
     targets = SmartBudgetAllocator().generate_price_targets(
         allocation, persons, nights_mekka, nights_medina
@@ -257,16 +270,29 @@ def create_realistic_fallback_prices(allocation: BudgetAllocation, persons: int,
     # Realistische Flugpreise (80% des max. Budgets)
     realistic_flight_price = int(targets.max_flight_price_per_person * 0.8)
     
-    # Realistische Hotelpreise (85% des max. Budgets)  
-    realistic_mekka_price = int(targets.max_hotel_price_per_night_mekka * 0.85)
-    realistic_medina_price = int(targets.max_hotel_price_per_night_medina * 0.85)
+    # KRITISCH: Hotel prices are PER ROOM, not per person!
+    # Realistische Hotelpreise PRO ZIMMER (85% des max. Budgets)
+    realistic_mekka_price_per_room = int(targets.max_hotel_price_per_night_mekka * 0.85)
+    realistic_medina_price_per_room = int(targets.max_hotel_price_per_night_medina * 0.85)
+    
+    # Calculate rooms needed
+    beds_per_room = 4 if persons >= 4 else 3
+    rooms_needed = math.ceil(persons / beds_per_room)
+    
+    # Total hotel costs = room price * nights * rooms needed
+    total_mekka = realistic_mekka_price_per_room * nights_mekka * rooms_needed
+    total_medina = realistic_medina_price_per_room * nights_medina * rooms_needed
     
     return {
         'flight_price_per_person': realistic_flight_price,
-        'hotel_mekka_per_night': realistic_mekka_price,
-        'hotel_medina_per_night': realistic_medina_price,
+        'hotel_mekka_per_room_per_night': realistic_mekka_price_per_room,
+        'hotel_medina_per_room_per_night': realistic_medina_price_per_room,
+        'hotel_mekka_per_person_per_night': realistic_mekka_price_per_room // beds_per_room,
+        'hotel_medina_per_person_per_night': realistic_medina_price_per_room // beds_per_room,
         'total_flights': realistic_flight_price * persons,
-        'total_hotels': (realistic_mekka_price * nights_mekka) + (realistic_medina_price * nights_medina)
+        'total_hotels': total_mekka + total_medina,
+        'rooms_needed': rooms_needed,
+        'beds_per_room': beds_per_room
     }
 
 # Example Usage & Testing
@@ -302,10 +328,10 @@ if __name__ == "__main__":
     # Preis-Ziele generieren
     targets = allocator.generate_price_targets(allocation, persons, nights_mekka, nights_medina)
     
-    print("🎯 PRICE TARGETS:")
+    print("🎯 PRICE TARGETS (mit 4-Bett-Regel):")
     print(f"   Max. Flugpreis p.P.: €{targets.max_flight_price_per_person}")
-    print(f"   Max. Hotel Mekka/Nacht: €{targets.max_hotel_price_per_night_mekka}")
-    print(f"   Max. Hotel Medina/Nacht: €{targets.max_hotel_price_per_night_medina}")
+    print(f"   Max. Hotel Mekka PRO ZIMMER/Nacht: €{targets.max_hotel_price_per_night_mekka}")
+    print(f"   Max. Hotel Medina PRO ZIMMER/Nacht: €{targets.max_hotel_price_per_night_medina}")
     print(f"   Ziel Sterne-Rating: {targets.target_star_rating}⭐")
     print(f"   Entfernung Priorität: {targets.distance_priority}")
     print()
@@ -313,12 +339,18 @@ if __name__ == "__main__":
     # Realistische Fallback-Preise
     fallback = create_realistic_fallback_prices(allocation, persons, nights_mekka, nights_medina)
     
-    print("✨ REALISTIC PRICING:")
+    print("✨ REALISTIC PRICING (4-Bett-Zimmer Regel):")
+    print(f"   Zimmer benötigt: {fallback['rooms_needed']} ({fallback['beds_per_room']} Betten pro Zimmer)")
     print(f"   Flugpreis p.P.: €{fallback['flight_price_per_person']}")
     print(f"   Total Flüge: €{fallback['total_flights']:,}")
-    print(f"   Hotel Mekka/Nacht: €{fallback['hotel_mekka_per_night']}")  
-    print(f"   Hotel Medina/Nacht: €{fallback['hotel_medina_per_night']}")
-    print(f"   Total Hotels: €{fallback['total_hotels']:,}")
+    print()
+    print(f"   Hotel Mekka PRO ZIMMER/Nacht: €{fallback['hotel_mekka_per_room_per_night']}")
+    print(f"   Hotel Mekka PRO PERSON/Nacht: €{fallback['hotel_mekka_per_person_per_night']} (geteilt durch {fallback['beds_per_room']})")
+    print()
+    print(f"   Hotel Medina PRO ZIMMER/Nacht: €{fallback['hotel_medina_per_room_per_night']}")
+    print(f"   Hotel Medina PRO PERSON/Nacht: €{fallback['hotel_medina_per_person_per_night']} (geteilt durch {fallback['beds_per_room']})")
+    print()
+    print(f"   Total Hotels: €{fallback['total_hotels']:,} ({fallback['rooms_needed']} Zimmer × {nights_mekka + nights_medina} Nächte)")
     print()
     
     # Validierung
