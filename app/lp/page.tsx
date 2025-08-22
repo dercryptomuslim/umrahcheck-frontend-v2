@@ -7,6 +7,7 @@ import Link from 'next/link'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useAnalytics, initializeScrollTracking } from '@/lib/analytics'
 import { useABTest } from '@/lib/ab-testing-lp'
+import { WhatsAppAntiScamCTA } from '@/components/ui/whatsapp-anti-scam-cta'
 import { 
   ArrowRight, 
   ArrowLeft,
@@ -625,6 +626,11 @@ export default function LandingPage() {
             </CardContent>
           </Card>
         </motion.div>
+      </div>
+
+      {/* WhatsApp Anti-Scam CTA Section */}
+      <div className="container mx-auto px-4 py-8">
+        <WhatsAppAntiScamCTA variant="hero" />
       </div>
 
       {/* Main Form Section */}
