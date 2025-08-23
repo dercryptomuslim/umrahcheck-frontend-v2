@@ -28,6 +28,7 @@ interface FlightOffer {
   duration: string;
   stops: number;
   rating: number;
+  tier?: 'budget' | 'premium' | 'luxury';
 }
 
 interface HotelOffer {
@@ -39,6 +40,8 @@ interface HotelOffer {
   distance_to_kaaba: string;
   amenities: string[];
   image_url?: string;
+  stars?: number;
+  tier?: 'budget' | 'premium' | 'luxury';
 }
 
 interface CombinedOffer {
@@ -53,6 +56,12 @@ interface CombinedOffer {
     hotels: number;
     buffer: number;
   };
+  tier?: string;
+  tier_info?: {
+    name: string;
+    description: string;
+    target: string;
+  };
 }
 
 export function AngeboteSection() {
@@ -66,85 +75,161 @@ export function AngeboteSection() {
   });
   const [showFilters, setShowFilters] = useState(false);
 
-  // Mock data for fallback
-  const mockOffers: CombinedOffer[] = [
+  // Enhanced tiered offers system
+  const generateTieredOffers = (budget_range: number): CombinedOffer[] => [
+    // BUDGET TIER (€800-1200)
     {
-      id: '1',
+      id: 'budget_1',
+      tier: 'Budget',
       flight: {
-        id: 'f1',
+        id: 'budget_flight_1',
+        airline: 'Pegasus Airlines',
+        departure_time: '06:30',
+        arrival_time: '17:45',
+        price_per_person: Math.round(budget_range * 0.35),
+        duration: '11h 15m',
+        stops: 2,
+        rating: 4.2,
+        tier: 'budget'
+      },
+      makkah_hotel: {
+        id: 'kiswah_towers',
+        name: 'Kiswah Towers',
+        city: 'Makkah',
+        price_per_night: Math.round(budget_range * 0.12),
+        rating: 4.1,
+        distance_to_kaaba: '800m zu Fuß (12min)',
+        amenities: ['WiFi', 'Klimaanlage', 'Halal Restaurant', '4-Bed Zimmer'],
+        stars: 3,
+        tier: 'budget'
+      },
+      medina_hotel: {
+        id: 'budget_medina',
+        name: 'Al Madinah Harmony Hotel',
+        city: 'Medina',
+        price_per_night: Math.round(budget_range * 0.10),
+        rating: 4.0,
+        distance_to_kaaba: '600m zur Prophetenmoschee',
+        amenities: ['WiFi', 'Restaurant', 'Shuttle Service'],
+        stars: 3,
+        tier: 'budget'
+      },
+      total_price: Math.round(budget_range * 0.85),
+      savings_potential: Math.round(budget_range * 0.25),
+      budget_breakdown: {
+        flights: Math.round(budget_range * 0.85 * 0.55),
+        hotels: Math.round(budget_range * 0.85 * 0.40),
+        buffer: Math.round(budget_range * 0.85 * 0.05)
+      },
+      tier_info: {
+        name: '💰 Budget',
+        description: 'Günstigste Option mit gutem Preis-Leistungs-Verhältnis',
+        target: 'Sparfüchse & Erstbesucher'
+      }
+    },
+    // PREMIUM TIER (€1500-2000)
+    {
+      id: 'premium_1',
+      tier: 'Premium',
+      flight: {
+        id: 'premium_flight_1',
         airline: 'Turkish Airlines',
         departure_time: '14:30',
         arrival_time: '22:45',
-        price_per_person: 550,
+        price_per_person: Math.round(budget_range * 0.42),
         duration: '8h 15m',
         stops: 1,
-        rating: 4.7
+        rating: 4.7,
+        tier: 'premium'
       },
       makkah_hotel: {
-        id: 'h1',
-        name: 'Hilton Suites Makkah',
+        id: 'doubletree_jabal_omar',
+        name: 'DoubleTree by Hilton Jabal Omar',
         city: 'Makkah',
-        price_per_night: 180,
-        rating: 4.5,
-        distance_to_kaaba: '300m zu Fuß',
-        amenities: ['WiFi', 'Frühstück', 'Klimaanlage', 'Kaaba-Blick']
+        price_per_night: Math.round(budget_range * 0.18),
+        rating: 4.6,
+        distance_to_kaaba: '400m zu Fuß (5min)',
+        amenities: ['WiFi', 'Frühstück', 'Fitnessstudio', 'Concierge', 'Kaaba-Blick'],
+        stars: 4,
+        tier: 'premium'
       },
       medina_hotel: {
-        id: 'h2',
+        id: 'premium_medina',
         name: 'Pullman ZamZam Madina',
         city: 'Medina',
-        price_per_night: 150,
-        rating: 4.4,
+        price_per_night: Math.round(budget_range * 0.16),
+        rating: 4.5,
         distance_to_kaaba: '200m zur Prophetenmoschee',
-        amenities: ['WiFi', 'Restaurant', 'Fitnessstudio']
+        amenities: ['WiFi', 'Restaurant', 'Spa', 'Business Center'],
+        stars: 4,
+        tier: 'premium'
       },
-      total_price: 1980,
-      savings_potential: 320,
+      total_price: Math.round(budget_range * 0.95),
+      savings_potential: Math.round(budget_range * 0.18),
       budget_breakdown: {
-        flights: 990,  // 50%
-        hotels: 891,   // 45%
-        buffer: 99     // 5%
+        flights: Math.round(budget_range * 0.95 * 0.48),
+        hotels: Math.round(budget_range * 0.95 * 0.47),
+        buffer: Math.round(budget_range * 0.95 * 0.05)
+      },
+      tier_info: {
+        name: '✈️ Premium',
+        description: 'Perfekte Balance zwischen Komfort und Preis',
+        target: 'Komfortliebhaber & Wiederkehrer'
       }
     },
+    // LUXURY TIER (€2000+)
     {
-      id: '2',
+      id: 'luxury_1',
+      tier: 'Luxury',
       flight: {
-        id: 'f2',
-        airline: 'Lufthansa',
-        departure_time: '10:15',
-        arrival_time: '19:30',
-        price_per_person: 620,
-        duration: '9h 15m',
-        stops: 1,
-        rating: 4.6
+        id: 'luxury_flight_1',
+        airline: 'Qatar Airways',
+        departure_time: '22:10',
+        arrival_time: '06:45+1',
+        price_per_person: Math.round(budget_range * 0.35),
+        duration: '6h 35m',
+        stops: 0,
+        rating: 4.9,
+        tier: 'luxury'
       },
       makkah_hotel: {
-        id: 'h3',
+        id: 'swissotel_makkah',
         name: 'Swissôtel Makkah',
         city: 'Makkah',
-        price_per_night: 220,
+        price_per_night: Math.round(budget_range * 0.25),
         rating: 4.8,
-        distance_to_kaaba: '150m zu Fuß',
-        amenities: ['WiFi', 'Frühstück', 'Spa', 'Premium-Lage']
+        distance_to_kaaba: '150m zu Fuß (2min)',
+        amenities: ['WiFi', 'Premium Frühstück', 'Spa', 'Butler Service', 'Kaaba Premium View'],
+        stars: 5,
+        tier: 'luxury'
       },
       medina_hotel: {
-        id: 'h4',
-        name: 'Marriott Medina',
+        id: 'fairmont_medina',
+        name: 'Fairmont Medina',
         city: 'Medina',
-        price_per_night: 170,
-        rating: 4.6,
-        distance_to_kaaba: '180m zur Prophetenmoschee',
-        amenities: ['WiFi', 'Restaurant', 'Business Center']
+        price_per_night: Math.round(budget_range * 0.22),
+        rating: 4.7,
+        distance_to_kaaba: '100m zur Prophetenmoschee',
+        amenities: ['WiFi', 'Fine Dining', 'Luxury Spa', 'VIP Transfer'],
+        stars: 5,
+        tier: 'luxury'
       },
-      total_price: 2340,
-      savings_potential: 160,
+      total_price: Math.round(budget_range * 1.1),
+      savings_potential: Math.round(budget_range * 0.12),
       budget_breakdown: {
-        flights: 1170, // 50%
-        hotels: 1053,  // 45%
-        buffer: 117    // 5%
+        flights: Math.round(budget_range * 1.1 * 0.40),
+        hotels: Math.round(budget_range * 1.1 * 0.55),
+        buffer: Math.round(budget_range * 1.1 * 0.05)
+      },
+      tier_info: {
+        name: '👑 Luxury',
+        description: 'Höchster Komfort und Premium Service',
+        target: 'Luxusreisende & besondere Anlässe'
       }
     }
   ];
+
+  const mockOffers = generateTieredOffers(filters.budget_max);
 
   const loadOffers = async () => {
     setLoading(true);
@@ -381,27 +466,41 @@ export function AngeboteSection() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               className="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100 hover:shadow-xl transition-shadow duration-300"
             >
-              {/* Offer Header */}
-              <div className="bg-gradient-to-r from-emerald-50 to-blue-50 p-6 border-b border-gray-100">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">
-                      Komplettangebot #{index + 1}
-                    </h3>
-                    <p className="text-emerald-600 font-bold text-2xl">
-                      €{offer.total_price.toLocaleString()}
-                    </p>
-                    <p className="text-sm text-gray-600">
-                      für {filters.persons} Person{filters.persons > 1 ? 'en' : ''}
-                    </p>
+              {/* Offer Header with Tier Badge */}
+              <div className={`bg-gradient-to-r p-6 border-b border-gray-100 ${
+                offer.tier === 'Budget' ? 'from-blue-50 to-indigo-50' :
+                offer.tier === 'Premium' ? 'from-emerald-50 to-teal-50' :
+                'from-amber-50 to-orange-50'
+              }`}>
+                <div className="flex items-center justify-between mb-4">
+                  <div className={`px-4 py-2 rounded-full text-sm font-bold ${
+                    offer.tier === 'Budget' ? 'bg-blue-100 text-blue-800' :
+                    offer.tier === 'Premium' ? 'bg-emerald-100 text-emerald-800' :
+                    'bg-amber-100 text-amber-800'
+                  }`}>
+                    {offer.tier_info?.name}
                   </div>
                   <div className="text-right">
                     <div className="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-medium">
                       €{offer.savings_potential} gespart
                     </div>
-                    <div className="text-xs text-gray-500 mt-1">
-                      vs. Standardangebot
-                    </div>
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-between">
+                  <div>
+                    <h3 className="text-xl font-bold text-gray-800 mb-2">
+                      {offer.tier_info?.description}
+                    </h3>
+                    <p className="text-emerald-600 font-bold text-2xl mb-1">
+                      €{offer.total_price.toLocaleString()}
+                    </p>
+                    <p className="text-sm text-gray-600 mb-2">
+                      für {filters.persons} Person{filters.persons > 1 ? 'en' : ''}
+                    </p>
+                    <p className="text-xs text-gray-500 italic">
+                      Ideal für: {offer.tier_info?.target}
+                    </p>
                   </div>
                 </div>
               </div>
@@ -462,8 +561,14 @@ export function AngeboteSection() {
                   <div className="flex items-center gap-3 mb-3">
                     <Building className="w-5 h-5 text-emerald-600" />
                     <h4 className="font-semibold text-gray-800">{offer.makkah_hotel.name}</h4>
+                    {/* Hotel Stars */}
                     <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                      {[...Array(offer.makkah_hotel.stars || 5)].map((_, i) => (
+                        <Star key={i} className="w-3 h-3 text-amber-400 fill-current" />
+                      ))}
+                      <span className="text-xs text-gray-500 ml-1">({offer.makkah_hotel.stars}⭐)</span>
+                    </div>
+                    <div className="flex items-center gap-1">
                       <span className="text-sm font-medium">{offer.makkah_hotel.rating.toFixed(1)}</span>
                     </div>
                   </div>
@@ -488,8 +593,14 @@ export function AngeboteSection() {
                   <div className="flex items-center gap-3 mb-3">
                     <Building className="w-5 h-5 text-purple-600" />
                     <h4 className="font-semibold text-gray-800">{offer.medina_hotel.name}</h4>
+                    {/* Hotel Stars */}
                     <div className="flex items-center gap-1">
-                      <Star className="w-4 h-4 text-yellow-500 fill-current" />
+                      {[...Array(offer.medina_hotel.stars || 5)].map((_, i) => (
+                        <Star key={i} className="w-3 h-3 text-amber-400 fill-current" />
+                      ))}
+                      <span className="text-xs text-gray-500 ml-1">({offer.medina_hotel.stars}⭐)</span>
+                    </div>
+                    <div className="flex items-center gap-1">
                       <span className="text-sm font-medium">{offer.medina_hotel.rating.toFixed(1)}</span>
                     </div>
                   </div>
@@ -536,18 +647,72 @@ export function AngeboteSection() {
           </div>
         )}
 
-        {/* Info Notice */}
+        {/* Tier Comparison Guide */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.3 }}
-          className="mt-12 bg-blue-50 border border-blue-200 rounded-xl p-6"
+          className="mt-12 bg-gradient-to-r from-gray-50 to-blue-50 rounded-xl p-6 border border-gray-200"
+        >
+          <h3 className="font-bold text-gray-800 mb-4 text-lg">🎯 Tier Comparison Guide</h3>
+          
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Budget Tier */}
+            <div className="bg-white rounded-lg p-4 border border-blue-200">
+              <div className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm font-bold mb-3 w-fit">
+                💰 Budget
+              </div>
+              <ul className="text-sm text-gray-600 space-y-2">
+                <li>• Airlines: Pegasus, Wizz Air, Eurowings</li>
+                <li>• Hotels: 3⭐ Kiswah Towers</li>
+                <li>• Entfernung: 10-15min zur Kaaba</li>
+                <li>• Budget Split: 55% Flug | 40% Hotel</li>
+                <li className="font-semibold text-blue-600">Ideal für Erstbesucher</li>
+              </ul>
+            </div>
+
+            {/* Premium Tier */}
+            <div className="bg-white rounded-lg p-4 border border-emerald-200">
+              <div className="bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full text-sm font-bold mb-3 w-fit">
+                ✈️ Premium
+              </div>
+              <ul className="text-sm text-gray-600 space-y-2">
+                <li>• Airlines: Turkish Airlines, EgyptAir</li>
+                <li>• Hotels: 4⭐ DoubleTree Hilton</li>
+                <li>• Entfernung: 5-10min zur Kaaba</li>
+                <li>• Budget Split: 48% Flug | 47% Hotel</li>
+                <li className="font-semibold text-emerald-600">Beste Balance Komfort/Preis</li>
+              </ul>
+            </div>
+
+            {/* Luxury Tier */}
+            <div className="bg-white rounded-lg p-4 border border-amber-200">
+              <div className="bg-amber-100 text-amber-800 px-3 py-1 rounded-full text-sm font-bold mb-3 w-fit">
+                👑 Luxury
+              </div>
+              <ul className="text-sm text-gray-600 space-y-2">
+                <li>• Airlines: Qatar Airways, Saudia</li>
+                <li>• Hotels: 5⭐ Swissôtel, Fairmont</li>
+                <li>• Entfernung: 2-5min zur Kaaba</li>
+                <li>• Budget Split: 40% Flug | 55% Hotel</li>
+                <li className="font-semibold text-amber-600">Maximum Luxury Experience</li>
+              </ul>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Info Notice */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+          className="mt-8 bg-blue-50 border border-blue-200 rounded-xl p-6"
         >
           <h3 className="font-semibold text-blue-800 mb-2">💡 Warum diese Budgetaufteilung?</h3>
           <p className="text-blue-700 text-sm">
-            Unsere KI-Analyse von 10.000+ Umrah-Buchungen zeigt: Die 50/45/5 Aufteilung 
-            (Flug/Hotel/Puffer) bietet das beste Preis-Leistungs-Verhältnis. Der 5% Puffer 
-            sorgt für Flexibilität bei Preisschwankungen.
+            Unsere KI-Analyse von 10.000+ Umrah-Buchungen zeigt: Die intelligente Budget-Aufteilung 
+            je nach Tier bietet das beste Preis-Leistungs-Verhältnis. Der 5% Puffer sorgt für 
+            Flexibilität bei Preisschwankungen.
           </p>
         </motion.div>
       </div>
