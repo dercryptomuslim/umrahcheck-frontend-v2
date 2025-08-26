@@ -57,16 +57,16 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section id="features" className="py-20 bg-white">
-      <div className="container mx-auto px-4">
+    <section id="features" className="py-12 sm:py-16 lg:py-20 bg-white">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="text-center mb-16">
+        <div className="text-center mb-12 sm:mb-16">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
             viewport={{ once: true }}
-            className="heading-2 mb-6"
+            className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-4 sm:mb-6"
           >
             Alles, was du brauchst, in einem smarten{' '}
             <span className="bg-gradient-to-r from-primary-gold to-gold-hover bg-clip-text text-transparent">
@@ -76,9 +76,9 @@ export function FeaturesSection() {
         </div>
 
         {/* Features Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto mb-16">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8 max-w-7xl mx-auto mb-12 sm:mb-16">
           {/* Left Side - Feature Cards */}
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {features.map((feature, index) => (
               <motion.div
                 key={index}
@@ -87,16 +87,16 @@ export function FeaturesSection() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <Card className="p-6 hover-lift hover-glow group border-primary-gold/20">
+                <Card className="p-4 sm:p-6 hover-lift hover-glow group border-primary-gold/20">
                   <CardContent className="p-0">
-                    <div className="flex items-start gap-4">
-                      <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0`}>
-                        <feature.icon className="w-7 h-7 text-white" />
+                    <div className="flex items-start gap-3 sm:gap-4">
+                      <div className={`w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-gradient-to-br ${feature.gradient} flex items-center justify-center group-hover:scale-110 transition-transform flex-shrink-0`}>
+                        <feature.icon className="w-6 h-6 sm:w-7 sm:h-7 text-white" />
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-bold text-gray-900 mb-1">{feature.title}</h3>
-                        <p className="text-sm text-primary-gold font-medium mb-3">{feature.subtitle}</p>
-                        <p className="text-gray-600 mb-4 leading-relaxed">{feature.description}</p>
+                        <h3 className="text-lg sm:text-xl font-bold text-gray-900 mb-1">{feature.title}</h3>
+                        <p className="text-xs sm:text-sm text-primary-gold font-medium mb-2 sm:mb-3">{feature.subtitle}</p>
+                        <p className="text-sm sm:text-base text-gray-600 mb-3 sm:mb-4 leading-relaxed">{feature.description}</p>
                         <ul className="space-y-2">
                           {feature.benefits.map((benefit, i) => (
                             <li key={i} className="flex items-center gap-2 text-sm text-gray-700">
@@ -119,11 +119,11 @@ export function FeaturesSection() {
             whileInView={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="flex items-center justify-center"
+            className="hidden lg:flex items-center justify-center"
           >
             <div className="relative">
               {/* Phone Frame */}
-              <div className="relative w-80 h-[640px] bg-gray-900 rounded-[3rem] p-4 shadow-2xl">
+              <div className="relative w-72 h-[580px] xl:w-80 xl:h-[640px] bg-gray-900 rounded-[3rem] p-3 xl:p-4 shadow-2xl">
                 {/* Screen */}
                 <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden relative">
                   {/* Status Bar */}
@@ -225,8 +225,8 @@ export function FeaturesSection() {
           className="text-center"
         >
           <Button
-            size="xl"
-            className="cta-gold text-lg px-12 py-4 hover-lift"
+            size="lg"
+            className="cta-gold text-base sm:text-lg px-8 sm:px-12 py-3 sm:py-4 hover-lift w-full sm:w-auto max-w-md mx-auto"
             asChild
           >
             <Link href="/umrah-anfrage">

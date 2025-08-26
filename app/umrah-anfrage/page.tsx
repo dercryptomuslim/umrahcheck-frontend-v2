@@ -84,15 +84,15 @@ export default function UmrahAnfragePage() {
       background: 'linear-gradient(135deg, #F3E8C7 0%, #E8D5A3 100%)',
       backgroundImage: `url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 200' width='200' height='200' fill='none' stroke='%23D4AF37' stroke-width='1' opacity='0.1'%3e%3cpath d='M40 40 L60 20 L80 40 L100 20 L120 40 L140 20 L160 40 L180 20 L200 40 L180 60 L200 80 L180 100 L200 120 L180 140 L200 160 L180 180 L160 160 L140 180 L120 160 L100 180 L80 160 L60 180 L40 160 L20 180 L0 160 L20 140 L0 120 L20 100 L0 80 L20 60 L0 40 L20 20 L40 40'/%3e%3c/svg%3e")`
     }}>
-      <div className="container mx-auto px-4 py-8">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8">
         
         {/* Progress Bar - nur bei Schritten anzeigen */}
         {currentStep > 0 && (
-          <div className="max-w-2xl mx-auto mb-8">
-            <div className="flex items-center justify-center gap-4">
+          <div className="max-w-2xl mx-auto mb-6 sm:mb-8">
+            <div className="flex items-center justify-center gap-2 sm:gap-4">
               {[1, 2, 3, 4].map((step) => (
                 <React.Fragment key={step}>
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center font-bold text-sm ${
+                  <div className={`w-8 h-8 sm:w-10 sm:h-10 rounded-full flex items-center justify-center font-bold text-xs sm:text-sm ${
                     step < currentStep 
                       ? 'bg-amber-500 text-white' 
                       : step === currentStep 
@@ -102,7 +102,7 @@ export default function UmrahAnfragePage() {
                     {step}
                   </div>
                   {step < 4 && (
-                    <div className={`h-1 w-8 ${
+                    <div className={`h-1 w-4 sm:w-8 ${
                       step < currentStep ? 'bg-amber-500' : 'bg-gray-300'
                     }`} />
                   )}
@@ -119,14 +119,14 @@ export default function UmrahAnfragePage() {
             animate={{ opacity: 1, y: 0 }}
             className="max-w-2xl mx-auto text-center"
           >
-            <div className="mb-8">
-              <h1 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+            <div className="mb-6 sm:mb-8">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6 px-2 sm:px-0">
                 Assalamu alaikum & herzlich willkommen beim Umrah KI Berater!
               </h1>
-              <div className="text-lg text-gray-700 space-y-2">
+              <div className="text-base sm:text-lg text-gray-700 space-y-2 px-2 sm:px-0">
                 <p><strong>Starte jetzt deine kostenlose & unverbindliche Umrah-Analyse in wenigen Schritten.</strong></p>
                 <p className="text-base">Was erwartet dich?</p>
-                <div className="text-left max-w-md mx-auto space-y-1 text-base">
+                <div className="text-left max-w-md mx-auto space-y-1 text-sm sm:text-base">
                   <p>— Persönliche Empfehlungen</p>
                   <p>— Anbieter-Preisvergleich</p>
                   <p>— 100 % kostenlos & anonym</p>
@@ -135,7 +135,7 @@ export default function UmrahAnfragePage() {
             </div>
             <Button
               onClick={nextStep}
-              className="bg-gray-900 hover:bg-gray-800 text-white px-8 py-4 text-lg rounded-full"
+              className="bg-gray-900 hover:bg-gray-800 text-white px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg rounded-full w-full sm:w-auto max-w-xs"
             >
               Jetzt starten
             </Button>

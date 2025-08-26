@@ -15,16 +15,46 @@
     width: 100%;
   }
   
-  /* Ensure minimum touch targets */
-  button, [role="button"], .btn {
+  /* Mobile viewport fix for iOS */
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+  
+  /* Ensure minimum touch targets - Apple HIG guidelines */
+  button, [role="button"], .btn, a, input[type="button"], input[type="submit"] {
     min-height: 44px;
     min-width: 44px;
     touch-action: manipulation;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
   }
   
   /* Improve mobile tap highlighting */
   * {
     -webkit-tap-highlight-color: rgba(212, 175, 55, 0.2);
+  }
+  
+  /* Enhanced mobile form elements */
+  input, select, textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    border-radius: 0.75rem;
+  }
+  
+  /* Mobile swipe optimizations */
+  .swipeable {
+    touch-action: pan-x;
+  }
+  
+  /* Prevent pull-to-refresh on mobile */
+  .no-pull-refresh {
+    overscroll-behavior-y: none;
+  }
+  
+  /* Smooth scrolling for mobile */
+  * {
+    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -208,5 +238,56 @@
   
   .text-muted {
     @apply text-[--text-muted];
+  }
+  
+  /* Mobile-specific utility classes */
+  .mobile-container {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+  
+  .mobile-card {
+    @apply mx-2 sm:mx-0 p-4 sm:p-6 lg:p-8;
+  }
+  
+  .mobile-text {
+    @apply text-sm sm:text-base;
+  }
+  
+  .mobile-heading {
+    @apply text-xl sm:text-2xl lg:text-3xl;
+  }
+  
+  .mobile-button {
+    @apply w-full sm:w-auto py-3 px-6 text-base;
+  }
+  
+  .mobile-grid {
+    @apply grid-cols-1 sm:grid-cols-2 lg:grid-cols-3;
+  }
+  
+  .mobile-gap {
+    @apply gap-4 sm:gap-6 lg:gap-8;
+  }
+  
+  .mobile-touch-target {
+    @apply min-h-[44px] min-w-[44px];
+  }
+  
+  .mobile-safe-area {
+    @apply pb-safe pt-safe;
+  }
+  
+  /* Enhanced hover states for mobile */
+  .mobile-hover {
+    @apply hover:bg-opacity-90 active:scale-95 transition-all duration-150;
+  }
+  
+  /* Mobile-optimized animations */
+  .mobile-fade-in {
+    @apply animate-in fade-in-0 duration-300;
+  }
+  
+  .mobile-slide-up {
+    @apply animate-in slide-in-from-bottom-4 duration-300;
   }
 }

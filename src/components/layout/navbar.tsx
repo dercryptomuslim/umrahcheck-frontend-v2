@@ -98,7 +98,7 @@ export function Navbar({ className }: NavbarProps) {
         className
       )}
     >
-      <nav className="container mx-auto px-4 h-16 flex items-center justify-between">
+      <nav className="container mx-auto px-4 sm:px-6 lg:px-8 h-16 md:h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center space-x-3">
           <motion.div
@@ -114,10 +114,10 @@ export function Navbar({ className }: NavbarProps) {
             </div>
           </motion.div>
           <div>
-            <h1 className="text-2xl font-extrabold text-dark-blue tracking-tight">
+            <h1 className="text-xl sm:text-2xl font-extrabold text-dark-blue tracking-tight">
               UmrahCheck
             </h1>
-            <p className="text-xs font-medium text-primary-gold -mt-1 tracking-wide flex items-center gap-1">
+            <p className="hidden sm:flex text-xs font-medium text-primary-gold -mt-1 tracking-wide items-center gap-1">
               <Sparkles className="w-3 h-3" />
               KI-Umrah-Beratung
             </p>
@@ -175,12 +175,12 @@ export function Navbar({ className }: NavbarProps) {
         {/* Mobile Menu Trigger */}
         <Sheet open={isOpen} onOpenChange={setIsOpen}>
           <SheetTrigger asChild className="lg:hidden">
-            <Button variant="ghost" size="icon" className="text-dark-blue">
+            <Button variant="ghost" size="icon" className="text-dark-blue h-10 w-10 sm:h-12 sm:w-12">
               <Menu className="h-6 w-6" />
               <span className="sr-only">Toggle menu</span>
             </Button>
           </SheetTrigger>
-          <SheetContent side="right" className="w-[300px] sm:w-[400px] bg-white">
+          <SheetContent side="right" className="w-[90vw] max-w-md bg-white">
             <div className="flex flex-col h-full">
               {/* Mobile Logo */}
               <div className="flex items-center space-x-3 pb-6 border-b border-primary-gold/20">
@@ -199,7 +199,7 @@ export function Navbar({ className }: NavbarProps) {
                   <Link
                     key={item.name}
                     href={item.href}
-                    className="flex items-center space-x-3 p-4 text-gray-700 hover:text-dark-blue hover:bg-cream/50 rounded-lg transition-colors group"
+                    className="flex items-center space-x-3 p-4 min-h-[3rem] text-gray-700 hover:text-dark-blue hover:bg-cream/50 rounded-lg transition-colors group active:bg-cream/70"
                     onClick={() => setIsOpen(false)}
                   >
                     <item.icon className="w-5 h-5 text-primary-gold group-hover:scale-110 transition-transform" />
@@ -230,7 +230,7 @@ export function Navbar({ className }: NavbarProps) {
                 
                 <Button
                   size="lg"
-                  className="w-full cta-gold text-white font-semibold shadow-lg hover-lift group"
+                  className="w-full h-12 cta-gold text-white font-semibold shadow-lg hover-lift group active:scale-95 transition-transform"
                   onClick={() => setIsOpen(false)}
                   asChild
                 >

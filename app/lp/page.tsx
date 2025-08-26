@@ -420,34 +420,34 @@ export default function LandingPage() {
     <div className="min-h-screen bg-gradient-to-br from-cream-light via-sand to-cream">
       
       {/* Hero Section */}
-      <div className="bg-gradient-to-r from-[--midnight] to-[--dark-blue] text-white py-16">
-        <div className="container mx-auto px-4">
+      <div className="bg-gradient-to-r from-[--midnight] to-[--dark-blue] text-white py-8 sm:py-12 lg:py-16">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-4xl mx-auto text-center">
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               className="mb-8"
             >
-              <div className="inline-flex items-center gap-2 bg-red-600 text-white px-4 py-2 rounded-full text-sm font-medium mb-6 animate-pulse">
+              <div className="inline-flex items-center gap-2 bg-red-600 text-white px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium mb-4 sm:mb-6 animate-pulse">
                 <Zap className="w-4 h-4" />
                 🚨 ABZOCKE STOPPEN: Organisationen verlangen 1.800-2.500€ für 1.000-1.500€ Reisen!
               </div>
               
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-4 sm:mb-6 px-2 sm:px-0">
                 Spare bis zu <span className="text-[--primary-gold]">1.000€ pro Familie</span> bei deiner Umrah
                 <br />mit ehrlichen <strong>echten</strong> Preisen
               </h1>
               
-              <p className="text-xl opacity-90 max-w-3xl mx-auto mb-6">
+              <p className="text-base sm:text-lg lg:text-xl opacity-90 max-w-3xl mx-auto mb-4 sm:mb-6 px-2 sm:px-0">
                 <strong>GRATIS Budget-Check:</strong> Erfahre in 5 Minuten, ob dein Budget realistisch ist.
                 <br />Optional: Hol dir dein persönliches PDF-Angebot für nur 39€ (statt 119€)
               </p>
 
               {/* Proof Section */}
-              <div className="bg-white/10 backdrop-blur rounded-2xl p-6 max-w-4xl mx-auto mb-8">
-                <h3 className="text-lg font-bold mb-4 text-[--primary-gold]">💰 Echte Ersparnis-Beispiele (Familie mit 4 Personen):</h3>
-                <div className="grid md:grid-cols-2 gap-4 text-sm">
-                  <div className="bg-red-500/20 rounded-lg p-4">
+              <div className="bg-white/10 backdrop-blur rounded-2xl p-4 sm:p-6 max-w-4xl mx-auto mb-6 sm:mb-8 mx-2 sm:mx-0">
+                <h3 className="text-base sm:text-lg font-bold mb-3 sm:mb-4 text-[--primary-gold]">💰 Echte Ersparnis-Beispiele (Familie mit 4 Personen):</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
+                  <div className="bg-red-500/20 rounded-lg p-3 sm:p-4">
                     <div className="font-bold text-red-300 mb-2">❌ Typische "Umrah-Organisation":</div>
                     <div className="space-y-1">
                       <div>• Pauschalpreis: <strong>2.200€ pro Person</strong></div>
@@ -455,7 +455,7 @@ export default function LandingPage() {
                       <div>• Versteckte Aufschläge: +300-500€</div>
                     </div>
                   </div>
-                  <div className="bg-green-500/20 rounded-lg p-4">
+                  <div className="bg-green-500/20 rounded-lg p-3 sm:p-4">
                     <div className="font-bold text-green-300 mb-2">✅ UmrahCheck Realpreis:</div>
                     <div className="space-y-1">
                       <div>• 4-Bett-Zimmer: <strong>1.200€ pro Person</strong></div>
@@ -464,20 +464,20 @@ export default function LandingPage() {
                     </div>
                   </div>
                 </div>
-                <div className="text-center mt-4 text-sm opacity-80">
+                <div className="text-center mt-3 sm:mt-4 text-xs sm:text-sm opacity-80">
                   <strong>Warum so günstig?</strong> 4-Bett-Zimmer teilen sich die Kosten + Direktbuchung ohne Zwischenhändler
                 </div>
               </div>
 
-              <div className="flex flex-wrap justify-center gap-6 text-sm">
+              <div className="flex flex-wrap justify-center gap-3 sm:gap-6 text-xs sm:text-sm px-2 sm:px-0"
                 {[
                   '💰 Bis zu 4.000€ Familienersparnis', 
                   '✅ 100% ehrliche Preise ohne Abzocke', 
                   '🕌 Persönlich geprüft aus Medina',
                   '⚡ Antwort in unter 10 Minuten'
                 ].map((badge, i) => (
-                  <div key={i} className="flex items-center gap-2">
-                    <CheckCircle className="w-5 h-5 text-[--primary-gold]" />
+                  <div key={i} className="flex items-center gap-2 mb-2 sm:mb-0"
+                    <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-[--primary-gold]" />
                     <span>{badge}</span>
                   </div>
                 ))}
@@ -488,7 +488,7 @@ export default function LandingPage() {
       </div>
 
       {/* Value Demo Section - What You Get */}
-      <div className="container mx-auto px-4 py-12">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -642,7 +642,7 @@ export default function LandingPage() {
       </div>
 
       {/* Main Form Section */}
-      <div className="container mx-auto px-4 py-16">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-16">
         <div className="max-w-3xl mx-auto">
           
           {/* Progress Bar */}
